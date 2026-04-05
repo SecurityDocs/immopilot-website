@@ -151,14 +151,12 @@ export default function FeatureDokumente() {
           <span className="text-xs font-semibold text-primary-700">Dokumenten-Upload</span>
         </div>
         <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-4">
-          Beleg hochladen.{" "}
-          <span className="gradient-text">KI erledigt den Rest.</span>
+          Rechnung hochladen,{" "}
+          <span className="gradient-text">KI erkennt und ordnet zu.</span>
         </h3>
         <p className="text-slate-500 leading-relaxed mb-6">
-          Laden Sie Rechnungen und Belege für Ihre Immobilien einfach per Drag and Drop hoch.
-          Die Software erkennt automatisch, um welche Kostenart es sich handelt, schlägt das
-          passende Objekt vor und prüft direkt, ob die Kosten auf die Mieter umgelegt werden können.
-          Alle Dokumente werden zentral in der digitalen Objektakte abgelegt.
+          Belege per Drag and Drop hochladen. Die KI erkennt Kostenart, Objekt und
+          Betrag automatisch und prüft, ob die Kosten umlagefähig sind.
         </p>
         <ul className="space-y-3">
           {[

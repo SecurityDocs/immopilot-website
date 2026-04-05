@@ -175,14 +175,13 @@ export default function FeatureCSV() {
           <span className="text-xs font-semibold text-primary-700">KI-Zahlungsabgleich</span>
         </div>
         <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-4">
-          CSV rein.{" "}
-          <span className="gradient-text">Zahlungen erkannt.</span>
+          Kontoauszug hochladen,{" "}
+          <span className="gradient-text">alle Zahlungen sofort geprüft.</span>
         </h3>
         <p className="text-slate-500 leading-relaxed mb-6">
-          Laden Sie einfach den Kontoauszug Ihrer Bank als CSV-Datei hoch. ImmoPilot erkennt
-          automatisch alle Mietzahlungen und gleicht sie mit den hinterlegten Mietverträgen ab.
-          Das dauert Sekunden statt Stunden. Wenn eine Zahlung fehlt oder ein Betrag nicht stimmt,
-          erstellt die Software automatisch ein Mahnschreiben, das Sie direkt per Klick versenden können.
+          Laden Sie Ihren Kontoauszug als CSV hoch. ImmoPilot erkennt alle Mietzahlungen und
+          gleicht sie automatisch mit den Mietverträgen ab. Bei fehlenden Zahlungen erstellt
+          die KI direkt ein Mahnschreiben.
         </p>
         <ul className="space-y-3">
           {[

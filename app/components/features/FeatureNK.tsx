@@ -149,14 +149,12 @@ export default function FeatureNK() {
           <span className="text-xs font-semibold text-primary-700">Nebenkostenabrechnung</span>
         </div>
         <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-4">
-          Ein Klick.{" "}
-          <span className="gradient-text">Fertig abgerechnet.</span>
+          Nebenkostenabrechnung{" "}
+          <span className="gradient-text">per Knopfdruck erstellt.</span>
         </h3>
         <p className="text-slate-500 leading-relaxed mb-6">
-          Laden Sie Ihre Belege hoch und legen Sie die Verteilerschlüssel fest. Den Rest erledigt
-          ImmoPilot. Die Betriebskosten werden automatisch nach Fläche, Personenzahl oder Verbrauch
-          verteilt. Dabei prüft die Software, welche Kosten umlagefähig sind und welche nicht. Am Ende
-          erhalten Sie fertige Nebenkostenabrechnungen für jeden Mieter Ihres Hauses.
+          Belege hochladen, Verteilerschlüssel festlegen, fertig. ImmoPilot verteilt
+          die Kosten automatisch und prüft, was umlagefähig ist.
         </p>
         <ul className="space-y-3">
           {[

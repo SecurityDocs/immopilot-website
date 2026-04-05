@@ -285,7 +285,7 @@ export default function Hero() {
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight text-slate-900">
               Immobilien&shy;verwaltung.{" "}
-              <span className="gradient-text">Komplett digital.</span>
+              <span className="gradient-text">Komplett digital. Mit KI.</span>
             </h1>
 
             {/* Mockup: On mobile shows right after title. On desktop hidden (shown in right col) */}
@@ -309,7 +309,7 @@ export default function Hero() {
             </div>
 
             {/* Text + Buttons — after mockup on mobile */}
-            <p className="mt-6 text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed">
+            <p className="mt-8 lg:mt-6 text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed font-normal">
               Schluss mit teuren Hausverwaltungen, Papierchaos und Excel-Listen.
               ImmoPilot ist die intelligente Software für Immobilienverwaltung,
               Mieterverwaltung und Nebenkostenabrechnung. Verwalten Sie Ihre
@@ -317,24 +317,24 @@ export default function Hero() {
               DSGVO-konform und gehostet auf deutschen Servern.
             </p>
 
-            <div className="mt-6 flex flex-col sm:flex-row gap-3">
-              <a href="#contact" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-primary-600 text-white font-semibold text-sm sm:text-base hover:bg-primary-700 transition-all shadow-lg shadow-primary-600/25">
+            <div className="mt-8 lg:mt-6 flex flex-col sm:flex-row gap-3">
+              <a href="#contact" className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-primary-600 text-white font-semibold text-base hover:bg-primary-700 transition-all shadow-lg shadow-primary-600/25">
                 Kostenlose Demo <ArrowRight size={16} />
               </a>
-              <a href="#features" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border-2 border-slate-200 text-slate-700 font-semibold text-sm sm:text-base hover:border-primary-300 hover:text-primary-600 transition-all">
+              <a href="#features" className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border-2 border-slate-200 text-slate-700 font-semibold text-base hover:border-primary-300 hover:text-primary-600 transition-all">
                 Alle Funktionen
               </a>
             </div>
 
-            <div className="mt-6 flex flex-wrap items-center gap-2">
+            <div className="mt-8 lg:mt-6 flex flex-wrap items-center gap-2.5">
               {[
                 { icon: Shield, label: "DSGVO-konform" },
                 { icon: Sparkles, label: "KI-gestützt" },
                 { icon: Building2, label: "Deutsche Server" },
               ].map((badge) => (
-                <div key={badge.label} className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-100">
-                  <badge.icon size={12} className="text-primary-600" />
-                  <span className="text-[11px] font-semibold text-slate-600">{badge.label}</span>
+                <div key={badge.label} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-100">
+                  <badge.icon size={13} className="text-primary-600" />
+                  <span className="text-xs font-semibold text-slate-600">{badge.label}</span>
                 </div>
               ))}
             </div>

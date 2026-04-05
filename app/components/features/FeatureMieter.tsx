@@ -30,14 +30,12 @@ export default function FeatureMieter() {
           <span className="text-xs font-semibold text-primary-700">Mieterverwaltung</span>
         </div>
         <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-4">
-          Alle Mieter. Alle Daten.{" "}
-          <span className="gradient-text">Ein Blick.</span>
+          Alle Mieter auf einen Blick,{" "}
+          <span className="gradient-text">direkt der Wohnung zugeordnet.</span>
         </h3>
         <p className="text-slate-500 leading-relaxed mb-6">
-          In ImmoPilot hat jeder Mieter ein vollständiges digitales Profil mit Kontaktdaten,
-          Mietverträgen, SCHUFA-Status und der kompletten Zahlungshistorie. Jeder Mieter ist
-          direkt seiner Wohnung zugeordnet und über die Suche sofort auffindbar. Sie haben immer
-          den Überblick über alle Mieter in Ihrem Mehrfamilienhaus.
+          Jeder Mieter hat ein digitales Profil mit Kontaktdaten, Verträgen und
+          Zahlungshistorie. Direkt der Einheit zugeordnet und sofort durchsuchbar.
         </p>
         <ul className="space-y-3">
           {[

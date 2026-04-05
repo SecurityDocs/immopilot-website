@@ -33,14 +33,12 @@ export default function FeatureTickets() {
           <span className="text-xs font-semibold text-primary-700">Tickets & Reparaturen</span>
         </div>
         <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-4">
-          Meldung rein.{" "}
-          <span className="gradient-text">Handwerker raus.</span>
+          Schaden gemeldet,{" "}
+          <span className="gradient-text">Handwerker direkt beauftragt.</span>
         </h3>
         <p className="text-slate-500 leading-relaxed mb-6">
-          Ihre Mieter melden Schäden ganz einfach über das Tablet im Treppenhaus, per
-          Sprachassistent oder über ihr Handy. Sie als Eigentümer sehen die Meldung sofort
-          in der Software und können sie mit einem Klick an den Hausmeister oder einen
-          Handwerker weiterleiten. Der gesamte Verlauf wird automatisch dokumentiert.
+          Mieter melden Schäden per Tablet, Sprache oder Handy. Sie sehen die Meldung
+          sofort und leiten sie mit einem Klick an den Handwerker weiter.
         </p>
         <ul className="space-y-3">
           {[

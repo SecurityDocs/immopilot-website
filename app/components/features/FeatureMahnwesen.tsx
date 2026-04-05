@@ -26,14 +26,12 @@ export default function FeatureMahnwesen() {
           <span className="text-xs font-semibold text-primary-700">Mahnwesen</span>
         </div>
         <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-4">
-          Zahlung fehlt?{" "}
-          <span className="gradient-text">Automatisch gemahnt.</span>
+          Mieter zahlt nicht?{" "}
+          <span className="gradient-text">Mahnung geht automatisch raus.</span>
         </h3>
         <p className="text-slate-500 leading-relaxed mb-6">
-          Wenn ein Mieter nicht pünktlich zahlt, greift das automatische Mahnsystem von ImmoPilot.
-          Die Software erkennt Zahlungsrückstände selbstständig und erstellt Mahnschreiben in
-          drei Stufen. Von der freundlichen Erinnerung bis zur formalen Mahnung ist alles
-          lückenlos dokumentiert und jederzeit nachvollziehbar.
+          ImmoPilot erkennt Zahlungsrückstände und erstellt Mahnschreiben in drei Stufen.
+          Von der Erinnerung bis zur formalen Mahnung, alles lückenlos dokumentiert.
         </p>
         <ul className="space-y-3">
           {[

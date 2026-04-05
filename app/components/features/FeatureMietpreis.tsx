@@ -106,14 +106,12 @@ export default function FeatureMietpreis() {
           <span className="text-xs font-semibold text-primary-700">Mietpreisanalyse</span>
         </div>
         <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-4">
-          Wissen, wann erhöht{" "}
-          <span className="gradient-text">werden kann.</span>
+          Mieterhöhung möglich?{" "}
+          <span className="gradient-text">Die KI sagt Ihnen wann und wie viel.</span>
         </h3>
         <p className="text-slate-500 leading-relaxed mb-6">
-          ImmoPilot vergleicht die aktuellen Mieten in Ihrem Haus automatisch mit dem
-          geltenden Mietspiegel. Sie sehen auf einen Blick, bei welchem Mieter eine
-          Mieterhöhung möglich ist und in welcher Höhe. Die Kappungsgrenze und alle
-          gesetzlichen Vorgaben werden dabei automatisch berücksichtigt.
+          ImmoPilot vergleicht Ihre Mieten automatisch mit dem Mietspiegel und zeigt,
+          wo Erhöhungspotenzial besteht. Kappungsgrenze inklusive.
         </p>
         <ul className="space-y-3">
           {[
