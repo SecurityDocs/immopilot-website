@@ -147,23 +147,24 @@ export default function TabletPortal() {
               </div>
             </div>
 
-            <div className="space-y-2.5">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {[
-                { icon: Tablet, title: "iPad im Treppenhaus, diebstahlgesichert", desc: "Jedes Objekt erhält ein iPad im Sicherheitsgehäuse. Wir liefern, montieren und richten alles ein." },
-                { icon: Mic, title: "KI-Sprachassistent für Mieter", desc: "Mieter sprechen einfach ins Tablet. Die KI versteht das Anliegen und erstellt automatisch ein Ticket." },
-                { icon: Smartphone, title: "Mobiles Portal für jeden Mieter", desc: "Jeder Mieter erhält einen persönlichen Link. Tickets erstellen und Status einsehen, direkt vom Handy." },
-                { icon: Bell, title: "Digitales schwarzes Brett", desc: "Wichtige Infos wie Wartungen oder Ausfälle werden direkt auf dem Tablet angezeigt." },
-                { icon: Wrench, title: "Tickets direkt an Dienstleister weiterleiten", desc: "Sie weisen Reparaturen per Klick dem Hausmeister oder Handwerker zu. Alles dokumentiert." },
-                { icon: ExternalLink, title: "Eigene Portal-URL pro Immobilie", desc: "Jedes Ihrer Objekte bekommt eine eigene Adresse für das Mieter-Portal." },
+                { icon: Tablet, title: "iPad inklusive", desc: "Diebstahlgesichert montiert. Wir liefern und richten ein.", nr: "01" },
+                { icon: Mic, title: "Sprachassistent", desc: "Mieter sprechen ins Tablet. KI erstellt das Ticket.", nr: "02" },
+                { icon: Smartphone, title: "Handy-Portal", desc: "Jeder Mieter meldet Anliegen direkt vom Smartphone.", nr: "03" },
+                { icon: Bell, title: "Schwarzes Brett", desc: "Wartungen und Infos werden auf dem Tablet angezeigt.", nr: "04" },
+                { icon: Wrench, title: "Ticket-Verteilung", desc: "Per Klick an Hausmeister oder Handwerker zuweisen.", nr: "05" },
+                { icon: ExternalLink, title: "Eigene Portal-URL", desc: "Jedes Objekt bekommt eine eigene Web-Adresse.", nr: "06" },
               ].map((item) => (
-                <div key={item.title} className="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors">
-                  <div className="w-8 h-8 rounded-lg bg-primary-50 flex items-center justify-center flex-shrink-0">
-                    <item.icon size={15} className="text-primary-600" />
+                <div key={item.title} className="bg-slate-50 border border-slate-200 rounded-xl p-4 hover:border-primary-200 hover:shadow-sm transition-all">
+                  <div className="flex items-center justify-between mb-2.5">
+                    <div className="w-9 h-9 rounded-xl bg-white border border-slate-200 flex items-center justify-center shadow-sm">
+                      <item.icon size={16} className="text-primary-600" />
+                    </div>
+                    <span className="text-[10px] font-bold text-slate-300">{item.nr}</span>
                   </div>
-                  <div>
-                    <h4 className="text-xs font-bold text-slate-900">{item.title}</h4>
-                    <p className="text-xs text-slate-500 mt-0.5">{item.desc}</p>
-                  </div>
+                  <h4 className="text-sm font-bold text-slate-900 mb-1">{item.title}</h4>
+                  <p className="text-xs text-slate-500 leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
