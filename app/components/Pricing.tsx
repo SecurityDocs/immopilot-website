@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Building2, Tablet, Headphones, Settings, X } from "lucide-react";
+import { Check, X, Building2, Tablet, Headphones, Settings } from "lucide-react";
 
 export default function Pricing() {
   return (
@@ -19,7 +19,7 @@ export default function Pricing() {
           </h2>
           <p className="mt-4 text-lg text-slate-500">
             Basispreis plus Einheiten. Keine versteckten Kosten, keine
-            langfristigen Verträge. Günstiger als jede Hausverwaltung — und 24/7 verfügbar.
+            langfristigen Verträge. Günstiger als jede Hausverwaltung.
           </p>
         </div>
 
@@ -29,28 +29,38 @@ export default function Pricing() {
           <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm">
             <div className="mb-6">
               <h3 className="text-lg font-bold text-slate-900">Starter</h3>
-              <p className="text-sm text-slate-500 mt-1">Für kleine Portfolios</p>
+              <p className="text-sm text-slate-500 mt-1">Für den Einstieg</p>
             </div>
             <div className="mb-6">
               <div className="flex items-baseline gap-1">
                 <span className="text-4xl font-extrabold text-slate-900">49</span>
                 <span className="text-lg font-semibold text-slate-500">EUR</span>
               </div>
-              <div className="text-sm text-slate-500">/ Monat Basispreis</div>
-              <div className="mt-2 text-sm text-primary-600 font-semibold">+ 2,90 EUR / Einheit</div>
+              <div className="text-sm text-slate-500">pro Monat Basispreis</div>
+              <div className="mt-2 text-sm text-primary-600 font-semibold">+ 5 EUR pro Einheit</div>
             </div>
             <ul className="space-y-3 mb-8">
               {[
-                "Bis zu 1 Immobilie",
-                "Bis zu 30 Einheiten",
-                "Nebenkostenabrechnung",
-                "Zahlungsabgleich",
-                "Dokumenten-Upload",
-                "E-Mail Support",
+                { text: "Bis zu 2 Immobilien", included: true },
+                { text: "Bis zu 30 Einheiten", included: true },
+                { text: "Mieterverwaltung", included: true },
+                { text: "Zahlungsabgleich (CSV-Import)", included: true },
+                { text: "Nebenkostenabrechnung", included: true },
+                { text: "Dokumenten-Upload", included: true },
+                { text: "E-Mail Support", included: true },
+                { text: "Mieter-Portal und Tablet", included: false },
+                { text: "KI-Sprachassistent", included: false },
+                { text: "Automatisches Mahnwesen", included: false },
+                { text: "Mietpreisanalyse", included: false },
+                { text: "KI-Dokumentenanalyse", included: false },
               ].map((f) => (
-                <li key={f} className="flex items-center gap-2.5 text-sm text-slate-600">
-                  <Check size={16} className="text-accent-500 flex-shrink-0" />
-                  {f}
+                <li key={f.text} className={`flex items-center gap-2.5 text-sm ${f.included ? "text-slate-600" : "text-slate-400"}`}>
+                  {f.included ? (
+                    <Check size={16} className="text-accent-500 flex-shrink-0" />
+                  ) : (
+                    <X size={16} className="text-slate-300 flex-shrink-0" />
+                  )}
+                  {f.text}
                 </li>
               ))}
             </ul>
@@ -62,29 +72,33 @@ export default function Pricing() {
           {/* Professional */}
           <div className="bg-white rounded-2xl p-8 border-2 border-primary-600 shadow-xl relative">
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-primary-600 text-white text-xs font-bold">
-              Beliebteste Wahl
+              Empfohlen
             </div>
             <div className="mb-6">
               <h3 className="text-lg font-bold text-slate-900">Professional</h3>
-              <p className="text-sm text-slate-500 mt-1">Für wachsende Portfolios</p>
+              <p className="text-sm text-slate-500 mt-1">Für Eigentümer die es ernst meinen</p>
             </div>
             <div className="mb-6">
               <div className="flex items-baseline gap-1">
-                <span className="text-4xl font-extrabold text-slate-900">99</span>
+                <span className="text-4xl font-extrabold text-slate-900">100</span>
                 <span className="text-lg font-semibold text-slate-500">EUR</span>
               </div>
-              <div className="text-sm text-slate-500">/ Monat Basispreis</div>
-              <div className="mt-2 text-sm text-primary-600 font-semibold">+ 1,90 EUR / Einheit</div>
+              <div className="text-sm text-slate-500">pro Monat Basispreis</div>
+              <div className="mt-2 text-sm text-primary-600 font-semibold">+ 5 EUR pro Einheit</div>
             </div>
             <ul className="space-y-3 mb-8">
               {[
                 "Unbegrenzte Immobilien",
                 "Bis zu 150 Einheiten",
-                "Alles aus Starter",
-                "Mieter-Portal + Tablet",
-                "Sprachassistent",
-                "Mahnwesen automatisiert",
-                "Mietpreisanalyse",
+                "Mieterverwaltung",
+                "Zahlungsabgleich (CSV-Import und Bankanbindung)",
+                "Nebenkostenabrechnung",
+                "Dokumenten-Upload",
+                "Mieter-Portal und Tablet inklusive",
+                "KI-Sprachassistent",
+                "Automatisches Mahnwesen mit KI",
+                "Mietpreisanalyse mit Mietspiegel",
+                "KI-Dokumentenanalyse und Zuordnung",
                 "Prioritäts-Support",
               ].map((f) => (
                 <li key={f} className="flex items-center gap-2.5 text-sm text-slate-600">
@@ -102,7 +116,7 @@ export default function Pricing() {
           <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm">
             <div className="mb-6">
               <h3 className="text-lg font-bold text-slate-900">Enterprise</h3>
-              <p className="text-sm text-slate-500 mt-1">Für große Bestände</p>
+              <p className="text-sm text-slate-500 mt-1">Ab 150 Einheiten</p>
             </div>
             <div className="mb-6">
               <div className="flex items-baseline gap-1">
@@ -113,13 +127,15 @@ export default function Pricing() {
             <ul className="space-y-3 mb-8">
               {[
                 "Unbegrenzte Immobilien",
-                "Unbegrenzte Einheiten",
+                "Unbegrenzte Einheiten (ab 150)",
                 "Alles aus Professional",
                 "Mehrere Tablets pro Objekt",
                 "API-Zugang",
                 "Dedizierter Ansprechpartner",
                 "SLA-Garantie",
                 "Individuelle Anpassungen",
+                "Eigenes Branding im Portal",
+                "Individuelle Preisgestaltung",
               ].map((f) => (
                 <li key={f} className="flex items-center gap-2.5 text-sm text-slate-600">
                   <Check size={16} className="text-accent-500 flex-shrink-0" />
@@ -133,55 +149,25 @@ export default function Pricing() {
           </div>
         </div>
 
-        {/* Einmalzahlung / Setup */}
+        {/* Setup */}
         <div className="mt-12 max-w-5xl mx-auto">
           <div className="bg-white rounded-2xl border border-slate-200 p-6 lg:p-8">
-            <div className="grid lg:grid-cols-2 gap-8 items-center">
-              <div>
-                <div className="flex items-center gap-2 mb-3">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-6">
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-2">
                   <Settings size={18} className="text-primary-600" />
-                  <h3 className="text-lg font-bold text-slate-900">Einrichtung & Datenmigration</h3>
+                  <h3 className="text-lg font-bold text-slate-900">Einrichtung und Datenmigration</h3>
                 </div>
-                <p className="text-sm text-slate-500 leading-relaxed mb-4">
-                  Sie möchten, dass wir die komplette Ersteinrichtung übernehmen? Wir migrieren alle
-                  Ihre bestehenden Daten — Mieter, Verträge, Dokumente, Zahlungshistorie — und richten
-                  ImmoPilot für Sie vollständig ein. Optional, nicht verpflichtend.
-                </p>
-                <p className="text-xs text-slate-400">
-                  Alternativ können Sie die Einrichtung auch komplett selbst vornehmen — kostenlos.
+                <p className="text-sm text-slate-500 leading-relaxed">
+                  Wir übernehmen auf Wunsch die komplette Ersteinrichtung: Immobilien anlegen, Mieter importieren,
+                  Verträge und Dokumente migrieren, Zahlungshistorie übertragen. Der Preis richtet sich nach Umfang
+                  und Anzahl der Einheiten. Alternativ können Sie alles auch selbst einrichten.
                 </p>
               </div>
-              <div>
-                <div className="bg-slate-50 rounded-xl p-5 border border-slate-100">
-                  <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">
-                    Einmalige Setup-Gebühr
-                  </div>
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="text-sm font-semibold text-slate-800">Basis-Setup</div>
-                        <div className="text-xs text-slate-500">Immobilien, Einheiten, Mieter anlegen</div>
-                      </div>
-                      <span className="text-lg font-extrabold text-slate-900">299 €</span>
-                    </div>
-                    <div className="border-t border-slate-200" />
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="text-sm font-semibold text-slate-800">Komplett-Migration</div>
-                        <div className="text-xs text-slate-500">Alle Daten, Verträge, Dokumente, Zahlungen</div>
-                      </div>
-                      <span className="text-lg font-extrabold text-slate-900">599 €</span>
-                    </div>
-                    <div className="border-t border-slate-200" />
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="text-sm font-semibold text-slate-800">Selbst einrichten</div>
-                        <div className="text-xs text-slate-500">Sie machen alles selbst mit unserer Anleitung</div>
-                      </div>
-                      <span className="text-lg font-extrabold text-accent-600">Kostenlos</span>
-                    </div>
-                  </div>
-                </div>
+              <div className="sm:text-right flex-shrink-0">
+                <div className="text-2xl font-extrabold text-slate-900">Individuell</div>
+                <div className="text-xs text-slate-500 mt-0.5">Einmalige Gebühr je nach Umfang</div>
+                <div className="text-xs text-primary-600 font-semibold mt-1">Selbst einrichten: kostenlos</div>
               </div>
             </div>
           </div>
