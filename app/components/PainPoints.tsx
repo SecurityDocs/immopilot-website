@@ -7,13 +7,13 @@ const stats = [
     value: "25–40 €",
     unit: "pro Einheit und Monat",
     headline: "So teuer ist eine klassische Hausverwaltung",
-    text: "Bei 50 Einheiten sind das bis zu 24.000 Euro im Jahr. Mit ImmoPilot zahlen Sie nur 2.328 Euro.",
+    text: "Bei 50 Einheiten sind das bis zu 24.000 Euro im Jahr. Mit ImmoPilot zahlen Sie nur 4.200 Euro.",
     detail: [
       { label: "Hausverwaltung pro Jahr (40€ × 50 × 12)", value: "24.000 €" },
-      { label: "ImmoPilot Professional pro Jahr", value: "2.328 €" },
-      { label: "Ihre jährliche Ersparnis", value: "21.672 €" },
+      { label: "ImmoPilot pro Jahr (100€ + 5€ × 50 × 12)", value: "4.200 €" },
+      { label: "Ihre jährliche Ersparnis", value: "19.800 €" },
     ],
-    cta: "Bis zu 90 Prozent günstiger als eine klassische Hausverwaltung.",
+    cta: "Bis zu 83 Prozent günstiger als eine klassische Hausverwaltung.",
   },
   {
     value: "88 %",

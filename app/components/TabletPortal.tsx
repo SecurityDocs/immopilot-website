@@ -123,6 +123,28 @@ export default function TabletPortal() {
                 Der Sprachassistent nimmt Meldungen per Sprache entgegen und erstellt automatisch ein Ticket daraus.
                 Sie als Eigentümer sehen alles sofort in der Software und können direkt handeln. Kein Anruf mehr nötig.
               </p>
+
+              {/* Rechenbeispiel Zeitersparnis */}
+              <div className="mt-4 bg-primary-50 border border-primary-100 rounded-xl p-4">
+                <h4 className="text-xs font-bold text-primary-800 mb-2">Rechenbeispiel: 50 Einheiten, 30 Meldungen pro Monat</h4>
+                <div className="space-y-1.5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-slate-600">Ohne ImmoPilot: 30 Anrufe × 15 Min.</span>
+                    <span className="text-xs font-bold text-slate-900">7,5 Std./Monat</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-slate-600">Mit ImmoPilot: 30 Tickets × 2 Min.</span>
+                    <span className="text-xs font-bold text-primary-700">1 Std./Monat</span>
+                  </div>
+                  <div className="border-t border-primary-200 pt-1.5">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-bold text-primary-800">Zeitersparnis pro Monat</span>
+                      <span className="text-sm font-extrabold text-primary-700">6,5 Stunden</span>
+                    </div>
+                    <p className="text-[11px] text-primary-600 mt-1">Das sind über 78 Stunden im Jahr, die Sie für Wichtigeres nutzen.</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="space-y-2.5">
