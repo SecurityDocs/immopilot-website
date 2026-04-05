@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowDown, AlertTriangle } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 
 const stats = [
   {
@@ -66,8 +66,8 @@ const stats = [
   {
     value: "2.300+",
     unit: "Hausverwaltungen weniger in vier Jahren",
-    headline: "Verwaltermangel in Deutschland verschärft sich",
-    text: "Die Zahl sank von 24.300 auf unter 22.000. Wer heute keinen Verwalter findet, braucht eine digitale Lösung.",
+    headline: "Verwaltermangel verschärft sich",
+    text: "Die Zahl sank von 24.300 auf unter 22.000. Wer keinen Verwalter findet, braucht eine digitale Lösung.",
     detail: [
       { label: "Verwalter 2020 bis 2024", value: "24.300 → <22.000" },
       { label: "Stellen unbesetzt", value: "24,2 %" },
@@ -79,50 +79,50 @@ const stats = [
 
 export default function PainPoints() {
   return (
-    <section className="py-20 lg:py-28 bg-slate-950 text-white relative overflow-hidden" id="problems">
+    <section className="py-16 lg:py-28 bg-slate-950 text-white relative overflow-hidden" id="problems">
       <div className="absolute inset-0 bg-[radial-gradient(#ffffff06_1px,transparent_1px)] [background-size:32px_32px]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
             Hausverwaltungen sind öfter eine Belastung{" "}
             <span className="text-primary-400">als eine Entlastung</span>
           </h2>
-          <p className="mt-4 text-base text-slate-400">
+          <p className="mt-3 text-sm sm:text-base text-slate-400">
             Das ist nicht unsere Meinung. Das sagen die Zahlen.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {stats.map((stat, idx) => (
-            <div key={idx} className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 hover:border-slate-700 transition-all flex flex-col">
-              {/* Big number */}
-              <div className="mb-3">
-                <div className="text-3xl font-extrabold text-white leading-none">{stat.value}</div>
-                <div className="text-xs font-bold text-primary-400 mt-1">{stat.unit}</div>
+            <div key={idx} className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6 hover:border-slate-700 transition-all flex flex-col text-center">
+              {/* Big number — zentriert und fett */}
+              <div className="mb-4">
+                <div className="text-3xl sm:text-4xl font-extrabold text-white leading-none">{stat.value}</div>
+                <div className="text-sm font-bold text-primary-400 mt-1.5">{stat.unit}</div>
               </div>
 
-              <h3 className="text-sm font-bold text-white mb-2">{stat.headline}</h3>
-              <p className="text-xs text-slate-500 leading-relaxed mb-4">{stat.text}</p>
+              <h3 className="text-sm sm:text-base font-bold text-white mb-2">{stat.headline}</h3>
+              <p className="text-sm text-slate-400 leading-relaxed mb-5">{stat.text}</p>
 
-              {/* Detail rows */}
-              <div className="space-y-2 mb-4 flex-1">
+              {/* Detail rows — zentriert */}
+              <div className="space-y-2.5 mb-5 flex-1">
                 {stat.detail.map((d, i) => (
-                  <div key={i} className="flex items-center justify-between">
-                    <span className="text-[11px] text-slate-500">{d.label}</span>
-                    <span className="text-[11px] font-bold text-white">{d.value}</span>
+                  <div key={i} className="flex items-center justify-between px-2">
+                    <span className="text-xs text-slate-500">{d.label}</span>
+                    <span className="text-sm font-bold text-white">{d.value}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="bg-primary-500/10 border border-primary-500/20 rounded-lg p-2.5 text-center">
-                <p className="text-[11px] font-semibold text-primary-400">{stat.cta}</p>
+              <div className="bg-primary-500/10 border border-primary-500/20 rounded-lg p-3">
+                <p className="text-xs sm:text-sm font-semibold text-primary-400">{stat.cta}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        <div className="text-center mt-10">
           <a href="#features" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-primary-400 transition-colors">
             Die Lösung? Sehen Sie selbst
             <ArrowDown size={16} />

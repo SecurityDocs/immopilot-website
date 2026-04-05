@@ -256,7 +256,7 @@ export default function Hero() {
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % featureSlides.length);
-    }, 4500);
+    }, 3000);
     return () => clearInterval(timer);
   }, []);
 
@@ -271,21 +271,45 @@ export default function Hero() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div className="max-w-xl">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-50 border border-primary-200 mb-6">
+        {/* Mobile: Titel → Mockup → Text. Desktop: 2-Spalten */}
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+          {/* Left column: On mobile shows title first, then mockup is below, then rest */}
+          <div className="max-w-xl order-1">
+            {/* Badge + Title — always first */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-50 border border-primary-200 mb-4">
               <Sparkles size={14} className="text-primary-600" />
               <span className="text-xs font-semibold text-primary-700 uppercase tracking-wider">
                 KI-gestützte Hausverwaltung Software
               </span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight text-slate-900">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight text-slate-900">
               Immobilien&shy;verwaltung.{" "}
               <span className="gradient-text">Komplett digital.</span>
             </h1>
 
-            <p className="mt-6 text-lg sm:text-xl text-slate-600 leading-relaxed">
+            {/* Mockup: On mobile shows right after title. On desktop hidden (shown in right col) */}
+            <div className="mt-6 lg:hidden">
+              <BrowserMockup url={`app.immopilot.de/${slide.url}`}>
+                <div key={`m-${activeSlide}`} style={{ animation: "slide-up 0.3s ease-out forwards" }} className="min-h-[280px]">
+                  {slide.content}
+                </div>
+              </BrowserMockup>
+              <div className="flex items-center justify-between mt-3 px-1">
+                <div className="flex items-center gap-2">
+                  <slide.icon size={12} className="text-primary-600" />
+                  <span className="text-[11px] font-semibold text-slate-600">{slide.label}</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  {featureSlides.map((_, i) => (
+                    <button key={i} onClick={() => setActiveSlide(i)} className={`h-1.5 rounded-full transition-all duration-300 ${i === activeSlide ? "w-5 bg-primary-600" : "w-1.5 bg-slate-300"}`} />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Text + Buttons — after mockup on mobile */}
+            <p className="mt-6 text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed">
               Schluss mit teuren Hausverwaltungen, Papierchaos und Excel-Listen.
               ImmoPilot ist die intelligente Software für Immobilienverwaltung,
               Mieterverwaltung und Nebenkostenabrechnung. Verwalten Sie Ihre
@@ -293,30 +317,31 @@ export default function Hero() {
               DSGVO-konform und gehostet auf deutschen Servern.
             </p>
 
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <a href="#contact" className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-primary-600 text-white font-semibold text-base hover:bg-primary-700 transition-all shadow-lg shadow-primary-600/25">
-                Kostenlose Demo <ArrowRight size={18} />
+            <div className="mt-6 flex flex-col sm:flex-row gap-3">
+              <a href="#contact" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-primary-600 text-white font-semibold text-sm sm:text-base hover:bg-primary-700 transition-all shadow-lg shadow-primary-600/25">
+                Kostenlose Demo <ArrowRight size={16} />
               </a>
-              <a href="#features" className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl border-2 border-slate-200 text-slate-700 font-semibold text-base hover:border-primary-300 hover:text-primary-600 transition-all">
+              <a href="#features" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border-2 border-slate-200 text-slate-700 font-semibold text-sm sm:text-base hover:border-primary-300 hover:text-primary-600 transition-all">
                 Alle Funktionen
               </a>
             </div>
 
-            <div className="mt-10 flex flex-wrap items-center gap-3">
+            <div className="mt-6 flex flex-wrap items-center gap-2">
               {[
                 { icon: Shield, label: "DSGVO-konform" },
                 { icon: Sparkles, label: "KI-gestützt" },
                 { icon: Building2, label: "Deutsche Server" },
               ].map((badge) => (
-                <div key={badge.label} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-100">
-                  <badge.icon size={13} className="text-primary-600" />
-                  <span className="text-xs font-semibold text-slate-600">{badge.label}</span>
+                <div key={badge.label} className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-100">
+                  <badge.icon size={12} className="text-primary-600" />
+                  <span className="text-[11px] font-semibold text-slate-600">{badge.label}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div>
+          {/* Right column: Desktop-only mockup */}
+          <div className="hidden lg:block order-2">
             <BrowserMockup url={`app.immopilot.de/${slide.url}`}>
               <div key={activeSlide} style={{ animation: "slide-up 0.35s ease-out forwards" }} className="min-h-[300px]">
                 {slide.content}
