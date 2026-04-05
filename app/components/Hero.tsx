@@ -252,13 +252,31 @@ const featureSlides = [
 
 export default function Hero() {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % featureSlides.length);
-    }, 3000);
+    }, 2200);
     return () => clearInterval(timer);
-  }, []);
+  }, [activeSlide]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStart === null) return;
+    const diff = touchStart - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        setActiveSlide((prev) => (prev + 1) % featureSlides.length);
+      } else {
+        setActiveSlide((prev) => (prev - 1 + featureSlides.length) % featureSlides.length);
+      }
+    }
+    setTouchStart(null);
+  };
 
   const slide = featureSlides[activeSlide];
 
@@ -289,9 +307,9 @@ export default function Hero() {
             </h1>
 
             {/* Mockup: On mobile shows right after title. On desktop hidden (shown in right col) */}
-            <div className="mt-6 lg:hidden">
+            <div className="mt-6 lg:hidden" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
               <BrowserMockup url={`app.immopilot.de/${slide.url}`}>
-                <div key={`m-${activeSlide}`} style={{ animation: "slide-up 0.3s ease-out forwards" }} className="min-h-[280px]">
+                <div key={`m-${activeSlide}`} style={{ animation: "slide-up 0.25s ease-out forwards" }} className="min-h-[280px]">
                   {slide.content}
                 </div>
               </BrowserMockup>
@@ -341,9 +359,9 @@ export default function Hero() {
           </div>
 
           {/* Right column: Desktop-only mockup */}
-          <div className="hidden lg:block order-2">
+          <div className="hidden lg:block order-2" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
             <BrowserMockup url={`app.immopilot.de/${slide.url}`}>
-              <div key={activeSlide} style={{ animation: "slide-up 0.35s ease-out forwards" }} className="min-h-[300px]">
+              <div key={activeSlide} style={{ animation: "slide-up 0.25s ease-out forwards" }} className="min-h-[300px]">
                 {slide.content}
               </div>
             </BrowserMockup>
