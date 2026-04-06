@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BrowserMockup from "../BrowserMockup";
 import { Calculator, CheckCircle2, Loader2, Check, ArrowRight } from "lucide-react";
 
@@ -15,6 +15,21 @@ const abrechnungsPosten = [
 
 export default function FeatureNK() {
   const [step, setStep] = useState<"config" | "loading" | "done">("config");
+
+  // Auto-play loop: config → loading → done → config
+  useEffect(() => {
+    let t1: ReturnType<typeof setTimeout>;
+    let t2: ReturnType<typeof setTimeout>;
+    let t3: ReturnType<typeof setTimeout>;
+    const run = () => {
+      setStep("config");
+      t1 = setTimeout(() => setStep("loading"), 2500);
+      t2 = setTimeout(() => setStep("done"), 4500);
+      t3 = setTimeout(run, 9500);
+    };
+    run();
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
+  }, []);
 
   const handleGenerate = () => {
     setStep("loading");
@@ -95,7 +110,7 @@ export default function FeatureNK() {
             {step === "done" && (
               <>
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-8 h-8 rounded-full bg-accent-500 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-full bg-primary-600 flex items-center justify-center">
                     <Check size={16} className="text-white" />
                   </div>
                   <div>
@@ -150,7 +165,7 @@ export default function FeatureNK() {
         </div>
         <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-4">
           Nebenkostenabrechnung{" "}
-          <span className="gradient-text">per Knopfdruck erstellt.</span>
+          <span className="text-primary-600">per Knopfdruck erstellt.</span>
         </h3>
         <p className="text-slate-500 leading-relaxed mb-6">
           Belege hochladen, Verteilerschlüssel festlegen, fertig. ImmoPilot verteilt
@@ -164,7 +179,7 @@ export default function FeatureNK() {
             "PDF-Export für jeden Mieter",
           ].map((item) => (
             <li key={item} className="flex items-center gap-2.5 text-sm text-slate-600">
-              <CheckCircle2 size={16} className="text-accent-500 flex-shrink-0" />
+              <CheckCircle2 size={16} className="text-primary-600 flex-shrink-0" />
               {item}
             </li>
           ))}

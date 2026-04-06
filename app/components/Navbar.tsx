@@ -5,10 +5,11 @@ import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "Funktionen", href: "#features" },
-  { label: "Mieter-Portal", href: "#portal" },
-  { label: "Ablauf", href: "#process" },
   { label: "Preise", href: "#pricing" },
-  { label: "Über uns", href: "#about" },
+  { label: "Vorlagen", href: "/vorlagen" },
+  { label: "Blog", href: "/blog" },
+  { label: "Partner", href: "/partner" },
+  { label: "Über uns", href: "/ueber-uns" },
 ];
 
 export default function Navbar() {
@@ -33,7 +34,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl animated-gradient flex items-center justify-center">
+            <div className="w-9 h-9 rounded-xl bg-primary-600 flex items-center justify-center">
               <span className="text-white font-bold text-lg">I</span>
             </div>
             <span className="text-xl font-bold text-slate-900">

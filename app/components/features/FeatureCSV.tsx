@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BrowserMockup from "../BrowserMockup";
 import {
   CreditCard,
@@ -27,16 +27,28 @@ export default function FeatureCSV() {
   const [step, setStep] = useState<"idle" | "dropped" | "matched">("idle");
   const [mahnungSent, setMahnungSent] = useState<Record<number, boolean>>({});
 
-  const handleDemoClick = () => {
-    setStep("dropped");
-    setTimeout(() => setStep("matched"), 1500);
-  };
+  // Auto-play loop: idle → dropped → matched → auto-send mahnung → reset
+  useEffect(() => {
+    let t1: ReturnType<typeof setTimeout>;
+    let t2: ReturnType<typeof setTimeout>;
+    let t3: ReturnType<typeof setTimeout>;
+    let t4: ReturnType<typeof setTimeout>;
+
+    const run = () => {
+      setStep("idle");
+      setMahnungSent({});
+      t1 = setTimeout(() => setStep("dropped"), 1800);
+      t2 = setTimeout(() => setStep("matched"), 3400);
+      t3 = setTimeout(() => setMahnungSent({ 3: true, 4: true }), 5500);
+      t4 = setTimeout(run, 9000);
+    };
+    run();
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); clearTimeout(t4); };
+  }, []);
 
   const reset = () => { setStep("idle"); setMahnungSent({}); };
-
-  const sendMahnung = (idx: number) => {
-    setMahnungSent((prev) => ({ ...prev, [idx]: true }));
-  };
+  const handleDemoClick = () => setStep("dropped");
+  const sendMahnung = (idx: number) => setMahnungSent((prev) => ({ ...prev, [idx]: true }));
 
   return (
     <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -88,7 +100,7 @@ export default function FeatureCSV() {
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-accent-500 flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-full bg-primary-600 flex items-center justify-center">
                       <Check size={16} className="text-white" />
                     </div>
                     <div>
@@ -117,7 +129,7 @@ export default function FeatureCSV() {
                       </span>
                       <div className="col-span-1">
                         {p.status === "match" && (
-                          <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-accent-400/10 text-accent-600 text-[10px] font-semibold">
+                          <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-primary-100/10 text-primary-600 text-[10px] font-semibold">
                             <Check size={10} /> Match
                           </span>
                         )}
@@ -176,7 +188,7 @@ export default function FeatureCSV() {
         </div>
         <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-4">
           Kontoauszug hochladen,{" "}
-          <span className="gradient-text">alle Zahlungen sofort geprüft.</span>
+          <span className="text-primary-600">alle Zahlungen sofort geprüft.</span>
         </h3>
         <p className="text-slate-500 leading-relaxed mb-6">
           Laden Sie Ihren Kontoauszug als CSV hoch. ImmoPilot erkennt alle Mietzahlungen und
@@ -192,7 +204,7 @@ export default function FeatureCSV() {
             "Mahnung per Klick versenden — direkt aus der Übersicht",
           ].map((item) => (
             <li key={item} className="flex items-center gap-2.5 text-sm text-slate-600">
-              <CheckCircle2 size={16} className="text-accent-500 flex-shrink-0" />
+              <CheckCircle2 size={16} className="text-primary-600 flex-shrink-0" />
               {item}
             </li>
           ))}

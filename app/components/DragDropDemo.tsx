@@ -35,7 +35,7 @@ export default function DragDropDemo() {
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
             CSV rein.{" "}
-            <span className="gradient-text">Zahlungen erkannt.</span>
+            <span className="text-primary-600">Zahlungen erkannt.</span>
           </h2>
           <p className="mt-4 text-lg text-slate-500">
             Laden Sie einfach Ihren Kontoauszug als CSV hoch. ImmoPilot erkennt

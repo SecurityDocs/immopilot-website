@@ -39,11 +39,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* gradient-text: kept for compatibility but now renders as solid primary blue */
 .gradient-text {
-  background: linear-gradient(135deg, #3b82f6, #2563eb, #10b981);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #2563eb;
 }
 
 .glass-card {
@@ -52,16 +50,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-@keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-.animated-gradient {
-  background: linear-gradient(-45deg, #1e3a8a, #2563eb, #3b82f6, #10b981);
-  background-size: 400% 400%;
-  animation: gradient-shift 15s ease infinite;
-}
+/* animated-gradient removed — replaced with solid bg-primary-600 */
 
 .feature-card {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);

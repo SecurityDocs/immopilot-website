@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BrowserMockup from "../BrowserMockup";
 import {
   Wrench,
@@ -22,6 +22,13 @@ const tickets = [
 
 export default function FeatureTickets() {
   const [selectedTicket, setSelectedTicket] = useState(0);
+
+  // Auto-cycle through tickets
+  useEffect(() => {
+    const t = setInterval(() => setSelectedTicket((p) => (p + 1) % tickets.length), 2200);
+    return () => clearInterval(t);
+  }, []);
+
   const ticket = tickets[selectedTicket];
 
   return (
@@ -34,7 +41,7 @@ export default function FeatureTickets() {
         </div>
         <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-4">
           Schaden gemeldet,{" "}
-          <span className="gradient-text">Handwerker direkt beauftragt.</span>
+          <span className="text-primary-600">Handwerker direkt beauftragt.</span>
         </h3>
         <p className="text-slate-500 leading-relaxed mb-6">
           Mieter melden Schäden per Tablet, Sprache oder Handy. Sie sehen die Meldung
@@ -49,7 +56,7 @@ export default function FeatureTickets() {
             "Kompletter Verlauf dokumentiert",
           ].map((item) => (
             <li key={item} className="flex items-center gap-2.5 text-sm text-slate-600">
-              <CheckCircle2 size={16} className="text-accent-500 flex-shrink-0" />
+              <CheckCircle2 size={16} className="text-primary-600 flex-shrink-0" />
               {item}
             </li>
           ))}
@@ -143,7 +150,7 @@ export default function FeatureTickets() {
                     <div className="flex items-center justify-between">
                       <span className="text-[10px] text-slate-500">Zugewiesen</span>
                       <span className="text-[10px] font-medium text-slate-700 flex items-center gap-1">
-                        <UserCheck size={10} className="text-accent-500" />
+                        <UserCheck size={10} className="text-primary-600" />
                         {ticket.zugewiesen}
                       </span>
                     </div>

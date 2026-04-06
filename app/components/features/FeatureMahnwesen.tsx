@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import BrowserMockup from "../BrowserMockup";
 import {
   AlertTriangle,
@@ -17,6 +18,20 @@ const mahnungen = [
 ];
 
 export default function FeatureMahnwesen() {
+  // Animate: auto-send the "Entwurf" mahnung after 2.5s, then reset after 5s
+  const [sent, setSent] = useState(false);
+  useEffect(() => {
+    let t1: ReturnType<typeof setTimeout>;
+    let t2: ReturnType<typeof setTimeout>;
+    const run = () => {
+      setSent(false);
+      t1 = setTimeout(() => setSent(true), 2500);
+      t2 = setTimeout(run, 7000);
+    };
+    run();
+    return () => { clearTimeout(t1); clearTimeout(t2); };
+  }, []);
+
   return (
     <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
       {/* Left: Text */}
@@ -27,7 +42,7 @@ export default function FeatureMahnwesen() {
         </div>
         <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-4">
           Mieter zahlt nicht?{" "}
-          <span className="gradient-text">Mahnung geht automatisch raus.</span>
+          <span className="text-primary-600">Mahnung geht automatisch raus.</span>
         </h3>
         <p className="text-slate-500 leading-relaxed mb-6">
           ImmoPilot erkennt Zahlungsrückstände und erstellt Mahnschreiben in drei Stufen.
@@ -41,7 +56,7 @@ export default function FeatureMahnwesen() {
             "Kompletter Verlauf dokumentiert",
           ].map((item) => (
             <li key={item} className="flex items-center gap-2.5 text-sm text-slate-600">
-              <CheckCircle2 size={16} className="text-accent-500 flex-shrink-0" />
+              <CheckCircle2 size={16} className="text-primary-600 flex-shrink-0" />
               {item}
             </li>
           ))}
@@ -101,12 +116,15 @@ export default function FeatureMahnwesen() {
                       </span>
                       <span>Monat: {m.monat}</span>
                     </div>
-                    {m.status === "entwurf" ? (
-                      <button className="flex items-center gap-1 px-2 py-1 rounded bg-primary-600 text-white text-[10px] font-semibold">
+                    {m.status === "entwurf" && !sent ? (
+                      <button
+                        className="flex items-center gap-1 px-2 py-1 rounded bg-primary-600 text-white text-[10px] font-semibold"
+                        style={{ animation: sent ? undefined : "pulse 1s ease-in-out infinite" }}
+                      >
                         <Send size={10} /> Senden
                       </button>
                     ) : (
-                      <span className="flex items-center gap-1 text-[10px] text-green-600 font-semibold">
+                      <span className="flex items-center gap-1 text-[10px] text-primary-600 font-semibold">
                         <CheckCircle2 size={10} /> Versendet
                       </span>
                     )}

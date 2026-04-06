@@ -1,84 +1,86 @@
-"use client";
-
 import {
   Monitor,
-  Handshake,
   Settings,
   Tablet,
-  Key,
-  Mail,
   PartyPopper,
   ArrowRight,
 } from "lucide-react";
 
 const steps = [
-  { nr: 1, icon: Monitor, title: "Demo testen", desc: "Kostenloser Zugang zu allen Funktionen. Unverbindlich, ohne Kreditkarte." },
-  { nr: 2, icon: Handshake, title: "Gespräch führen", desc: "Offene Fragen klären wir persönlich per Telefon oder Video." },
-  { nr: 3, icon: Settings, title: "Onboarding", desc: "Gemeinsame Einrichtung. Immobilien, Mieter, Verträge einpflegen." },
-  { nr: 4, icon: Tablet, title: "Tablet installieren", desc: "Diebstahlsichere Montage im Treppenhaus. Durch unser Team." },
-  { nr: 5, icon: Key, title: "Zugänge einrichten", desc: "Admin-Dashboard und eigene Portal-URL für jedes Objekt." },
-  { nr: 6, icon: Mail, title: "Mieter informieren", desc: "Fertige Anschreiben und E-Mail-Vorlagen. Wir unterstützen Sie." },
-  { nr: 7, icon: PartyPopper, title: "Alles digital", desc: "Ihre Immobilienverwaltung läuft. Rund um die Uhr, komplett digital." },
+  {
+    nr: "01",
+    icon: Monitor,
+    title: "Demo & Beratung",
+    desc: "Kostenloser Zugang, persönliche Einführung. Unverbindlich, ohne Kreditkarte.",
+  },
+  {
+    nr: "02",
+    icon: Settings,
+    title: "Onboarding in 24h",
+    desc: "Wir richten gemeinsam Ihre Objekte, Mieter und Verträge ein. Datenmigration inklusive.",
+  },
+  {
+    nr: "03",
+    icon: Tablet,
+    title: "Tablet installieren",
+    desc: "Unser Team montiert das iPad diebstahlgesichert im Treppenhaus — und richtet es ein.",
+  },
+  {
+    nr: "04",
+    icon: PartyPopper,
+    title: "Vollständig digital",
+    desc: "Ihre Verwaltung läuft. Mieter melden sich selbst, Sie behalten den Überblick.",
+  },
 ];
 
 export default function ProcessSteps() {
   return (
-    <section className="py-16 lg:py-24 bg-white" id="process">
+    <section className="py-16 lg:py-20 bg-slate-50" id="process">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-            In 7 Schritten{" "}
-            <span className="gradient-text">komplett digital</span>
-          </h2>
-          <p className="mt-3 text-sm sm:text-base text-slate-500">
-            Von der ersten Demo bis zum laufenden Betrieb begleiten wir Sie persönlich.
-          </p>
-        </div>
 
-        {/* Horizontal timeline */}
-        <div className="relative">
-          {/* Connecting line — desktop only */}
-          <div className="hidden lg:block absolute top-6 left-[calc(100%/14)] right-[calc(100%/14)] h-0.5 bg-slate-200" />
+        <div className="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-16">
+          {/* Left: Text */}
+          <div className="lg:w-80 flex-shrink-0">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-50 border border-primary-200 mb-5">
+              <span className="text-xs font-semibold text-primary-700 uppercase tracking-wider">Wie es funktioniert</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
+              In 4 Schritten{" "}
+              <span className="text-primary-600">startklar.</span>
+            </h2>
+            <p className="text-slate-500 text-sm leading-relaxed mb-7">
+              Von der ersten Demo bis zum laufenden Betrieb begleiten wir Sie persönlich. Kein IT-Wissen erforderlich.
+            </p>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-primary-600 text-white font-semibold text-sm hover:bg-primary-700 transition-all shadow-lg shadow-primary-600/20"
+            >
+              Jetzt starten <ArrowRight size={15} />
+            </a>
+          </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4 lg:gap-2">
-            {steps.map((step, i) => {
-              const isLast = i === steps.length - 1;
-              return (
-                <div key={step.nr} className="relative text-center group">
-                  {/* Circle */}
-                  <div className={`w-12 h-12 rounded-full mx-auto flex items-center justify-center relative z-10 transition-all ${
-                    isLast
-                      ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20"
-                      : "bg-white border-2 border-slate-200 text-slate-400 group-hover:border-primary-300 group-hover:text-primary-600"
-                  }`}>
-                    <step.icon size={20} />
+          {/* Right: Steps */}
+          <div className="flex-1 grid sm:grid-cols-2 gap-4">
+            {steps.map((step) => (
+              <div
+                key={step.nr}
+                className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-primary-200 hover:shadow-sm transition-all group"
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-primary-50 flex items-center justify-center">
+                    <step.icon size={18} className="text-primary-600" />
                   </div>
-
-                  {/* Number */}
-                  <div className={`text-[10px] font-bold mt-2.5 ${isLast ? "text-primary-600" : "text-slate-300"}`}>
-                    0{step.nr}
-                  </div>
-
-                  {/* Title */}
-                  <h3 className={`text-xs font-bold mt-1 ${isLast ? "text-primary-600" : "text-slate-900"}`}>
-                    {step.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-[11px] text-slate-500 mt-1 leading-relaxed">
-                    {step.desc}
-                  </p>
+                  <span className="text-xl font-extrabold text-slate-100 group-hover:text-primary-100 transition-colors">
+                    {step.nr}
+                  </span>
                 </div>
-              );
-            })}
+                <h3 className="text-sm font-bold text-slate-900 mb-1.5">{step.title}</h3>
+                <p className="text-sm text-slate-500 leading-relaxed">{step.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div className="text-center mt-10">
-          <a href="#contact" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary-600 text-white font-semibold text-sm hover:bg-primary-700 transition-all shadow-lg shadow-primary-600/20">
-            Jetzt starten <ArrowRight size={16} />
-          </a>
-        </div>
       </div>
     </section>
   );

@@ -8,7 +8,7 @@ export default function CTA() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-3xl overflow-hidden">
           {/* Background */}
-          <div className="absolute inset-0 animated-gradient opacity-95" />
+          <div className="absolute inset-0 bg-primary-600 opacity-95" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent)]" />
 
           <div className="relative px-8 py-16 lg:px-16 lg:py-20 text-center">

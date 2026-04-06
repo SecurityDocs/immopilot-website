@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BrowserMockup from "../BrowserMockup";
 import {
   Upload,
@@ -15,6 +15,21 @@ import {
 
 export default function FeatureDokumente() {
   const [step, setStep] = useState<"idle" | "analyzing" | "done">("idle");
+
+  // Auto-play loop
+  useEffect(() => {
+    let t1: ReturnType<typeof setTimeout>;
+    let t2: ReturnType<typeof setTimeout>;
+    let t3: ReturnType<typeof setTimeout>;
+    const run = () => {
+      setStep("idle");
+      t1 = setTimeout(() => setStep("analyzing"), 2000);
+      t2 = setTimeout(() => setStep("done"), 4200);
+      t3 = setTimeout(run, 9500);
+    };
+    run();
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
+  }, []);
 
   const handleUpload = () => {
     setStep("analyzing");
@@ -87,7 +102,7 @@ export default function FeatureDokumente() {
               <>
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-full bg-accent-500 flex items-center justify-center">
+                    <div className="w-7 h-7 rounded-full bg-primary-600 flex items-center justify-center">
                       <Check size={14} className="text-white" />
                     </div>
                     <h4 className="text-sm font-bold text-slate-800">
@@ -152,7 +167,7 @@ export default function FeatureDokumente() {
         </div>
         <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-4">
           Rechnung hochladen,{" "}
-          <span className="gradient-text">KI erkennt und ordnet zu.</span>
+          <span className="text-primary-600">KI erkennt und ordnet zu.</span>
         </h3>
         <p className="text-slate-500 leading-relaxed mb-6">
           Belege per Drag and Drop hochladen. Die KI erkennt Kostenart, Objekt und
@@ -166,7 +181,7 @@ export default function FeatureDokumente() {
             "Alle Belege zentral in der Objektakte",
           ].map((item) => (
             <li key={item} className="flex items-center gap-2.5 text-sm text-slate-600">
-              <CheckCircle2 size={16} className="text-accent-500 flex-shrink-0" />
+              <CheckCircle2 size={16} className="text-primary-600 flex-shrink-0" />
               {item}
             </li>
           ))}

@@ -1,14 +1,12 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import BrowserMockup from "../BrowserMockup";
 import {
   Users,
   Search,
-  Phone,
-  Mail,
   CheckCircle2,
   Home,
-  FileText,
 } from "lucide-react";
 
 const mieter = [
@@ -21,6 +19,14 @@ const mieter = [
 ];
 
 export default function FeatureMieter() {
+  const [selectedRow, setSelectedRow] = useState(0);
+
+  // Auto-cycle through rows to simulate browsing the tenant list
+  useEffect(() => {
+    const t = setInterval(() => setSelectedRow((p) => (p + 1) % mieter.length), 1800);
+    return () => clearInterval(t);
+  }, []);
+
   return (
     <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
       {/* Left: Text */}
@@ -31,7 +37,7 @@ export default function FeatureMieter() {
         </div>
         <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-4">
           Alle Mieter auf einen Blick,{" "}
-          <span className="gradient-text">direkt der Wohnung zugeordnet.</span>
+          <span className="text-primary-600">direkt der Wohnung zugeordnet.</span>
         </h3>
         <p className="text-slate-500 leading-relaxed mb-6">
           Jeder Mieter hat ein digitales Profil mit Kontaktdaten, Verträgen und
@@ -45,7 +51,7 @@ export default function FeatureMieter() {
             "Kontaktdaten immer griffbereit",
           ].map((item) => (
             <li key={item} className="flex items-center gap-2.5 text-sm text-slate-600">
-              <CheckCircle2 size={16} className="text-accent-500 flex-shrink-0" />
+              <CheckCircle2 size={16} className="text-primary-600 flex-shrink-0" />
               {item}
             </li>
           ))}
@@ -73,9 +79,9 @@ export default function FeatureMieter() {
                 <div className="text-lg font-bold text-primary-700">80</div>
                 <div className="text-[10px] text-primary-600">Gesamt</div>
               </div>
-              <div className="bg-green-50 rounded-lg p-2.5 text-center">
-                <div className="text-lg font-bold text-green-700">74</div>
-                <div className="text-[10px] text-green-600">Aktiv</div>
+              <div className="bg-slate-50 rounded-lg p-2.5 text-center">
+                <div className="text-lg font-bold text-slate-700">74</div>
+                <div className="text-[10px] text-slate-500">Aktiv</div>
               </div>
               <div className="bg-amber-50 rounded-lg p-2.5 text-center">
                 <div className="text-lg font-bold text-amber-700">6</div>
@@ -95,12 +101,16 @@ export default function FeatureMieter() {
               {mieter.map((m, i) => (
                 <div
                   key={i}
-                  className="grid grid-cols-12 gap-2 px-3 py-2.5 border-b border-slate-50 last:border-b-0 items-center hover:bg-blue-50/50 transition-colors cursor-pointer"
+                  className={`grid grid-cols-12 gap-2 px-3 py-2.5 border-b border-slate-50 last:border-b-0 items-center transition-colors cursor-pointer ${
+                    selectedRow === i ? "bg-primary-50/60" : "hover:bg-slate-50/50"
+                  }`}
                 >
                   <div className="col-span-4 flex items-center gap-2">
-                    <div className="w-6 h-6 rounded-full bg-primary-100 flex items-center justify-center">
-                      <span className="text-[9px] font-bold text-primary-700">
-                        {m.name.split(" ").map(n => n[0]).join("")}
+                    <div className={`w-6 h-6 rounded-full flex items-center justify-center ${
+                      selectedRow === i ? "bg-primary-600" : "bg-primary-100"
+                    }`}>
+                      <span className={`text-[9px] font-bold ${selectedRow === i ? "text-white" : "text-primary-700"}`}>
+                        {m.name.split(" ").map((n: string) => n[0]).join("")}
                       </span>
                     </div>
                     <span className="text-xs font-medium text-slate-800 truncate">{m.name}</span>
@@ -112,14 +122,14 @@ export default function FeatureMieter() {
                   <span className="col-span-2 text-xs text-slate-600">{m.miete}</span>
                   <div className="col-span-2">
                     {m.schufa ? (
-                      <span className="text-[10px] px-1.5 py-0.5 rounded bg-green-50 text-green-600 font-medium">OK</span>
+                      <span className="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 font-medium">OK</span>
                     ) : (
                       <span className="text-[10px] px-1.5 py-0.5 rounded bg-red-50 text-red-500 font-medium">Ausstehend</span>
                     )}
                   </div>
                   <div className="col-span-1">
                     {m.status === "aktiv" ? (
-                      <div className="w-2 h-2 rounded-full bg-green-400" />
+                      <div className="w-2 h-2 rounded-full bg-primary-400" />
                     ) : (
                       <div className="w-2 h-2 rounded-full bg-amber-400" />
                     )}

@@ -7,73 +7,49 @@ const stats = [
     value: "25–40 €",
     unit: "pro Einheit und Monat",
     headline: "So teuer ist eine klassische Hausverwaltung",
-    text: "Bei 50 Einheiten sind das bis zu 24.000 Euro im Jahr. Mit ImmoPilot zahlen Sie nur 4.200 Euro.",
+    text: "Bei 50 Einheiten sind das bis zu 24.000 Euro im Jahr. Mit ImmoPilot zahlen Sie nur 4.200 Euro — ohne Qualitätsverlust.",
     detail: [
-      { label: "Hausverwaltung pro Jahr (40€ × 50 × 12)", value: "24.000 €" },
-      { label: "ImmoPilot pro Jahr (100€ + 5€ × 50 × 12)", value: "4.200 €" },
+      { label: "Hausverwaltung pro Jahr (40 € × 50 × 12)", value: "24.000 €" },
+      { label: "ImmoPilot pro Jahr (Basis + 5 €/WE)", value: "4.200 €" },
       { label: "Ihre jährliche Ersparnis", value: "19.800 €" },
     ],
-    cta: "Bis zu 83 Prozent günstiger als eine klassische Hausverwaltung.",
+    cta: "Bis zu 83 % günstiger als eine klassische Hausverwaltung.",
   },
   {
     value: "88 %",
     unit: "aller Nebenkostenabrechnungen fehlerhaft",
     headline: "Nebenkostenabrechnung als Fehlermarathon",
-    text: "Über 149.000 geprüfte Abrechnungen zeigen: Mieter zahlen im Schnitt 515 Euro zu viel pro Jahr.",
+    text: "Über 149.000 geprüfte Abrechnungen zeigen: Mieter zahlen im Schnitt 515 Euro zu viel pro Jahr — wegen fehlerhafter Verwaltung.",
     detail: [
       { label: "Fehlerquote bundesweit", value: "88 %" },
       { label: "Überzahlung pro Mieter", value: "515 €" },
       { label: "Zeitaufwand pro Abrechnung", value: "40+ Std." },
     ],
-    cta: "ImmoPilot erstellt fehlerfreie Abrechnungen per Knopfdruck.",
+    cta: "ImmoPilot erstellt rechtssichere Abrechnungen per Knopfdruck.",
   },
   {
     value: "33 %",
     unit: "der Eigentümer ohne Rückmeldung",
     headline: "Hausverwaltungen sind nicht erreichbar",
-    text: "Mangelnde Kommunikation ist die häufigste Beschwerde. Reparaturen werden verschleppt, Sanierungen blockiert.",
+    text: "Mangelnde Kommunikation ist die häufigste Beschwerde. Reparaturen werden verschleppt, Sanierungen blockiert, Mieter unzufrieden.",
     detail: [
       { label: "Eigentümer ohne Antwort", value: "33 %" },
       { label: "Häufigste Beschwerde", value: "Kommunikation" },
       { label: "Sanierungen blockiert", value: "85 %" },
     ],
-    cta: "ImmoPilot ist rund um die Uhr erreichbar. Ohne Wartezeiten.",
-  },
-  {
-    value: "Bis 50 %",
-    unit: "der Eigentümer verlieren ihren Verwalter",
-    headline: "Totale Abhängigkeit von der Hausverwaltung",
-    text: "Immer mehr Verwaltungen kündigen ihren Kunden. Wer gekündigt wird, findet oft monatelang keinen Ersatz.",
-    detail: [
-      { label: "Von Kündigung betroffen", value: "bis 50 %" },
-      { label: "Finden keinen Ersatz", value: "33 %" },
-      { label: "Lehnen kleine Bestände ab", value: "55 %" },
-    ],
-    cta: "Mit ImmoPilot sind Sie unabhängig. Ihre Daten, Ihre Kontrolle.",
-  },
-  {
-    value: "10.000+ €",
-    unit: "Mehrkosten durch überteuerte Aufträge",
-    headline: "Hausverwaltungen vergeben Aufträge an Bekannte",
-    text: "Ohne Vergleichsangebote werden Reparaturen an befreundete Firmen vergeben. Versteckte Provisionen sind üblich.",
-    detail: [
-      { label: "Vergleichsangebote eingeholt", value: "Oft nicht" },
-      { label: "Versteckte Aufschläge", value: "Üblich" },
-      { label: "Dokumentierter Einzelfall", value: "10.000 €" },
-    ],
-    cta: "Bei ImmoPilot entscheiden Sie selbst über Ihre Handwerker.",
+    cta: "ImmoPilot ist rund um die Uhr verfügbar — ohne Wartezeiten.",
   },
   {
     value: "2.300+",
     unit: "Hausverwaltungen weniger in vier Jahren",
-    headline: "Verwaltermangel verschärft sich",
-    text: "Die Zahl sank von 24.300 auf unter 22.000. Wer keinen Verwalter findet, braucht eine digitale Lösung.",
+    headline: "Der Verwaltermangel verschärft sich",
+    text: "Die Zahl sank von 24.300 auf unter 22.000. Wer keinen Verwalter findet oder gekündigt wird, braucht eine digitale Alternative.",
     detail: [
-      { label: "Verwalter 2020 bis 2024", value: "24.300 → <22.000" },
-      { label: "Stellen unbesetzt", value: "24,2 %" },
-      { label: "Aufgaben nicht umsetzbar", value: "85 %" },
+      { label: "Verwalter 2020–2024", value: "24.300 → <22.000" },
+      { label: "Offene Stellen unbesetzt", value: "24,2 %" },
+      { label: "Lehnen kleine Bestände ab", value: "55 %" },
     ],
-    cta: "Keine Hausverwaltung nötig. ImmoPilot gibt Ihnen alle Werkzeuge.",
+    cta: "ImmoPilot macht Sie unabhängig von Hausverwaltungen.",
   },
 ];
 
@@ -93,10 +69,9 @@ export default function PainPoints() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {stats.map((stat, idx) => (
-            <div key={idx} className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6 hover:border-slate-700 transition-all flex flex-col text-center">
-              {/* Big number — zentriert und fett */}
+            <div key={idx} className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6 hover:border-slate-700 transition-all flex flex-col">
               <div className="mb-4">
                 <div className="text-3xl sm:text-4xl font-extrabold text-white leading-none">{stat.value}</div>
                 <div className="text-sm font-bold text-primary-400 mt-1.5">{stat.unit}</div>
@@ -105,12 +80,11 @@ export default function PainPoints() {
               <h3 className="text-sm sm:text-base font-bold text-white mb-2">{stat.headline}</h3>
               <p className="text-sm text-slate-400 leading-relaxed mb-5">{stat.text}</p>
 
-              {/* Detail rows — zentriert */}
               <div className="space-y-2.5 mb-5 flex-1">
                 {stat.detail.map((d, i) => (
-                  <div key={i} className="flex items-center justify-between px-2">
+                  <div key={i} className="flex items-center justify-between">
                     <span className="text-xs text-slate-500">{d.label}</span>
-                    <span className="text-sm font-bold text-white">{d.value}</span>
+                    <span className="text-sm font-bold text-white ml-2 shrink-0">{d.value}</span>
                   </div>
                 ))}
               </div>

@@ -6,7 +6,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 lg:col-span-1">
             <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-9 h-9 rounded-xl animated-gradient flex items-center justify-center">
+              <div className="w-9 h-9 rounded-xl bg-primary-600 flex items-center justify-center">
                 <span className="text-white font-bold text-lg">I</span>
               </div>
               <span className="text-xl font-bold text-white">
@@ -43,13 +43,14 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="text-sm font-bold text-white mb-4">Unternehmen</h4>
+            <h4 className="text-sm font-bold text-white mb-4">Ressourcen</h4>
             <ul className="space-y-2.5">
               {[
-                { label: "Über uns", href: "#about" },
-                { label: "Karriere", href: "#" },
-                { label: "Blog", href: "#" },
-                { label: "Kontakt", href: "#contact" },
+                { label: "Blog", href: "/blog" },
+                { label: "Vorlagen", href: "/vorlagen" },
+                { label: "Partner-Programm", href: "/partner" },
+                { label: "Über uns", href: "/ueber-uns" },
+                { label: "Kontakt", href: "/#contact" },
               ].map((link) => (
                 <li key={link.label}>
                   <a

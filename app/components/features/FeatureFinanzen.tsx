@@ -26,7 +26,7 @@ export default function FeatureFinanzen() {
         </div>
         <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-4">
           Cashflow im Blick.{" "}
-          <span className="gradient-text">Jederzeit.</span>
+          <span className="text-primary-600">Jederzeit.</span>
         </h3>
         <p className="text-slate-500 leading-relaxed mb-6">
           Einnahmen, Ausgaben, Cashflow — pro Objekt oder über alle Immobilien hinweg.

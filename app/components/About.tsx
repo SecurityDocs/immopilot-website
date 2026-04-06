@@ -65,7 +65,7 @@ export default function About() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
             Gebaut von Eigentümern.{" "}
-            <span className="gradient-text">Für Eigentümer.</span>
+            <span className="text-primary-600">Für Eigentümer.</span>
           </h2>
         </div>
 
