@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ArrowRight, Check, ChevronRight, Clock, Phone, TrendingUp, Zap, Sparkles, Tablet } from "lucide-react";
+import { ArrowRight, Check, Clock, Phone, TrendingUp, Zap } from "lucide-react";
 
 const personas = [
   {
@@ -57,7 +57,7 @@ const stats = [
   { icon: Zap,        value: "24h",   label: "Einsatzbereit" },
 ];
 
-const CYCLE_MS = 5500;
+const CYCLE_MS = 9000;
 
 export default function Hero() {
   const [active, setActive] = useState(0);
@@ -147,34 +147,13 @@ export default function Hero() {
 
             {/* CTAs */}
             <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 justify-center">
-              <div className="flex flex-col items-center gap-2">
-                <a
-                  href="#contact"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-primary-600 text-white font-bold text-base hover:bg-primary-700 transition-all shadow-lg shadow-primary-600/25"
-                >
-                  14 Tage kostenlos testen <ArrowRight size={16} />
-                </a>
-                {/* Trust micro-badges */}
-                <div className="flex items-center gap-3 flex-wrap justify-center">
-                  <span className="flex items-center gap-1 text-[11px] text-slate-500 font-medium">
-                    <Sparkles size={11} className="text-primary-500" /> KI-gestützt
-                  </span>
-                  <span className="text-slate-300">·</span>
-                  <span className="flex items-center gap-1 text-[11px] text-slate-500 font-medium">
-                    <Tablet size={11} className="text-amber-500" /> Tablet 2026 gratis
-                  </span>
-                  <span className="text-slate-300">·</span>
-                  <span className="flex items-center gap-1 text-[11px] text-slate-500 font-medium">
-                    <Check size={11} className="text-emerald-500" /> Monatlich kündbar
-                  </span>
-                </div>
-              </div>
               <a
-                href="/#features"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border-2 border-slate-200 text-slate-700 font-semibold text-base hover:border-primary-300 hover:text-primary-600 transition-all"
+                href="#contact"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-primary-600 text-white font-bold text-base hover:bg-primary-700 transition-all shadow-lg shadow-primary-600/25"
               >
-                Alle Funktionen <ChevronRight size={16} />
+                14 Tage kostenlos testen <ArrowRight size={16} />
               </a>
+
             </div>
 
           </div>
