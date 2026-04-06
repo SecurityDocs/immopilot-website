@@ -40,7 +40,7 @@ const team = [
   {
     initials: "FB",
     name: "Faruk Balci",
-    role: "Co-Gründer & CEO",
+    role: "Gründer & CEO",
     desc: "Fullstack-Entwickler und Systemarchitekt mit tiefer Expertise in skalierbaren Cloud-Infrastrukturen und KI-Integration. Verantwortlich für die technische Architektur von ImmoPilot.",
   },
 ];
