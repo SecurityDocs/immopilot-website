@@ -2,79 +2,74 @@
 
 import { useState } from "react";
 import {
-  CreditCard,
-  Users,
-  Receipt,
-  Ticket,
-  FolderOpen,
-  AlertCircle,
-  TrendingUp,
-  ChevronRight,
+  MessageSquare, TrendingUp, Building2, Mail,
+  FolderOpen, Receipt, Tablet, ChevronRight,
 } from "lucide-react";
-import FeatureCSV from "./features/FeatureCSV";
-import FeatureMieter from "./features/FeatureMieter";
-import FeatureNK from "./features/FeatureNK";
-import FeatureTickets from "./features/FeatureTickets";
-import FeatureDokumente from "./features/FeatureDokumente";
-import FeatureMahnwesen from "./features/FeatureMahnwesen";
-import FeatureMietpreis from "./features/FeatureMietpreis";
+import FeatureKommunikation from "./features/FeatureKommunikation";
+import FeatureCashflow from "./features/FeatureCashflow";
+import FeatureBestand from "./features/FeatureBestand";
+import FeatureBriefservice from "./features/FeatureBriefservice";
+import FeatureDatenbank from "./features/FeatureDatenbank";
+import FeatureAbrechnung from "./features/FeatureAbrechnung";
+import FeatureTablet from "./features/FeatureTablet";
 
 const tabs = [
   {
-    id: "csv",
-    icon: CreditCard,
-    label: "Zahlungsabgleich",
-    problem: "Wer hat noch nicht gezahlt?",
-    component: FeatureCSV,
+    id: "kommunikation",
+    icon: MessageSquare,
+    label: "Kommunikation",
+    problem: "Mieter & E-Mails zentral",
+    component: FeatureKommunikation,
   },
   {
-    id: "mieter",
-    icon: Users,
-    label: "Mieterportal",
-    problem: "Mieter nerven mit Anrufen",
-    component: FeatureMieter,
-  },
-  {
-    id: "nk",
-    icon: Receipt,
-    label: "Nebenkosten",
-    problem: "Abrechnung kostet Tage",
-    component: FeatureNK,
-  },
-  {
-    id: "tickets",
-    icon: Ticket,
-    label: "Ticket-System",
-    problem: "Kein Überblick über Reparaturen",
-    component: FeatureTickets,
-  },
-  {
-    id: "dokumente",
-    icon: FolderOpen,
-    label: "Dokumente",
-    problem: "Verträge nicht auffindbar",
-    component: FeatureDokumente,
-  },
-  {
-    id: "mahnung",
-    icon: AlertCircle,
-    label: "Mahnwesen",
-    problem: "Mahnungen schreiben dauert",
-    component: FeatureMahnwesen,
-  },
-  {
-    id: "mietpreis",
+    id: "cashflow",
     icon: TrendingUp,
-    label: "Mietpreis-Analyse",
-    problem: "Bin ich unter dem Marktniveau?",
-    component: FeatureMietpreis,
+    label: "Cashflow",
+    problem: "Zahlungen & Vorschau",
+    component: FeatureCashflow,
+  },
+  {
+    id: "bestand",
+    icon: Building2,
+    label: "Bestandsübersicht",
+    problem: "Objekte & Mieter",
+    component: FeatureBestand,
+  },
+  {
+    id: "briefservice",
+    icon: Mail,
+    label: "Briefservice",
+    problem: "KI schreibt, Sie klicken",
+    component: FeatureBriefservice,
+  },
+  {
+    id: "datenbank",
+    icon: FolderOpen,
+    label: "Datenbank",
+    problem: "Dokumente für immer",
+    component: FeatureDatenbank,
+  },
+  {
+    id: "abrechnung",
+    icon: Receipt,
+    label: "Rechnungen & NK",
+    problem: "Nebenkosten per Klick",
+    component: FeatureAbrechnung,
+  },
+  {
+    id: "tablet",
+    icon: Tablet,
+    label: "Tablet 2026",
+    problem: "Exklusiv · ab Professional",
+    component: FeatureTablet,
+    special: true,
   },
 ];
 
 export default function Features() {
-  const [activeTab, setActiveTab] = useState("csv");
+  const [activeTab, setActiveTab] = useState("kommunikation");
 
-  const ActiveComponent = tabs.find((t) => t.id === activeTab)?.component ?? FeatureCSV;
+  const ActiveComponent = tabs.find((t) => t.id === activeTab)?.component ?? FeatureKommunikation;
 
   return (
     <section className="py-20 lg:py-28 bg-white" id="features">
@@ -82,9 +77,7 @@ export default function Features() {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-50 border border-primary-200 mb-5">
-            <span className="text-xs font-semibold text-primary-700 uppercase tracking-wider">
-              Alle Funktionen
-            </span>
+            <span className="text-xs font-semibold text-primary-700 uppercase tracking-wider">Alle Funktionen</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
             Was ImmoPilot für Sie{" "}
@@ -98,7 +91,7 @@ export default function Features() {
         {/* Tab layout */}
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-10">
           {/* Sidebar tabs */}
-          <div className="lg:w-64 flex-shrink-0">
+          <div className="lg:w-56 flex-shrink-0">
             <div className="flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0">
               {tabs.map((tab) => {
                 const Icon = tab.icon;
@@ -109,24 +102,28 @@ export default function Features() {
                     onClick={() => setActiveTab(tab.id)}
                     className={`flex-shrink-0 lg:flex-shrink text-left flex items-start gap-3 px-3 py-3 rounded-xl border transition-all w-40 lg:w-full ${
                       isActive
-                        ? "bg-primary-600 border-primary-600 text-white shadow-sm"
-                        : "bg-white border-slate-200 text-slate-700 hover:border-primary-300 hover:bg-primary-50"
+                        ? tab.special
+                          ? "bg-amber-500 border-amber-500 text-white shadow-sm"
+                          : "bg-primary-600 border-primary-600 text-white shadow-sm"
+                        : tab.special
+                          ? "bg-amber-50 border-amber-200 text-amber-700 hover:border-amber-400"
+                          : "bg-white border-slate-200 text-slate-700 hover:border-primary-300 hover:bg-primary-50"
                     }`}
                   >
                     <Icon
                       size={18}
-                      className={`mt-0.5 flex-shrink-0 ${isActive ? "text-white" : "text-primary-600"}`}
+                      className={`mt-0.5 flex-shrink-0 ${isActive ? "text-white" : tab.special ? "text-amber-600" : "text-primary-600"}`}
                     />
                     <div className="min-w-0">
                       <div className={`text-sm font-semibold leading-tight ${isActive ? "text-white" : "text-slate-800"}`}>
                         {tab.label}
                       </div>
-                      <div className={`text-xs mt-0.5 leading-tight ${isActive ? "text-primary-200" : "text-slate-400"}`}>
+                      <div className={`text-xs mt-0.5 leading-tight ${isActive ? (tab.special ? "text-amber-100" : "text-primary-200") : tab.special ? "text-amber-500" : "text-slate-400"}`}>
                         {tab.problem}
                       </div>
                     </div>
                     {isActive && (
-                      <ChevronRight size={14} className="ml-auto text-primary-200 hidden lg:block mt-1 flex-shrink-0" />
+                      <ChevronRight size={14} className="ml-auto text-white/60 hidden lg:block mt-1 flex-shrink-0" />
                     )}
                   </button>
                 );
@@ -136,7 +133,7 @@ export default function Features() {
 
           {/* Content panel */}
           <div className="flex-1 bg-slate-50 rounded-2xl border border-slate-100 p-6 lg:p-8 min-h-[520px]">
-            <ActiveComponent />
+            <ActiveComponent key={activeTab} />
           </div>
         </div>
       </div>
