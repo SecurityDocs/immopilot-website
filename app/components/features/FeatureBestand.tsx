@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react";
 import BrowserMockup from "../BrowserMockup";
 import {
-  Building2, Users, FileText, CheckCircle2, Sparkles,
-  ChevronDown, ChevronRight, Upload, ArrowRight,
+  Building2, CheckCircle2, Sparkles,
+  ChevronDown, ChevronRight, Upload, TrendingUp, AlertCircle,
 } from "lucide-react";
 
 const immobilien = [
@@ -12,25 +12,40 @@ const immobilien = [
     name: "MFH Rheinufer 12",
     ort: "Köln",
     we: 6,
-    mieter: ["Müller, T.", "Schmidt, A.", "Weber, L.", "Fischer, S.", "Becker, M.", "Hoffmann, K."],
-    vertraege: 6,
-    expanded: true,
+    vermietet: 6,
+    kaltmiete: "5.820 €",
+    rendite: "4,8 %",
+    mieter: [
+      { name: "Müller, T.",    wohnung: "EG li",    miete: "870 €",   status: "bezahlt", laufzeit: "bis 31.12.2026" },
+      { name: "Schmidt, A.",   wohnung: "EG re",    miete: "890 €",   status: "bezahlt", laufzeit: "unbefristet" },
+      { name: "Weber, L.",     wohnung: "1. OG li", miete: "920 €",   status: "offen",   laufzeit: "bis 30.06.2025" },
+      { name: "Fischer, S.",   wohnung: "1. OG re", miete: "960 €",   status: "bezahlt", laufzeit: "unbefristet" },
+      { name: "Becker, M.",    wohnung: "2. OG li", miete: "980 €",   status: "bezahlt", laufzeit: "bis 31.03.2027" },
+      { name: "Hoffmann, K.", wohnung: "2. OG re", miete: "1.200 €", status: "bezahlt", laufzeit: "unbefristet" },
+    ],
   },
   {
     name: "ETW Bergstraße 4",
     ort: "Bonn",
     we: 1,
-    mieter: ["Schulz, R."],
-    vertraege: 1,
-    expanded: false,
+    vermietet: 1,
+    kaltmiete: "980 €",
+    rendite: "3,9 %",
+    mieter: [
+      { name: "Schulz, R.", wohnung: "gesamt", miete: "980 €", status: "bezahlt", laufzeit: "bis 31.08.2026" },
+    ],
   },
   {
     name: "ZFH Lindenweg 8",
     ort: "Düsseldorf",
     we: 2,
-    mieter: ["Klein, P.", "Lange, M."],
-    vertraege: 2,
-    expanded: false,
+    vermietet: 2,
+    kaltmiete: "2.100 €",
+    rendite: "4,2 %",
+    mieter: [
+      { name: "Klein, P.", wohnung: "OG", miete: "1.050 €", status: "bezahlt", laufzeit: "unbefristet" },
+      { name: "Lange, M.", wohnung: "EG", miete: "1.050 €", status: "bezahlt", laufzeit: "bis 30.09.2026" },
+    ],
   },
 ];
 
@@ -47,9 +62,9 @@ export default function FeatureBestand() {
       setShowImport(false);
       setImportStep(0);
       setExpanded({ 0: true });
-      t1 = setTimeout(() => setShowImport(true), 5000);
-      t2 = setTimeout(() => setImportStep(1), 6200);
-      t3 = setTimeout(run, 12000);
+      t1 = setTimeout(() => setShowImport(true), 6000);
+      t2 = setTimeout(() => setImportStep(1), 7500);
+      t3 = setTimeout(run, 14000);
     };
     run();
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
@@ -60,54 +75,71 @@ export default function FeatureBestand() {
       <div className="order-2 lg:order-1">
         <BrowserMockup url="app.immopilot.de/bestand">
           <div className="p-4 min-h-[420px]">
+            {/* Portfolio Header */}
             <div className="flex items-center justify-between mb-3">
-              <h5 className="text-xs font-bold text-slate-800">Ihr Portfolio</h5>
-              <div className="flex items-center gap-2">
-                <span className="text-[9px] text-slate-400">9 WE gesamt · 9 vermietet</span>
-                <button
-                  onClick={() => { setShowImport(true); setImportStep(0); }}
-                  className="flex items-center gap-1 px-2 py-1 rounded-lg bg-primary-600 text-white text-[9px] font-bold hover:bg-primary-700 transition-colors"
-                >
-                  <Upload size={9} /> KI-Import
-                </button>
+              <div>
+                <h5 className="text-xs font-bold text-slate-800">Ihr Portfolio</h5>
+                <p className="text-[9px] text-slate-400">9 WE · 8.900 € Kaltmiete/Monat</p>
               </div>
+              <button
+                onClick={() => { setShowImport(true); setImportStep(0); }}
+                className="flex items-center gap-1 px-2 py-1 rounded-lg bg-primary-600 text-white text-[9px] font-bold hover:bg-primary-700 transition-colors"
+              >
+                <Upload size={9} /> KI-Import
+              </button>
             </div>
 
             {!showImport ? (
               <div className="space-y-2">
                 {immobilien.map((immo, i) => (
                   <div key={immo.name} className="border border-slate-200 rounded-xl overflow-hidden">
+                    {/* Objekt-Zeile */}
                     <button
                       onClick={() => setExpanded((prev) => ({ ...prev, [i]: !prev[i] }))}
                       className="w-full flex items-center gap-2 px-3 py-2.5 bg-white hover:bg-slate-50 transition-colors"
                     >
-                      <Building2 size={14} className="text-primary-600 flex-shrink-0" />
+                      <Building2 size={13} className="text-primary-600 flex-shrink-0" />
                       <div className="flex-1 text-left">
                         <div className="text-xs font-semibold text-slate-800">{immo.name}</div>
-                        <div className="text-[9px] text-slate-400">{immo.ort} · {immo.we} WE</div>
+                        <div className="text-[9px] text-slate-400">{immo.ort} · {immo.we} WE · {immo.vermietet}/{immo.we} vermietet</div>
                       </div>
-                      {expanded[i] ? <ChevronDown size={12} className="text-slate-400" /> : <ChevronRight size={12} className="text-slate-400" />}
+                      <div className="text-right mr-1">
+                        <div className="text-[9px] font-bold text-slate-700">{immo.kaltmiete}</div>
+                        <div className="text-[8px] text-emerald-600 font-semibold flex items-center justify-end gap-0.5">
+                          <TrendingUp size={8} />{immo.rendite}
+                        </div>
+                      </div>
+                      {expanded[i] ? <ChevronDown size={11} className="text-slate-400 flex-shrink-0" /> : <ChevronRight size={11} className="text-slate-400 flex-shrink-0" />}
                     </button>
+
+                    {/* Mieter-Details */}
                     {expanded[i] && (
-                      <div className="border-t border-slate-100 px-3 py-2 bg-slate-50">
-                        <div className="flex items-center gap-1 mb-1.5">
-                          <Users size={10} className="text-slate-400" />
-                          <span className="text-[9px] text-slate-500 font-semibold">Mieter</span>
+                      <div className="border-t border-slate-100 bg-slate-50">
+                        {/* Spaltenköpfe */}
+                        <div className="grid grid-cols-4 gap-1 px-3 py-1.5 border-b border-slate-100">
+                          <span className="text-[8px] font-bold text-slate-400 uppercase col-span-1">Mieter</span>
+                          <span className="text-[8px] font-bold text-slate-400 uppercase">Miete</span>
+                          <span className="text-[8px] font-bold text-slate-400 uppercase">Status</span>
+                          <span className="text-[8px] font-bold text-slate-400 uppercase">Vertrag</span>
                         </div>
-                        <div className="grid grid-cols-2 gap-1">
-                          {immo.mieter.map((m) => (
-                            <div key={m} className="flex items-center gap-1.5 text-[9px] text-slate-600">
+                        {immo.mieter.map((m) => (
+                          <div key={m.name} className="grid grid-cols-4 gap-1 px-3 py-1.5 border-b border-slate-100 last:border-b-0 items-center">
+                            <div className="col-span-1 flex items-center gap-1.5">
                               <div className="w-4 h-4 rounded-full bg-primary-100 flex items-center justify-center flex-shrink-0">
-                                <span className="text-[7px] font-bold text-primary-700">{m[0]}</span>
+                                <span className="text-[7px] font-bold text-primary-700">{m.name[0]}</span>
                               </div>
-                              {m}
+                              <span className="text-[8px] text-slate-700 font-medium truncate">{m.name}</span>
                             </div>
-                          ))}
-                        </div>
-                        <div className="flex items-center gap-3 mt-2 pt-2 border-t border-slate-100">
-                          <span className="flex items-center gap-1 text-[9px] text-slate-400"><FileText size={9}/>{immo.vertraege} Verträge</span>
-                          <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-primary-50 text-primary-700 font-bold">Vollständig</span>
-                        </div>
+                            <span className="text-[8px] font-semibold text-slate-700">{m.miete}</span>
+                            <span className={`text-[8px] font-bold flex items-center gap-0.5 ${
+                              m.status === "bezahlt" ? "text-emerald-600" : "text-amber-600"
+                            }`}>
+                              {m.status === "offen" && <AlertCircle size={8} />}
+                              {m.status === "bezahlt" ? "✓ ok" : "! offen"}
+                            </span>
+                            <span className="text-[8px] text-slate-400 truncate">{m.laufzeit}</span>
+                          </div>
+                        ))}
                       </div>
                     )}
                   </div>
@@ -134,8 +166,13 @@ export default function FeatureBestand() {
                         ))}
                       </div>
                       <p className="text-[10px] text-primary-700 font-semibold">KI liest Mieter, Verträge & Daten aus...</p>
-                      <div className="mt-3 space-y-1 text-left">
-                        {["✓ Objekt erkannt: MFH, 4 WE", "✓ 4 Mieter importiert", "✓ Mietverträge zugeordnet"].map((line) => (
+                      <div className="mt-3 space-y-1 text-left max-w-xs mx-auto">
+                        {[
+                          "✓ Objekt erkannt: MFH, 4 WE",
+                          "✓ 4 Mieter + Mietpreise importiert",
+                          "✓ Mietverträge & Laufzeiten zugeordnet",
+                          "✓ Rendite automatisch berechnet",
+                        ].map((line) => (
                           <div key={line} className="text-[9px] text-primary-600 font-medium">{line}</div>
                         ))}
                       </div>
@@ -159,15 +196,15 @@ export default function FeatureBestand() {
         </h3>
         <p className="text-slate-500 leading-relaxed mb-6">
           Legen Sie jede Immobilie einmalig an — manuell oder per KI-Import aus vorhandenen Dokumenten.
-          Kaufen Sie eine Immobilie von einem ImmoPilot-Nutzer? Alles wird nahtlos übertragen, kein Wissen geht verloren.
+          Miete, Vertragslaufzeit, Zahlungsstatus: alles sofort sichtbar. Kein Wühlen in Ordnern mehr.
         </p>
         <ul className="space-y-3">
           {[
-            "Alle Immobilien, Wohneinheiten & Mieter im Dashboard",
+            "Alle Objekte, Wohneinheiten & Mieter im Dashboard",
+            "Miethöhe, Vertragslaufzeit & Zahlungsstatus auf einen Blick",
+            "Rendite automatisch berechnet pro Objekt",
             "KI-Import: Dokumente hochladen, Rest erledigt die KI",
-            "Verträge, Konditionen und Laufzeiten sofort sichtbar",
-            "Kauf einer Immobilie mit ImmoPilot-Vorbesitzer: komplette Übergabe",
-            "Nichts geht verloren — vollständige Historie ab Tag 1",
+            "Kauf mit ImmoPilot-Vorbesitzer: vollständige nahtlose Übergabe",
           ].map((item) => (
             <li key={item} className="flex items-start gap-2.5 text-sm text-slate-600">
               <CheckCircle2 size={16} className="text-primary-600 flex-shrink-0 mt-0.5" />

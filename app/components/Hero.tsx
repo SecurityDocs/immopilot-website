@@ -51,10 +51,10 @@ const personas = [
 ];
 
 const stats = [
-  { icon: Clock,      value: "< 2h",  label: "Aufwand pro Monat" },
-  { icon: Phone,      value: "−80 %", label: "weniger Mieteranrufe" },
-  { icon: TrendingUp, value: "5 €",   label: "statt 35 € / Wohnung" },
-  { icon: Zap,        value: "24h",   label: "bis zur Einsatzbereitschaft" },
+  { icon: Clock,      value: "< 2h",  label: "Verwaltungsaufwand pro Monat", color: "from-teal-500 to-teal-600" },
+  { icon: Phone,      value: "−80 %", label: "weniger Mieteranrufe",          color: "from-primary-500 to-primary-600" },
+  { icon: TrendingUp, value: "5 €",   label: "statt 25–40 € / Wohnung",       color: "from-emerald-500 to-emerald-600" },
+  { icon: Zap,        value: "24h",   label: "bis zur Einsatzbereitschaft",   color: "from-amber-500 to-amber-600" },
 ];
 
 export default function Hero() {
@@ -143,14 +143,16 @@ export default function Hero() {
           </div>
 
           {/* Stats row */}
-          <div className="w-full mt-14 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl">
-            {stats.map(({ icon: Icon, value, label }) => (
-              <div key={label} className="bg-white border border-slate-100 rounded-2xl px-4 py-4 shadow-sm flex flex-col items-center text-center gap-2">
-                <div className="w-9 h-9 rounded-xl bg-primary-50 flex items-center justify-center">
-                  <Icon size={18} className="text-primary-600" />
+          <div className="w-full mt-12 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl">
+            {stats.map(({ icon: Icon, value, label, color }) => (
+              <div key={label} className="relative overflow-hidden bg-white border border-slate-100 rounded-2xl px-4 py-5 shadow-md flex flex-col items-center text-center gap-2.5 hover:shadow-lg transition-shadow">
+                {/* Gradient accent top */}
+                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${color} rounded-t-2xl`} />
+                <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${color} flex items-center justify-center shadow-sm`}>
+                  <Icon size={18} className="text-white" />
                 </div>
-                <div className="text-2xl font-extrabold text-slate-900 leading-none">{value}</div>
-                <div className="text-xs text-slate-500 leading-tight">{label}</div>
+                <div className="text-2xl font-black text-slate-900 leading-none tracking-tight">{value}</div>
+                <div className="text-[11px] text-slate-500 leading-tight font-medium">{label}</div>
               </div>
             ))}
           </div>

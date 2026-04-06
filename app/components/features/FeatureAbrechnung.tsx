@@ -10,7 +10,8 @@ import {
 const steps = [
   { id: "upload", label: "Rechnung hochladen" },
   { id: "ki",     label: "KI analysiert" },
-  { id: "result", label: "Ergebnis & Freigabe" },
+  { id: "result", label: "Freigabe" },
+  { id: "done",   label: "NK erstellt ✓" },
 ];
 
 const rechnungen = [
@@ -21,20 +22,22 @@ const rechnungen = [
 ];
 
 export default function FeatureAbrechnung() {
-  const [step, setStep] = useState<"upload" | "ki" | "result">("upload");
+  const [step, setStep] = useState<"upload" | "ki" | "result" | "done">("upload");
 
   useEffect(() => {
     let t1: ReturnType<typeof setTimeout>;
     let t2: ReturnType<typeof setTimeout>;
     let t3: ReturnType<typeof setTimeout>;
+    let t4: ReturnType<typeof setTimeout>;
     const run = () => {
       setStep("upload");
       t1 = setTimeout(() => setStep("ki"), 2500);
       t2 = setTimeout(() => setStep("result"), 4500);
-      t3 = setTimeout(run, 12000);
+      t3 = setTimeout(() => setStep("done"), 7500);
+      t4 = setTimeout(run, 14000);
     };
     run();
-    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); clearTimeout(t4); };
   }, []);
 
   return (
@@ -101,6 +104,45 @@ export default function FeatureAbrechnung() {
               </div>
             )}
 
+            {step === "done" && (
+              <div style={{ animation: "slide-up 0.3s ease-out forwards" }}>
+                <div className="bg-emerald-50 border-2 border-emerald-200 rounded-xl p-5 text-center mb-3">
+                  <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-3">
+                    <CheckCircle2 size={24} className="text-emerald-600" />
+                  </div>
+                  <h6 className="text-xs font-bold text-emerald-800 mb-1">Nebenkostenabrechnung erstellt!</h6>
+                  <p className="text-[10px] text-emerald-600">Für alle 6 Mieter — rechtskonform nach BetrKV</p>
+                </div>
+                <div className="space-y-2">
+                  {[
+                    { mieter: "Müller, T.", betrag: "1.240,00 €", wf: "72 m²" },
+                    { mieter: "Schmidt, A.", betrag: "1.180,00 €", wf: "68 m²" },
+                    { mieter: "Weber, L.", betrag: "1.310,00 €", wf: "76 m²" },
+                  ].map((row, i) => (
+                    <div key={row.mieter}
+                      className="flex items-center justify-between px-3 py-2 bg-white border border-slate-100 rounded-lg"
+                      style={{ animation: `slide-up 0.3s ease-out ${i * 0.1}s forwards`, opacity: 0 }}
+                    >
+                      <div className="flex items-center gap-2">
+                        <div className="w-5 h-5 rounded-full bg-primary-100 flex items-center justify-center">
+                          <span className="text-[7px] font-bold text-primary-700">{row.mieter[0]}</span>
+                        </div>
+                        <div>
+                          <div className="text-[9px] font-semibold text-slate-800">{row.mieter}</div>
+                          <div className="text-[8px] text-slate-400">{row.wf} Wohnfläche</div>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-[9px] font-bold text-slate-800">{row.betrag}</div>
+                        <div className="text-[8px] text-emerald-600 font-medium">✓ verschickt</div>
+                      </div>
+                    </div>
+                  ))}
+                  <p className="text-[9px] text-slate-400 text-center pt-1">+ 3 weitere Mieter</p>
+                </div>
+              </div>
+            )}
+
             {step === "result" && (
               <div style={{ animation: "slide-up 0.25s ease-out forwards" }}>
                 <div className="border border-slate-200 rounded-xl overflow-hidden mb-2">
@@ -122,7 +164,10 @@ export default function FeatureAbrechnung() {
                     </div>
                   ))}
                 </div>
-                <button className="w-full py-2 rounded-xl bg-primary-600 text-white text-xs font-bold flex items-center justify-center gap-2 hover:bg-primary-700 transition-colors">
+                <button
+                  onClick={() => setStep("done")}
+                  className="w-full py-2 rounded-xl bg-primary-600 text-white text-xs font-bold flex items-center justify-center gap-2 hover:bg-primary-700 transition-colors"
+                >
                   <Zap size={13} /> Nebenkostenabrechnung erstellen
                 </button>
               </div>

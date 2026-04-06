@@ -2,7 +2,7 @@
 
 import {
   Tablet, Mic, FileEdit, QrCode, Info, Shield,
-  CheckCircle2, Smartphone, Star, Zap,
+  CheckCircle2, Smartphone, Star, Zap, PhoneOff, Check,
 } from "lucide-react";
 
 export default function FeatureTablet() {
@@ -50,6 +50,16 @@ export default function FeatureTablet() {
                       <div className="text-[10px] font-bold text-white">Formular</div>
                       <div className="text-[8px] text-slate-500">Ticket erstellen</div>
                     </div>
+                    <div className="bg-slate-900 border border-slate-800 rounded-xl p-3 text-center hover:border-primary-700 transition-colors">
+                      <Smartphone size={18} className="text-primary-400 mx-auto mb-1.5" />
+                      <div className="text-[10px] font-bold text-white">Per Handy</div>
+                      <div className="text-[8px] text-slate-500">QR-Code scannen</div>
+                    </div>
+                    <div className="bg-slate-900 border border-slate-800 rounded-xl p-3 text-center hover:border-primary-700 transition-colors">
+                      <Info size={18} className="text-primary-400 mx-auto mb-1.5" />
+                      <div className="text-[10px] font-bold text-white">Infos</div>
+                      <div className="text-[8px] text-slate-500">Aushänge & News</div>
+                    </div>
                   </div>
 
                   {/* Info banner */}
@@ -60,21 +70,10 @@ export default function FeatureTablet() {
                     </div>
                   </div>
 
-                  {/* QR Code */}
-                  <div className="bg-slate-900 border border-slate-800 rounded-lg p-2.5 flex items-center gap-2.5">
-                    <div className="w-9 h-9 rounded bg-white flex items-center justify-center flex-shrink-0">
-                      <QrCode size={18} className="text-slate-800" />
-                    </div>
-                    <div>
-                      <div className="text-[9px] font-bold text-white">Auch per Handy</div>
-                      <div className="text-[8px] text-slate-500">QR-Code scannen</div>
-                    </div>
-                  </div>
-
                   {/* Security note */}
-                  <div className="flex items-center gap-1.5 pt-1">
+                  <div className="flex items-center gap-1.5">
                     <Shield size={10} className="text-primary-500 flex-shrink-0" />
-                    <span className="text-[8px] text-slate-500">Diebstahlgesichert montiert</span>
+                    <span className="text-[8px] text-slate-500">Diebstahlgesichert · DSGVO-konform</span>
                   </div>
                 </div>
               </div>
@@ -95,23 +94,35 @@ export default function FeatureTablet() {
           <span className="text-xs font-semibold text-amber-700">Exklusiv 2026</span>
         </div>
         <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-4">
-          Ihr Treppenhaus als{" "}
-          <span className="text-primary-600">digitaler Servicepunkt.</span>
+          Mieter melden selbst —{" "}
+          <span className="text-primary-600">Sie werden nicht mehr angerufen.</span>
         </h3>
-        <p className="text-slate-500 leading-relaxed mb-6">
-          Das Tablet im Treppenhaus ist das sichtbarste Zeichen, dass Ihre Immobilie professionell verwaltet wird.
-          Mieter melden Anliegen direkt vor Ort — per Sprache oder Formular. Wir liefern, montieren und richten ein.
+        <p className="text-slate-500 leading-relaxed mb-5">
+          Das Tablet im Treppenhaus ist Ihr 24/7-Servicepunkt. Mieter melden Anliegen per Sprache, Formular
+          oder QR-Code vom Handy. Die KI strukturiert alles automatisch — Sie weisen per Klick zu.
         </p>
-        <ul className="space-y-3 mb-6">
+
+        {/* Core promise */}
+        <div className="flex items-center gap-3 p-4 bg-primary-50 border border-primary-100 rounded-2xl mb-5">
+          <PhoneOff size={20} className="text-primary-600 flex-shrink-0" />
+          <div>
+            <p className="text-sm font-bold text-slate-900">−80 % weniger Mieteranrufe</p>
+            <p className="text-xs text-slate-600 mt-0.5">Eigentümer mit ImmoPilot reduzieren eingehende Anrufe um über 80 %.</p>
+          </div>
+        </div>
+
+        <ul className="space-y-2.5 mb-5">
           {[
-            "Diebstahlgesichert montiert — wir kümmern uns um alles",
-            "Sprachassistent + Formular-Eingabe für alle Anliegen",
-            "Infos und Aushänge zentral verwalten und anzeigen",
-            "QR-Code für Handy-Zugang als Alternative",
-            "Seriöses, professionelles Auftreten für Ihre Mieter",
+            "Ticket-System: Mieter melden Anliegen per Sprache oder Formular",
+            "Sprachassistent erstellt automatisch strukturierte Tickets",
+            "QR-Code für Handy-Zugang — auch unterwegs",
+            "Infos, Aushänge & Ankündigungen zentral anzeigen",
+            "Sie sehen alle Tickets in Echtzeit — sortiert nach Priorität",
+            "Per Klick an Hausmeister oder Handwerker zuweisen",
+            "Diebstahlgesichert montiert — wir liefern & installieren",
           ].map((item) => (
             <li key={item} className="flex items-start gap-2.5 text-sm text-slate-600">
-              <CheckCircle2 size={16} className="text-primary-600 flex-shrink-0 mt-0.5" />
+              <CheckCircle2 size={15} className="text-primary-600 flex-shrink-0 mt-0.5" />
               {item}
             </li>
           ))}
@@ -121,13 +132,16 @@ export default function FeatureTablet() {
         <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-2">
           <p className="text-xs font-bold text-slate-700 mb-3">Verfügbarkeit nach Paket:</p>
           {[
-            { tier: "Starter", text: "Tablet als kostenpflichtige Option (+ 29 €/Mon.)", included: false },
-            { tier: "Professional", text: "Tablet kostenlos inklusive", included: true },
-            { tier: "Scale", text: "Mehrere Tablets pro Objekt inklusive", included: true },
+            { tier: "Starter",      text: "Tablet als Option (+ 29 €/Mon.)",        included: false },
+            { tier: "Professional", text: "1 Tablet pro Objekt kostenlos",           included: true  },
+            { tier: "Scale",        text: "Mehrere Tablets pro Objekt inklusive",    included: true  },
           ].map(({ tier, text, included }) => (
             <div key={tier} className="flex items-center gap-2.5">
               <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${included ? "bg-primary-600" : "bg-slate-200"}`}>
-                {included ? <CheckCircle2 size={11} className="text-white" /> : <span className="text-slate-400 text-[9px] font-bold">+</span>}
+                {included
+                  ? <Check size={11} className="text-white" />
+                  : <span className="text-slate-400 text-[9px] font-bold">+</span>
+                }
               </div>
               <div>
                 <span className="text-xs font-bold text-slate-800">{tier}: </span>

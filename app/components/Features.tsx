@@ -3,23 +3,22 @@
 import { useState } from "react";
 import {
   MessageSquare, TrendingUp, Building2, Mail,
-  FolderOpen, Receipt, Tablet, ChevronRight,
+  Receipt, Tablet, ChevronRight,
 } from "lucide-react";
 import FeatureKommunikation from "./features/FeatureKommunikation";
 import FeatureCashflow from "./features/FeatureCashflow";
 import FeatureBestand from "./features/FeatureBestand";
 import FeatureBriefservice from "./features/FeatureBriefservice";
-import FeatureDatenbank from "./features/FeatureDatenbank";
 import FeatureAbrechnung from "./features/FeatureAbrechnung";
 import FeatureTablet from "./features/FeatureTablet";
 
 const tabs = [
   {
-    id: "kommunikation",
-    icon: MessageSquare,
-    label: "Kommunikation",
-    problem: "Mieter & E-Mails zentral",
-    component: FeatureKommunikation,
+    id: "bestand",
+    icon: Building2,
+    label: "Bestandsübersicht",
+    problem: "Objekte, Mieter & Verträge",
+    component: FeatureBestand,
   },
   {
     id: "cashflow",
@@ -29,11 +28,18 @@ const tabs = [
     component: FeatureCashflow,
   },
   {
-    id: "bestand",
-    icon: Building2,
-    label: "Bestandsübersicht",
-    problem: "Objekte & Mieter",
-    component: FeatureBestand,
+    id: "abrechnung",
+    icon: Receipt,
+    label: "Rechnungen & NK",
+    problem: "Nebenkosten per Klick",
+    component: FeatureAbrechnung,
+  },
+  {
+    id: "kommunikation",
+    icon: MessageSquare,
+    label: "Kommunikation",
+    problem: "Mieter & E-Mails zentral",
+    component: FeatureKommunikation,
   },
   {
     id: "briefservice",
@@ -43,33 +49,19 @@ const tabs = [
     component: FeatureBriefservice,
   },
   {
-    id: "datenbank",
-    icon: FolderOpen,
-    label: "Datenbank",
-    problem: "Dokumente für immer",
-    component: FeatureDatenbank,
-  },
-  {
-    id: "abrechnung",
-    icon: Receipt,
-    label: "Rechnungen & NK",
-    problem: "Nebenkosten per Klick",
-    component: FeatureAbrechnung,
-  },
-  {
     id: "tablet",
     icon: Tablet,
     label: "Tablet 2026",
-    problem: "Exklusiv · ab Professional",
+    problem: "Mieter-Selfservice · ab Professional",
     component: FeatureTablet,
     special: true,
   },
 ];
 
 export default function Features() {
-  const [activeTab, setActiveTab] = useState("kommunikation");
+  const [activeTab, setActiveTab] = useState("bestand");
 
-  const ActiveComponent = tabs.find((t) => t.id === activeTab)?.component ?? FeatureKommunikation;
+  const ActiveComponent = tabs.find((t) => t.id === activeTab)?.component ?? FeatureBestand;
 
   return (
     <section className="py-20 lg:py-28 bg-white" id="features">

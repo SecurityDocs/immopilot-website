@@ -32,10 +32,10 @@ const partnerTypes = [
     icon: Users,
     name: "Creator & Influencer",
     tag: "Monatliche Provision",
-    headline: "20 % der Abo-Gebühr — dauerhaft",
+    headline: "10 % der Abo-Gebühr — dauerhaft",
     desc: "Sie haben eine Community aus Immobilienbesitzern oder Investoren? Verdienen Sie jeden Monat, solange Ihr geworbener Kunde zahlt.",
     features: [
-      "20 % der monatlichen Abo-Gebühr",
+      "10 % der monatlichen Abo-Gebühr",
       "Läuft so lange der Kunde aktiv ist",
       "Eigenes Tracking-Dashboard",
       "Content-Support & Werbematerialien",
@@ -104,7 +104,7 @@ export default function PartnerPage() {
             <div className="grid grid-cols-2 gap-4">
               {[
                 { value: "450 €", label: "Einmalig pro Scale-Abschluss", icon: Euro },
-                { value: "20 %", label: "Monatliche Provision für Creator", icon: TrendingUp },
+                { value: "10 %", label: "Monatliche Provision für Creator", icon: TrendingUp },
                 { value: "24h", label: "Bis zur Freischaltung Ihres Partnerlinks", icon: Star },
                 { value: "0 €", label: "Kosten — für Partner vollständig kostenlos", icon: Check },
               ].map((stat) => (
@@ -170,8 +170,9 @@ export default function PartnerPage() {
             ))}
           </div>
 
-          <p className="text-center text-xs text-slate-400 mt-4">
-            Für Creator/Influencer gilt: 20 % der monatlichen Abo-Gebühr, dauerhaft wiederkehrend. Beispiel: 10 Kunden × 250 €/Monat × 20 % = 500 €/Monat passives Einkommen.
+          <p className="text-center text-xs text-amber-600 font-medium mt-4 mb-1">Hinweis: Provisionen werden erst ausgezahlt, wenn der geworbene Kunde mindestens 3 Monate aktiv bleibt.</p>
+          <p className="text-center text-xs text-slate-400 mt-1">
+            Für Creator/Influencer gilt: 10 % der monatlichen Abo-Gebühr, dauerhaft wiederkehrend. Beispiel: 10 Kunden × 250 €/Monat × 10 % = 250 €/Monat passives Einkommen.
           </p>
         </div>
       </div>
@@ -250,11 +251,14 @@ export default function PartnerPage() {
       {/* How it works */}
       <div className="py-16 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center text-2xl font-extrabold text-slate-900 mb-10">So einfach funktioniert es</h2>
+          <h2 className="text-center text-2xl font-extrabold text-slate-900 mb-4">So einfach funktioniert es</h2>
+          <p className="text-center text-slate-500 text-sm mb-10">In 4 Schritten zum eigenen Partnerlink — kostenlos, kein Risiko.</p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {steps.map(({ nr, title, desc }) => (
-              <div key={nr} className="bg-slate-50 border border-slate-100 rounded-2xl p-5">
-                <div className="text-2xl font-extrabold text-slate-100 mb-3">{nr}</div>
+              <div key={nr} className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-primary-200 hover:shadow-sm transition-all group">
+                <div className="w-10 h-10 rounded-xl bg-primary-600 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                  <span className="text-sm font-extrabold text-white">{nr}</span>
+                </div>
                 <h3 className="font-bold text-slate-900 mb-1.5 text-sm">{title}</h3>
                 <p className="text-xs text-slate-500 leading-relaxed">{desc}</p>
               </div>

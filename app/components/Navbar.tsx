@@ -1,11 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "Funktionen", href: "#features" },
-  { label: "Preise", href: "#pricing" },
+  { label: "Funktionen", href: "/#features" },
+  { label: "Preise", href: "/#pricing" },
   { label: "Vorlagen", href: "/vorlagen" },
   { label: "Blog", href: "/blog" },
   { label: "Partner", href: "/partner" },
