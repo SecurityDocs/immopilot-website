@@ -169,7 +169,7 @@ export default function Page() {
             <p className="text-primary-100 mb-6 max-w-lg mx-auto">
               ImmoPilot erinnert Sie automatisch an Erhöhungspotenziale und erstellt rechtssichere Schreiben in Sekunden.
             </p>
-            <Link href="/#demo" className="inline-block bg-white text-primary-600 font-bold px-6 py-3 rounded-xl hover:bg-primary-50 transition-colors">
+            <Link href="/#contact" className="inline-block bg-white text-primary-600 font-bold px-6 py-3 rounded-xl hover:bg-primary-50 transition-colors">
               Kostenlose Demo anfragen
             </Link>
           </div>

@@ -176,7 +176,7 @@ export default function Page() {
               ImmoPilot hilft Ihnen, die Selbstverwaltung schnell und stressfrei zu übernehmen. Demo-Termin in 5 Minuten vereinbaren.
             </p>
             <Link
-              href="/#demo"
+              href="/#contact"
               className="inline-block bg-white text-primary-600 font-bold px-6 py-3 rounded-xl hover:bg-primary-50 transition-colors"
             >
               Jetzt Demo anfragen

@@ -144,7 +144,7 @@ export default function Page() {
             <p className="text-primary-100 mb-6 max-w-lg mx-auto">
               ImmoPilot prüft automatisch, welche Kosten umlagefähig sind, und erstellt die Abrechnung nach aktueller BetrKV.
             </p>
-            <Link href="/#demo" className="inline-block bg-white text-primary-600 font-bold px-6 py-3 rounded-xl hover:bg-primary-50 transition-colors">
+            <Link href="/#contact" className="inline-block bg-white text-primary-600 font-bold px-6 py-3 rounded-xl hover:bg-primary-50 transition-colors">
               Kostenlose Demo anfragen
             </Link>
           </div>

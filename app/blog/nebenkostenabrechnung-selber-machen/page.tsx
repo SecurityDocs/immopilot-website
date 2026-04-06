@@ -194,7 +194,7 @@ export default function Page() {
               ImmoPilot erstellt Ihre Betriebskostenabrechnung rechtssicher, automatisch und in wenigen Minuten — statt Stunden in Excel.
             </p>
             <Link
-              href="/#demo"
+              href="/#contact"
               className="inline-block bg-white text-primary-600 font-bold px-6 py-3 rounded-xl hover:bg-primary-50 transition-colors"
             >
               Kostenlose Demo anfragen

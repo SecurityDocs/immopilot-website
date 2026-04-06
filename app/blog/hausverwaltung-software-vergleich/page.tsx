@@ -156,7 +156,7 @@ export default function Page() {
             <p className="text-primary-100 mb-6 max-w-lg mx-auto">
               Testen Sie ImmoPilot 14 Tage unverbindlich — keine Kreditkarte, kein Abo.
             </p>
-            <Link href="/#demo" className="inline-block bg-white text-primary-600 font-bold px-6 py-3 rounded-xl hover:bg-primary-50 transition-colors">
+            <Link href="/#contact" className="inline-block bg-white text-primary-600 font-bold px-6 py-3 rounded-xl hover:bg-primary-50 transition-colors">
               Kostenlose Demo anfragen
             </Link>
           </div>

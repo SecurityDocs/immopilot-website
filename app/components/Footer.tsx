@@ -24,10 +24,10 @@ export default function Footer() {
             <h4 className="text-sm font-bold text-white mb-4">Produkt</h4>
             <ul className="space-y-2.5">
               {[
-                { label: "Funktionen", href: "#features" },
-                { label: "Preise", href: "#pricing" },
-                { label: "Mieter-Portal", href: "#portal" },
-                { label: "Demo anfragen", href: "#contact" },
+                { label: "Funktionen", href: "/#features" },
+                { label: "Preise", href: "/#pricing" },
+                { label: "Tablet-Portal", href: "/#features" },
+                { label: "Demo anfragen", href: "/#contact" },
               ].map((link) => (
                 <li key={link.label}>
                   <a
