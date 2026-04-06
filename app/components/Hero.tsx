@@ -57,7 +57,7 @@ const stats = [
   { icon: Zap,        value: "24h",   label: "Einsatzbereit" },
 ];
 
-const CYCLE_MS = 9000;
+const CYCLE_MS = 15000;
 
 export default function Hero() {
   const [active, setActive] = useState(0);

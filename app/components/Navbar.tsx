@@ -9,7 +9,7 @@ const navLinks = [
   { label: "Preise", href: "/#pricing" },
   { label: "Vorlagen", href: "/vorlagen" },
   { label: "Blog", href: "/blog" },
-  { label: "Partner", href: "/partner" },
+  { label: "Partner werden", href: "/partner" },
   { label: "Über uns", href: "/ueber-uns" },
 ];
 

@@ -17,6 +17,7 @@ const tabs = [
     id: "bestand",
     icon: Building2,
     label: "Bestandsübersicht",
+    shortLabel: "Bestand",
     problem: "Objekte, Mieter & Verträge",
     component: FeatureBestand,
   },
@@ -24,6 +25,7 @@ const tabs = [
     id: "cashflow",
     icon: TrendingUp,
     label: "Cashflow",
+    shortLabel: "Cashflow",
     problem: "Zahlungen & Vorschau",
     component: FeatureCashflow,
   },
@@ -31,6 +33,7 @@ const tabs = [
     id: "abrechnung",
     icon: Receipt,
     label: "Rechnungen & NK",
+    shortLabel: "Rechnungen",
     problem: "Nebenkosten per Klick",
     component: FeatureAbrechnung,
   },
@@ -38,6 +41,7 @@ const tabs = [
     id: "kommunikation",
     icon: MessageSquare,
     label: "Kommunikation",
+    shortLabel: "Komm.",
     problem: "Mieter & E-Mails zentral",
     component: FeatureKommunikation,
   },
@@ -45,6 +49,7 @@ const tabs = [
     id: "briefservice",
     icon: Mail,
     label: "Briefservice",
+    shortLabel: "Briefe",
     problem: "KI schreibt, Sie klicken",
     component: FeatureBriefservice,
   },
@@ -52,6 +57,7 @@ const tabs = [
     id: "tablet",
     icon: Tablet,
     label: "Tablet 2026",
+    shortLabel: "Tablet",
     problem: "Mieter-Selfservice · ab Professional",
     component: FeatureTablet,
     special: true,
@@ -92,7 +98,7 @@ export default function Features() {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`flex-shrink-0 lg:flex-shrink text-left flex items-start gap-3 px-3 py-3 rounded-xl border transition-all w-40 lg:w-full ${
+                    className={`flex-shrink-0 lg:flex-shrink text-left flex items-center lg:items-start gap-2 lg:gap-3 px-2.5 lg:px-3 py-2.5 lg:py-3 rounded-xl border transition-all w-auto lg:w-full ${
                       isActive
                         ? tab.special
                           ? "bg-amber-500 border-amber-500 text-white shadow-sm"
@@ -103,14 +109,19 @@ export default function Features() {
                     }`}
                   >
                     <Icon
-                      size={18}
-                      className={`mt-0.5 flex-shrink-0 ${isActive ? "text-white" : tab.special ? "text-amber-600" : "text-primary-600"}`}
+                      size={16}
+                      className={`flex-shrink-0 lg:mt-0.5 ${isActive ? "text-white" : tab.special ? "text-amber-600" : "text-primary-600"}`}
                     />
                     <div className="min-w-0">
-                      <div className={`text-sm font-semibold leading-tight ${isActive ? "text-white" : "text-slate-800"}`}>
+                      {/* Mobile: kurzes Label */}
+                      <div className={`text-xs font-semibold leading-tight lg:hidden ${isActive ? "text-white" : "text-slate-800"}`}>
+                        {tab.shortLabel}
+                      </div>
+                      {/* Desktop: volles Label + Problem */}
+                      <div className={`text-sm font-semibold leading-tight hidden lg:block ${isActive ? "text-white" : "text-slate-800"}`}>
                         {tab.label}
                       </div>
-                      <div className={`text-xs mt-0.5 leading-tight ${isActive ? (tab.special ? "text-amber-100" : "text-primary-200") : tab.special ? "text-amber-500" : "text-slate-400"}`}>
+                      <div className={`text-xs mt-0.5 leading-tight hidden lg:block ${isActive ? (tab.special ? "text-amber-100" : "text-primary-200") : tab.special ? "text-amber-500" : "text-slate-400"}`}>
                         {tab.problem}
                       </div>
                     </div>
