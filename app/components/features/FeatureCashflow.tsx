@@ -74,18 +74,18 @@ export default function FeatureCashflow() {
             {tab === "abgleich" && (
               <div style={{ animation: "slide-up 0.2s ease-out forwards" }}>
                 <div className="border border-slate-200 rounded-xl overflow-hidden">
-                  <div className="grid grid-cols-5 gap-1 px-3 py-2 bg-slate-50 border-b border-slate-200 text-[9px] font-bold text-slate-400 uppercase">
+                  <div className="grid grid-cols-4 sm:grid-cols-5 gap-1 px-3 py-2 bg-slate-50 border-b border-slate-200 text-[9px] font-bold text-slate-400 uppercase">
                     <span className="col-span-1">Mieter</span>
-                    <span className="col-span-1">Soll</span>
+                    <span className="col-span-1 hidden sm:block">Soll</span>
                     <span className="col-span-1">Eingang</span>
                     <span className="col-span-1">Status</span>
                     <span className="col-span-1">Aktion</span>
                   </div>
                   {payments.map((p, i) => (
-                    <div key={i} className="grid grid-cols-5 gap-1 px-3 py-2.5 border-b border-slate-50 last:border-b-0 items-center"
+                    <div key={i} className="grid grid-cols-4 sm:grid-cols-5 gap-1 px-3 py-2.5 border-b border-slate-50 last:border-b-0 items-center"
                       style={{ animation: "slide-up 0.3s ease-out forwards", animationDelay: `${i * 0.08}s`, opacity: 0 }}>
                       <span className="text-[10px] font-medium text-slate-800 truncate col-span-1">{p.name.split(",")[0]}</span>
-                      <span className="text-[10px] text-slate-600 col-span-1">{p.soll} €</span>
+                      <span className="text-[10px] text-slate-600 col-span-1 hidden sm:block">{p.soll} €</span>
                       <span className={`text-[10px] col-span-1 font-semibold ${p.status === "miss" ? "text-red-500" : p.status === "diff" ? "text-amber-600" : "text-slate-600"}`}>
                         {p.ist === "—" ? "Fehlt" : `${p.ist} €`}
                       </span>

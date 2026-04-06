@@ -2,9 +2,9 @@ import Link from "next/link";
 import { TrendingDown, ArrowRight } from "lucide-react";
 
 const beispiele = [
-  { wohnungen: "10 Einheiten", hv: "350 €", immo: "100 €", ersparnis: "3.000 €/Jahr" },
-  { wohnungen: "30 Einheiten", hv: "1.050 €", immo: "250 €", ersparnis: "9.600 €/Jahr" },
-  { wohnungen: "50 Einheiten", hv: "1.750 €", immo: "350 €", ersparnis: "16.800 €/Jahr" },
+  { wohnungen: "10 Einheiten", hv: "350 €", immo: "99 €",  ersparnis: "3.012 €/Jahr" },
+  { wohnungen: "30 Einheiten", hv: "1.050 €", immo: "249 €", ersparnis: "9.612 €/Jahr" },
+  { wohnungen: "50 Einheiten", hv: "1.750 €", immo: "349 €", ersparnis: "16.812 €/Jahr" },
 ];
 
 export default function KostenVergleich() {

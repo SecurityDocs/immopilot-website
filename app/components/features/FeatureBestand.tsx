@@ -116,14 +116,14 @@ export default function FeatureBestand() {
                     {expanded[i] && (
                       <div className="border-t border-slate-100 bg-slate-50">
                         {/* Spaltenköpfe */}
-                        <div className="grid grid-cols-4 gap-0.5 px-2 sm:px-3 py-1.5 border-b border-slate-100">
+                        <div className="grid grid-cols-3 sm:grid-cols-4 gap-0.5 px-2 sm:px-3 py-1.5 border-b border-slate-100">
                           <span className="text-[8px] font-bold text-slate-400 uppercase col-span-1">Mieter</span>
                           <span className="text-[8px] font-bold text-slate-400 uppercase">Miete</span>
                           <span className="text-[8px] font-bold text-slate-400 uppercase">Status</span>
-                          <span className="text-[8px] font-bold text-slate-400 uppercase">Vertrag</span>
+                          <span className="text-[8px] font-bold text-slate-400 uppercase hidden sm:block">Vertrag</span>
                         </div>
                         {immo.mieter.map((m) => (
-                          <div key={m.name} className="grid grid-cols-4 gap-1 px-3 py-1.5 border-b border-slate-100 last:border-b-0 items-center">
+                          <div key={m.name} className="grid grid-cols-3 sm:grid-cols-4 gap-1 px-3 py-1.5 border-b border-slate-100 last:border-b-0 items-center">
                             <div className="col-span-1 flex items-center gap-1.5">
                               <div className="w-4 h-4 rounded-full bg-primary-100 flex items-center justify-center flex-shrink-0">
                                 <span className="text-[7px] font-bold text-primary-700">{m.name[0]}</span>
@@ -137,7 +137,7 @@ export default function FeatureBestand() {
                               {m.status === "offen" && <AlertCircle size={8} />}
                               {m.status === "bezahlt" ? "✓ ok" : "! offen"}
                             </span>
-                            <span className="text-[8px] text-slate-400 truncate">{m.laufzeit}</span>
+                            <span className="text-[8px] text-slate-400 truncate hidden sm:block">{m.laufzeit}</span>
                           </div>
                         ))}
                       </div>

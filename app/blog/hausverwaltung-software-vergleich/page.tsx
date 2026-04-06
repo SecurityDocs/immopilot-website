@@ -131,7 +131,7 @@ export default function Page() {
             </div>
             <div className="bg-primary-50 border border-primary-200 rounded-xl p-4 text-sm mt-4">
               <p className="font-bold text-primary-900 mb-1">Kostenbeispiel: 20 Wohneinheiten mit ImmoPilot</p>
-              <p className="text-teal-800">Professional-Plan: 100 € + 20 WE × 5 € = <strong>200 € pro Monat</strong> = 2.400 € pro Jahr.</p>
+              <p className="text-teal-800">Professional-Plan: 99 € + 20 WE × 5 € = <strong>199 € pro Monat</strong> = 2.388 € pro Jahr.</p>
               <p className="text-primary-700 font-semibold mt-1">Ersparnis gegenüber Hausverwaltung: über 6.000 € im Jahr.</p>
             </div>
 

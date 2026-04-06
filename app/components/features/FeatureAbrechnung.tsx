@@ -146,18 +146,18 @@ export default function FeatureAbrechnung() {
             {step === "result" && (
               <div style={{ animation: "slide-up 0.25s ease-out forwards" }}>
                 <div className="border border-slate-200 rounded-xl overflow-hidden mb-2">
-                  <div className="grid grid-cols-4 gap-1 px-3 py-2 bg-slate-50 border-b border-slate-200 text-[9px] font-bold text-slate-400 uppercase">
+                  <div className="grid grid-cols-3 sm:grid-cols-4 gap-1 px-3 py-2 bg-slate-50 border-b border-slate-200 text-[9px] font-bold text-slate-400 uppercase">
                     <span className="col-span-1">Typ</span>
                     <span className="col-span-1">Betrag</span>
-                    <span className="col-span-1">Verteilung</span>
+                    <span className="col-span-1 hidden sm:block">Verteilung</span>
                     <span className="col-span-1">Umlegbar</span>
                   </div>
                   {rechnungen.map((r, i) => (
-                    <div key={r.typ} className="grid grid-cols-4 gap-1 px-3 py-2 border-b border-slate-50 last:border-b-0 items-center"
+                    <div key={r.typ} className="grid grid-cols-3 sm:grid-cols-4 gap-1 px-3 py-2 border-b border-slate-50 last:border-b-0 items-center"
                       style={{ animation: `slide-up 0.3s ease-out ${i * 0.1}s forwards`, opacity: 0 }}>
                       <span className="text-[9px] font-medium text-slate-800 col-span-1 truncate">{r.typ}</span>
                       <span className="text-[9px] text-slate-600 col-span-1">{r.betrag}</span>
-                      <span className="text-[9px] text-slate-500 col-span-1 truncate">{r.verteilung}</span>
+                      <span className="text-[9px] text-slate-500 col-span-1 truncate hidden sm:block">{r.verteilung}</span>
                       <span className={`text-[9px] font-bold col-span-1 ${r.umlegbar ? "text-primary-600" : "text-slate-400"}`}>
                         {r.umlegbar ? "✓ Ja" : "✗ Nein"}
                       </span>

@@ -4,8 +4,8 @@ import { Check, X, Zap } from "lucide-react";
 
 // ─── Neue Preis-Logik ───────────────────────────────────────────
 // Starter   49€ + 5€/WE bis 20 WE    → Einstieg
-// Professional 100€ + 5€/WE bis 100 WE → EMPFOHLEN (Mitte = Anker)
-// Scale    150€ + 5€/WE bis 250 WE   → Wachstum
+// Professional 99€ + 5€/WE bis 100 WE → EMPFOHLEN (Mitte = Anker)
+// Scale    149€ + 5€/WE bis 250 WE   → Wachstum
 // Enterprise  Individuell 250+ WE
 
 const plans = [
@@ -37,7 +37,7 @@ const plans = [
     id: "professional",
     name: "Professional",
     sub: "Für ernsthafte Eigentümer",
-    base: 100,
+    base: 99,
     perUnit: 5,
     limit: "Bis 100 Einheiten",
     highlight: true,
@@ -62,7 +62,7 @@ const plans = [
     id: "scale",
     name: "Scale",
     sub: "Für wachsende Portfolios",
-    base: 150,
+    base: 149,
     perUnit: 5,
     limit: "Bis 250 Einheiten",
     highlight: false,
@@ -94,8 +94,8 @@ const includedAll = [
 
 const examples = [
   { units: 10,  base: 49,  monthly: 99,   yearly: 1188  },
-  { units: 30,  base: 100, monthly: 250,  yearly: 3000  },
-  { units: 50,  base: 100, monthly: 350,  yearly: 4200  },
+  { units: 30,  base: 99,  monthly: 249,  yearly: 2988  },
+  { units: 50,  base: 99,  monthly: 349,  yearly: 4188  },
 ];
 
 export default function Pricing() {
@@ -124,8 +124,8 @@ export default function Pricing() {
           <div className="grid sm:grid-cols-3 gap-4">
             {[
               { we: 10,  hv: "350 €",   immo: "99 €",  save: "3.012 €/Jahr",  plan: "Starter" },
-              { we: 30,  hv: "1.050 €", immo: "250 €", save: "9.600 €/Jahr",  plan: "Professional" },
-              { we: 50,  hv: "1.750 €", immo: "350 €", save: "16.800 €/Jahr", plan: "Professional" },
+              { we: 30,  hv: "1.050 €", immo: "249 €", save: "9.612 €/Jahr",  plan: "Professional" },
+              { we: 50,  hv: "1.750 €", immo: "349 €", save: "16.812 €/Jahr", plan: "Professional" },
             ].map(({ we, hv, immo, save, plan }) => (
               <div key={we} className="bg-white border border-slate-200 rounded-2xl p-5">
                 <p className="text-3xl font-extrabold text-slate-900 leading-none">{we}</p>
