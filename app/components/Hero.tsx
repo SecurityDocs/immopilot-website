@@ -248,11 +248,21 @@ export default function Hero() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
 
+  // Wird manuell gesetzt -> pausiert Auto-Cycle
+  const [manualPersona, setManualPersona] = useState(false);
+
   // Auto-rotate slides
   useEffect(() => {
     const t = setInterval(() => setActiveSlide((p) => (p + 1) % slides.length), 2600);
     return () => clearInterval(t);
   }, [activeSlide]);
+
+  // Auto-cycle personas (Fragen) alle 4 Sekunden
+  useEffect(() => {
+    if (manualPersona) return;
+    const t = setInterval(() => setActivePersona((p) => (p + 1) % personas.length), 4000);
+    return () => clearInterval(t);
+  }, [manualPersona]);
 
   const handleTouchStart = (e: React.TouchEvent) => setTouchStart(e.touches[0].clientX);
   const handleTouchEnd = (e: React.TouchEvent) => {
@@ -279,18 +289,12 @@ export default function Hero() {
 
           {/* Left: Content */}
           <div className="max-w-xl">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-50 border border-primary-200 mb-6">
-              <Sparkles size={13} className="text-primary-600" />
-              <span className="text-xs font-semibold text-primary-700 uppercase tracking-wider">KI-Hausverwaltung · Made in Germany</span>
-            </div>
-
             {/* Persona pills */}
             <div className="flex flex-wrap gap-2 mb-7">
               {personas.map((p, i) => (
                 <button
                   key={p.id}
-                  onClick={() => setActivePersona(i)}
+                  onClick={() => { setActivePersona(i); setManualPersona(true); }}
                   className={`text-xs font-semibold px-3.5 py-1.5 rounded-full border transition-all ${
                     i === activePersona
                       ? "bg-primary-600 text-white border-primary-600"
@@ -312,7 +316,7 @@ export default function Hero() {
             </h1>
 
             {/* Mobile mockup */}
-            <div className="mt-6 lg:hidden" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+            <div className="mt-8 lg:hidden" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
               <BrowserMockup url={`app.immopilot.de/${slide.url}`}>
                 <div key={`m-${activeSlide}`} style={{ animation: "slide-up 0.25s ease-out forwards" }} className="min-h-[240px]">
                   {slide.content}
@@ -330,7 +334,7 @@ export default function Hero() {
             </div>
 
             {/* Sub text + Bullets */}
-            <div key={`sub-${activePersona}`} style={{ animation: "slide-up 0.35s ease-out forwards" }}>
+            <div key={`sub-${activePersona}`} style={{ animation: "slide-up 0.35s ease-out forwards" }} className="mt-8">
               <p className="mt-6 text-base sm:text-lg text-slate-600 leading-relaxed">
                 {persona.sub}
               </p>
@@ -347,7 +351,7 @@ export default function Hero() {
             </div>
 
             {/* CTAs */}
-            <div className="mt-8 flex flex-col sm:flex-row gap-3">
+            <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3">
               <a href="#contact" className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-primary-600 text-white font-semibold text-base hover:bg-primary-700 transition-all shadow-lg shadow-primary-600/20">
                 Kostenlose Demo anfragen <ArrowRight size={16} />
               </a>
