@@ -51,10 +51,10 @@ const personas = [
 ];
 
 const stats = [
-  { icon: Clock,      value: "< 2h",  label: "Verwaltungsaufwand pro Monat", color: "from-teal-500 to-teal-600" },
-  { icon: Phone,      value: "−80 %", label: "weniger Mieteranrufe",          color: "from-primary-500 to-primary-600" },
-  { icon: TrendingUp, value: "5 €",   label: "statt 25–40 € / Wohnung",       color: "from-emerald-500 to-emerald-600" },
-  { icon: Zap,        value: "24h",   label: "bis zur Einsatzbereitschaft",   color: "from-amber-500 to-amber-600" },
+  { icon: Clock,      value: "< 2h",  label: "Verwaltungsaufwand pro Monat" },
+  { icon: Phone,      value: "−80 %", label: "weniger Mieteranrufe"          },
+  { icon: TrendingUp, value: "5 €",   label: "statt 25–40 € / Wohnung"       },
+  { icon: Zap,        value: "24h",   label: "bis zur Einsatzbereitschaft"   },
 ];
 
 export default function Hero() {
@@ -144,11 +144,11 @@ export default function Hero() {
 
           {/* Stats row */}
           <div className="w-full mt-10 grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 max-w-3xl">
-            {stats.map(({ icon: Icon, value, label, color }) => (
+            {stats.map(({ icon: Icon, value, label }) => (
               <div key={label} className="relative overflow-hidden bg-white border border-slate-100 rounded-xl sm:rounded-2xl px-3 sm:px-4 py-3 sm:py-5 shadow-md flex flex-col items-center text-center gap-1.5 sm:gap-2.5 hover:shadow-lg transition-shadow">
                 {/* Gradient accent top */}
-                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${color} rounded-t-2xl`} />
-                <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br ${color} flex items-center justify-center shadow-sm`}>
+                <div className="absolute top-0 left-0 right-0 h-1 bg-primary-600 rounded-t-2xl" />
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-primary-600 flex items-center justify-center shadow-sm">
                   <Icon size={15} className="text-white sm:hidden" /><Icon size={18} className="text-white hidden sm:block" />
                 </div>
                 <div className="text-lg sm:text-2xl font-black text-slate-900 leading-none tracking-tight">{value}</div>
