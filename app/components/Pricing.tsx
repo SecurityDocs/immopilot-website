@@ -1,59 +1,145 @@
 "use client";
 
-import { Check, X, Settings } from "lucide-react";
+import { Check, X, Zap } from "lucide-react";
 
-const included = [
+// ─── Neue Preis-Logik ───────────────────────────────────────────
+// Starter   49€ + 5€/WE bis 20 WE    → Einstieg
+// Professional 100€ + 5€/WE bis 100 WE → EMPFOHLEN (Mitte = Anker)
+// Scale    150€ + 5€/WE bis 250 WE   → Wachstum
+// Enterprise  Individuell 250+ WE
+
+const plans = [
+  {
+    id: "starter",
+    name: "Starter",
+    sub: "Für den Einstieg",
+    base: 49,
+    perUnit: 5,
+    limit: "Bis 20 Einheiten",
+    highlight: false,
+    features: [
+      { text: "Bis 20 Wohneinheiten",                on: true },
+      { text: "Mieterverwaltung",                    on: true },
+      { text: "Zahlungsabgleich (CSV-Import)",       on: true },
+      { text: "Nebenkostenabrechnung",               on: true },
+      { text: "Dokumenten-Upload",                   on: true },
+      { text: "E-Mail Support",                      on: true },
+      { text: "Mieter-Portal & Tablet",              on: false },
+      { text: "KI-Zahlungsabgleich",                 on: false },
+      { text: "Automatisches Mahnwesen",             on: false },
+      { text: "Mietpreisanalyse",                    on: false },
+      { text: "API-Zugang",                          on: false },
+    ],
+    cta: "Demo anfragen",
+    ctaStyle: "border",
+  },
+  {
+    id: "professional",
+    name: "Professional",
+    sub: "Für ernsthafte Eigentümer",
+    base: 100,
+    perUnit: 5,
+    limit: "Bis 100 Einheiten",
+    highlight: true,
+    badge: "Empfohlen",
+    features: [
+      { text: "Bis 100 Wohneinheiten",               on: true },
+      { text: "Alles aus Starter",                   on: true },
+      { text: "Mieter-Portal & Tablet inklusive",    on: true },
+      { text: "KI-Zahlungsabgleich",                 on: true },
+      { text: "Automatisches Mahnwesen mit KI",      on: true },
+      { text: "Mietpreisanalyse mit Mietspiegel",    on: true },
+      { text: "KI-Dokumentenanalyse",                on: true },
+      { text: "Bankanbindung (SEPA)",                on: true },
+      { text: "Prioritäts-Support",                  on: true },
+      { text: "Mehrere Nutzer / Team",               on: false },
+      { text: "API-Zugang",                          on: false },
+    ],
+    cta: "Demo anfragen",
+    ctaStyle: "primary",
+  },
+  {
+    id: "scale",
+    name: "Scale",
+    sub: "Für wachsende Portfolios",
+    base: 150,
+    perUnit: 5,
+    limit: "Bis 250 Einheiten",
+    highlight: false,
+    features: [
+      { text: "Bis 250 Wohneinheiten",               on: true },
+      { text: "Alles aus Professional",              on: true },
+      { text: "Mehrere Nutzer / Team-Zugang",        on: true },
+      { text: "API-Zugang",                          on: true },
+      { text: "Mehrere Tablets pro Objekt",          on: true },
+      { text: "White-Label Mieter-Portal",           on: true },
+      { text: "Dedizierter Erfolgsmanager",          on: true },
+      { text: "Portfolio-Reporting",                 on: true },
+      { text: "Individuelle Integrationen",          on: false },
+      { text: "SLA-Garantie",                        on: false },
+    ],
+    cta: "Demo anfragen",
+    ctaStyle: "border",
+  },
+];
+
+const includedAll = [
   "Persönliches Onboarding inklusive",
   "Tablet für jeden Standort inklusive",
-  "Diebstahlsichere Montage durch uns",
   "DSGVO-konform auf deutschen Servern",
+  "Monatlich kündbar — keine Mindestlaufzeit",
+];
+
+const examples = [
+  { units: 10,  base: 49,  monthly: 99,   yearly: 1188  },
+  { units: 30,  base: 100, monthly: 250,  yearly: 3000  },
+  { units: 50,  base: 100, monthly: 350,  yearly: 4200  },
 ];
 
 export default function Pricing() {
   return (
     <section className="py-20 lg:py-28 bg-slate-50" id="pricing">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10">
+        <div className="text-center max-w-2xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-50 border border-primary-200 mb-4">
-            <span className="text-xs font-semibold text-primary-700 uppercase tracking-wider">
-              Transparente Preise
-            </span>
+            <span className="text-xs font-semibold text-primary-700 uppercase tracking-wider">Transparente Preise</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Einfach. Fair.{" "}
-            <span className="text-primary-600">Planbar.</span>
+            Einfach. Fair. <span className="text-primary-600">Planbar.</span>
           </h2>
           <p className="mt-3 text-base text-slate-500">
-            Basispreis plus Einheiten. Keine versteckten Kosten, keine langfristigen Bindungen.
+            Basispreis plus 5 € pro Einheit. Keine versteckten Kosten.
           </p>
         </div>
 
-        {/* Cost comparison strip — labelled as Beispiel */}
-        <div className="max-w-4xl mx-auto mb-12">
-          <p className="text-center text-xs font-bold text-slate-400 uppercase tracking-widest mb-5">Beispielrechnung vs. klassische Hausverwaltung</p>
+        {/* Beispielrechnungen — 10 / 30 / 50 */}
+        <div className="max-w-4xl mx-auto mb-14">
+          <p className="text-center text-xs font-bold text-slate-400 uppercase tracking-widest mb-5">
+            Beispielrechnung vs. klassische Hausverwaltung (35 €/WE)
+          </p>
           <div className="grid sm:grid-cols-3 gap-4">
             {[
-              { we: "10 Einheiten", hv: "350 €/Mon.", immo: "100 €/Mon.", savings: "3.000 €/Jahr" },
-              { we: "30 Einheiten", hv: "1.050 €/Mon.", immo: "250 €/Mon.", savings: "9.600 €/Jahr" },
-              { we: "50 Einheiten", hv: "1.750 €/Mon.", immo: "350 €/Mon.", savings: "16.800 €/Jahr" },
-            ].map(({ we, hv, immo, savings }) => (
+              { we: 10,  hv: "350 €",   immo: "99 €",  save: "3.012 €/Jahr",  plan: "Starter" },
+              { we: 30,  hv: "1.050 €", immo: "250 €", save: "9.600 €/Jahr",  plan: "Professional" },
+              { we: 50,  hv: "1.750 €", immo: "350 €", save: "16.800 €/Jahr", plan: "Professional" },
+            ].map(({ we, hv, immo, save, plan }) => (
               <div key={we} className="bg-white border border-slate-200 rounded-2xl p-5">
-                {/* Einheiten-Zahl groß + fett oben */}
-                <p className="text-2xl font-extrabold text-slate-900 leading-none mb-0.5">{we.split(" ")[0]}</p>
-                <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-4">Einheiten — Beispiel</p>
+                <p className="text-3xl font-extrabold text-slate-900 leading-none">{we}</p>
+                <p className="text-xs font-bold text-slate-400 uppercase tracking-wide mb-4">Einheiten — Beispiel</p>
                 <div className="space-y-2.5">
                   <div className="flex justify-between items-center">
-                    <span className="text-slate-400 text-xs">Klassische HV</span>
-                    <span className="line-through text-slate-400 text-xs">{hv}</span>
+                    <span className="text-xs text-slate-400">Klassische HV</span>
+                    <span className="text-xs line-through text-slate-400">{hv}/Mon.</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-slate-700 font-semibold text-xs">Mit ImmoPilot</span>
-                    <span className="font-extrabold text-primary-600 text-base">{immo}</span>
+                    <span className="text-xs font-semibold text-slate-700">ImmoPilot ({plan})</span>
+                    <span className="text-base font-extrabold text-primary-600">{immo}/Mon.</span>
                   </div>
-                  <div className="flex justify-between items-center pt-3 border-t border-slate-100 mt-1">
+                  <div className="flex justify-between items-center pt-2.5 border-t border-slate-100">
                     <span className="text-xs font-bold text-slate-500">Ersparnis</span>
-                    <span className="text-sm font-extrabold text-slate-900">{savings}</span>
+                    <span className="text-sm font-extrabold text-slate-900">{save}</span>
                   </div>
                 </div>
               </div>
@@ -62,171 +148,94 @@ export default function Pricing() {
         </div>
 
         {/* Pricing cards */}
-        <div className="grid lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid lg:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto items-start">
+          {plans.map((plan) => (
+            <div
+              key={plan.id}
+              className={`rounded-2xl p-7 flex flex-col relative ${
+                plan.highlight
+                  ? "bg-white border-2 border-primary-600 shadow-2xl shadow-primary-600/10 lg:-mt-4 lg:pb-11"
+                  : "bg-white border border-slate-200 shadow-sm"
+              }`}
+            >
+              {plan.badge && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-5 py-1.5 rounded-full bg-primary-600 text-white text-xs font-bold whitespace-nowrap flex items-center gap-1.5">
+                  <Zap size={11} />
+                  {plan.badge}
+                </div>
+              )}
 
-          {/* Starter */}
-          <div className="bg-white rounded-2xl p-7 border border-slate-200 shadow-sm flex flex-col">
-            <div className="mb-5">
-              <h3 className="text-lg font-bold text-slate-900">Starter</h3>
-              <p className="text-sm text-slate-500 mt-0.5">Für den Einstieg</p>
-            </div>
-            <div className="mb-6">
-              <div className="flex items-baseline gap-1">
-                <span className="text-4xl font-extrabold text-slate-900">49</span>
-                <span className="text-lg font-semibold text-slate-500">€</span>
+              <div className="mb-5 mt-2">
+                <h3 className="text-xl font-extrabold text-slate-900">{plan.name}</h3>
+                <p className="text-sm text-slate-500 mt-0.5">{plan.sub}</p>
               </div>
-              <div className="text-xs text-slate-400 mt-0.5">pro Monat Basispreis</div>
-              <div className="mt-1.5 text-sm text-primary-600 font-semibold">+ 5 € pro Einheit</div>
-            </div>
-            <ul className="space-y-2.5 mb-6 flex-1">
-              {[
-                { text: "Bis zu 30 Einheiten", on: true },
-                { text: "Mieterverwaltung", on: true },
-                { text: "Zahlungsabgleich (CSV)", on: true },
-                { text: "Nebenkostenabrechnung", on: true },
-                { text: "Dokumenten-Upload", on: true },
-                { text: "E-Mail Support", on: true },
-                { text: "Mieter-Portal & Tablet", on: false },
-                { text: "KI-Sprachassistent", on: false },
-                { text: "Automatisches Mahnwesen", on: false },
-                { text: "Mietpreisanalyse", on: false },
-              ].map((f) => (
-                <li key={f.text} className={`flex items-center gap-2.5 text-sm ${f.on ? "text-slate-600" : "text-slate-300"}`}>
-                  {f.on
-                    ? <Check size={15} className="text-primary-600 flex-shrink-0" />
-                    : <X size={15} className="text-slate-200 flex-shrink-0" />}
-                  {f.text}
-                </li>
-              ))}
-              {/* Included for all */}
-              <li className="border-t border-slate-100 pt-2.5 mt-1">
-                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wide mb-2">In jedem Plan enthalten</p>
-                {included.map((item) => (
-                  <div key={item} className="flex items-center gap-2.5 text-xs text-slate-500 mb-1.5">
-                    <Check size={12} className="text-primary-400 flex-shrink-0" />
-                    {item}
-                  </div>
-                ))}
-              </li>
-            </ul>
-            <a href="#contact" className="block w-full text-center py-3 rounded-xl border-2 border-slate-200 text-slate-700 font-semibold text-sm hover:border-primary-300 hover:text-primary-600 transition-all">
-              Demo anfragen
-            </a>
-          </div>
 
-          {/* Professional */}
-          <div className="bg-white rounded-2xl p-7 border-2 border-primary-600 shadow-xl relative flex flex-col">
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-primary-600 text-white text-xs font-bold whitespace-nowrap">
-              Empfohlen
-            </div>
-            <div className="mb-5">
-              <h3 className="text-lg font-bold text-slate-900">Professional</h3>
-              <p className="text-sm text-slate-500 mt-0.5">Für ernsthafte Eigentümer</p>
-            </div>
-            <div className="mb-6">
-              <div className="flex items-baseline gap-1">
-                <span className="text-4xl font-extrabold text-slate-900">100</span>
-                <span className="text-lg font-semibold text-slate-500">€</span>
+              <div className="mb-2">
+                <div className="flex items-baseline gap-1">
+                  <span className={`font-extrabold ${plan.highlight ? "text-5xl" : "text-4xl"} text-slate-900`}>
+                    {plan.base}
+                  </span>
+                  <span className="text-lg font-semibold text-slate-500">€</span>
+                  <span className="text-sm text-slate-400 ml-1">/ Monat</span>
+                </div>
+                <div className={`text-sm font-bold mt-1.5 ${plan.highlight ? "text-primary-600" : "text-slate-600"}`}>
+                  + 5 € pro Einheit
+                </div>
               </div>
-              <div className="text-xs text-slate-400 mt-0.5">pro Monat Basispreis</div>
-              <div className="mt-1.5 text-sm text-primary-600 font-semibold">+ 5 € pro Einheit</div>
-            </div>
-            <ul className="space-y-2.5 mb-6 flex-1">
-              {[
-                "Unbegrenzte Immobilien",
-                "Bis zu 150 Einheiten",
-                "Mieterverwaltung",
-                "Zahlungsabgleich + Bankanbindung",
-                "Nebenkostenabrechnung",
-                "Dokumenten-Upload",
-                "Mieter-Portal & Tablet inklusive",
-                "KI-Sprachassistent",
-                "Automatisches Mahnwesen mit KI",
-                "Mietpreisanalyse mit Mietspiegel",
-                "KI-Dokumentenanalyse",
-                "Prioritäts-Support",
-              ].map((f) => (
-                <li key={f} className="flex items-center gap-2.5 text-sm text-slate-600">
-                  <Check size={15} className="text-primary-600 flex-shrink-0" />
-                  {f}
-                </li>
-              ))}
-              <li className="border-t border-slate-100 pt-2.5 mt-1">
-                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wide mb-2">In jedem Plan enthalten</p>
-                {included.map((item) => (
-                  <div key={item} className="flex items-center gap-2.5 text-xs text-slate-500 mb-1.5">
-                    <Check size={12} className="text-primary-400 flex-shrink-0" />
-                    {item}
-                  </div>
-                ))}
-              </li>
-            </ul>
-            <a href="#contact" className="block w-full text-center py-3 rounded-xl bg-primary-600 text-white font-semibold text-sm hover:bg-primary-700 transition-all shadow-lg shadow-primary-600/20">
-              Demo anfragen
-            </a>
-          </div>
+              <div className={`text-xs font-semibold mb-6 px-2.5 py-1 rounded-lg inline-block w-fit ${
+                plan.highlight ? "bg-primary-50 text-primary-700" : "bg-slate-50 text-slate-500"
+              }`}>
+                {plan.limit}
+              </div>
 
-          {/* Enterprise */}
-          <div className="bg-white rounded-2xl p-7 border border-slate-200 shadow-sm flex flex-col">
-            <div className="mb-5">
-              <h3 className="text-lg font-bold text-slate-900">Enterprise</h3>
-              <p className="text-sm text-slate-500 mt-0.5">Ab 150 Einheiten</p>
-            </div>
-            <div className="mb-6">
-              <div className="text-3xl font-extrabold text-slate-900">Individuell</div>
-              <div className="text-xs text-slate-400 mt-1">Preise nach Volumen</div>
-            </div>
-            <ul className="space-y-2.5 mb-6 flex-1">
-              {[
-                "Unbegrenzte Immobilien",
-                "Unbegrenzte Einheiten (150+)",
-                "Alles aus Professional",
-                "Mehrere Tablets pro Objekt",
-                "API-Zugang",
-                "Dedizierter Ansprechpartner",
-                "SLA-Garantie",
-                "Individuelle Anpassungen",
-                "Eigenes Branding im Portal",
-              ].map((f) => (
-                <li key={f} className="flex items-center gap-2.5 text-sm text-slate-600">
-                  <Check size={15} className="text-primary-600 flex-shrink-0" />
-                  {f}
-                </li>
-              ))}
-              <li className="border-t border-slate-100 pt-2.5 mt-1">
-                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wide mb-2">In jedem Plan enthalten</p>
-                {included.map((item) => (
-                  <div key={item} className="flex items-center gap-2.5 text-xs text-slate-500 mb-1.5">
-                    <Check size={12} className="text-primary-400 flex-shrink-0" />
-                    {item}
-                  </div>
+              <ul className="space-y-2.5 mb-6 flex-1">
+                {plan.features.map((f) => (
+                  <li key={f.text} className={`flex items-center gap-2.5 text-sm ${f.on ? "text-slate-700" : "text-slate-300"}`}>
+                    {f.on
+                      ? <Check size={15} className={plan.highlight ? "text-primary-600 flex-shrink-0" : "text-slate-400 flex-shrink-0"} />
+                      : <X size={15} className="text-slate-200 flex-shrink-0" />}
+                    {f.text}
+                  </li>
                 ))}
-              </li>
-            </ul>
-            <a href="#contact" className="block w-full text-center py-3 rounded-xl border-2 border-slate-200 text-slate-700 font-semibold text-sm hover:border-primary-300 hover:text-primary-600 transition-all">
-              Kontakt aufnehmen
-            </a>
-          </div>
+                <li className="border-t border-slate-100 pt-3 mt-2">
+                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wide mb-2">In jedem Plan inklusive</p>
+                  {includedAll.map((item) => (
+                    <div key={item} className="flex items-center gap-2 text-xs text-slate-500 mb-1.5">
+                      <Check size={11} className="text-primary-400 flex-shrink-0" />
+                      {item}
+                    </div>
+                  ))}
+                </li>
+              </ul>
+
+              <a
+                href="#contact"
+                className={`block w-full text-center py-3 rounded-xl font-semibold text-sm transition-all ${
+                  plan.highlight
+                    ? "bg-primary-600 text-white hover:bg-primary-700 shadow-lg shadow-primary-600/20"
+                    : "border-2 border-slate-200 text-slate-700 hover:border-primary-300 hover:text-primary-600"
+                }`}
+              >
+                {plan.cta}
+              </a>
+            </div>
+          ))}
         </div>
 
-        {/* Setup info */}
-        <div className="mt-10 max-w-5xl mx-auto">
-          <div className="bg-white rounded-2xl border border-slate-200 p-6">
-            <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-1.5">
-                  <Settings size={16} className="text-primary-600" />
-                  <h3 className="text-sm font-bold text-slate-900">Einrichtung & Datenmigration</h3>
-                </div>
-                <p className="text-sm text-slate-500 leading-relaxed">
-                  Wir übernehmen auf Wunsch die komplette Ersteinrichtung: Immobilien, Mieter, Verträge, Dokumente und Zahlungshistorie. Alternativ richten Sie alles selbst ein — vollständig kostenlos.
-                </p>
-              </div>
-              <div className="sm:text-right flex-shrink-0">
-                <div className="text-xl font-extrabold text-slate-900">Individuell</div>
-                <div className="text-xs text-slate-500">Einmalig nach Umfang</div>
-                <div className="text-xs text-primary-600 font-semibold mt-1">Selbst einrichten: 0 €</div>
-              </div>
+        {/* Enterprise */}
+        <div className="max-w-5xl mx-auto mt-6">
+          <div className="bg-slate-950 text-white rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-6">
+            <div className="flex-1">
+              <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Enterprise</div>
+              <h3 className="text-xl font-extrabold mb-1">Ab 250 Einheiten — Individuell</h3>
+              <p className="text-sm text-slate-400 leading-relaxed">
+                Alles aus Scale plus SLA-Garantie, individuelle Anpassungen, eigenes Branding, dedizierter Ansprechpartner und unbegrenzte Einheiten. Preis nach Volumen.
+              </p>
+            </div>
+            <div className="flex-shrink-0">
+              <a href="#contact" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-primary-600 text-white font-semibold text-sm hover:bg-primary-500 transition-colors whitespace-nowrap">
+                Angebot anfragen
+              </a>
             </div>
           </div>
         </div>

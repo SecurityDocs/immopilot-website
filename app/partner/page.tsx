@@ -6,11 +6,11 @@ import type { Metadata } from "next";
 
 // Earnings calculator data
 const earningsTable = [
-  { kunden: 1, starter: 150, professional: 300 },
-  { kunden: 3, starter: 450, professional: 900 },
-  { kunden: 5, starter: 750, professional: 1500 },
-  { kunden: 10, starter: 1500, professional: 3000 },
-  { kunden: 20, starter: 3000, professional: 6000 },
+  { kunden: 1, starter: 150, professional: 300, scale: 450 },
+  { kunden: 3, starter: 450, professional: 900, scale: 1350 },
+  { kunden: 5, starter: 750, professional: 1500, scale: 2250 },
+  { kunden: 10, starter: 1500, professional: 3000, scale: 4500 },
+  { kunden: 20, starter: 3000, professional: 6000, scale: 9000 },
 ];
 
 const partnerTypes = [
@@ -18,14 +18,14 @@ const partnerTypes = [
     icon: Building2,
     name: "Makler & Immobilienprofis",
     tag: "Einmalige Provision",
-    headline: "Bis zu 300 € pro erfolgreichem Abschluss",
+    headline: "Bis zu 450 € pro erfolgreichem Abschluss",
     desc: "Sie kennen Eigentümer, die gerade kaufen, erben oder ihre Hausverwaltung wechseln wollen? Empfehlen Sie ImmoPilot — wir zahlen bei Vertragsabschluss.",
     features: [
       "150 € bei Starter-Abschluss",
       "300 € bei Professional-Abschluss",
+      "450 € bei Scale-Abschluss",
       "90 Tage Tracking-Fenster",
       "Monatliche Auszahlung per Überweisung",
-      "Persönlicher Ansprechpartner",
     ],
   },
   {
@@ -46,14 +46,14 @@ const partnerTypes = [
     icon: Wrench,
     name: "Handwerker & Dienstleister",
     tag: "Provision + Gratis-Eintrag",
-    headline: "Bis zu 150 € + kostenloser Verzeichniseintrag",
+    headline: "Bis zu 225 € + kostenloser Verzeichniseintrag",
     desc: "Als Handwerker empfehlen Sie ImmoPilot und werden automatisch in unserem Dienstleister-Verzeichnis eingetragen — für direkte Anfragen von ImmoPilot-Kunden.",
     features: [
       "75 € bei Starter-Abschluss",
       "150 € bei Professional-Abschluss",
+      "225 € bei Scale-Abschluss",
       "Kostenloser Eintrag im Dienstleister-Verzeichnis",
       "Direkte Auftragsanfragen von Eigentümern",
-      "Einfache Empfehlung per Link",
     ],
   },
 ];
@@ -103,7 +103,7 @@ export default function PartnerPage() {
             {/* Right: Quick stats */}
             <div className="grid grid-cols-2 gap-4">
               {[
-                { value: "300 €", label: "Einmalig pro Professional-Abschluss", icon: Euro },
+                { value: "450 €", label: "Einmalig pro Scale-Abschluss", icon: Euro },
                 { value: "20 %", label: "Monatliche Provision für Creator", icon: TrendingUp },
                 { value: "24h", label: "Bis zur Freischaltung Ihres Partnerlinks", icon: Star },
                 { value: "0 €", label: "Kosten — für Partner vollständig kostenlos", icon: Check },
@@ -136,26 +136,35 @@ export default function PartnerPage() {
 
           <div className="bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden">
             <div className="grid grid-cols-4 gap-0 border-b border-slate-200">
-              <div className="col-span-2 px-6 py-4 bg-slate-100">
-                <p className="text-xs font-bold text-slate-500 uppercase tracking-wide">Empfohlene Kunden</p>
+              <div className="px-4 py-4 bg-slate-100">
+                <p className="text-xs font-bold text-slate-500 uppercase tracking-wide">Kunden</p>
               </div>
-              <div className="px-6 py-4 border-l border-slate-200">
-                <p className="text-xs font-bold text-slate-500 uppercase tracking-wide">Starter (150 €)</p>
+              <div className="px-4 py-4 border-l border-slate-200">
+                <p className="text-xs font-bold text-slate-500 uppercase tracking-wide">Starter</p>
+                <p className="text-xs text-slate-400">150 € / Abschluss</p>
               </div>
-              <div className="px-6 py-4 border-l border-slate-200 bg-primary-50">
-                <p className="text-xs font-bold text-primary-600 uppercase tracking-wide">Professional (300 €)</p>
+              <div className="px-4 py-4 border-l border-slate-200 bg-primary-50">
+                <p className="text-xs font-bold text-primary-600 uppercase tracking-wide">Professional</p>
+                <p className="text-xs text-primary-400">300 € / Abschluss</p>
+              </div>
+              <div className="px-4 py-4 border-l border-slate-200">
+                <p className="text-xs font-bold text-slate-600 uppercase tracking-wide">Scale</p>
+                <p className="text-xs text-slate-400">450 € / Abschluss</p>
               </div>
             </div>
             {earningsTable.map((row, i) => (
               <div key={row.kunden} className={`grid grid-cols-4 gap-0 border-b border-slate-100 last:border-b-0 ${i % 2 === 0 ? "bg-white" : "bg-slate-50/50"}`}>
-                <div className="col-span-2 px-6 py-4 flex items-center">
-                  <span className="text-base font-bold text-slate-900">{row.kunden} {row.kunden === 1 ? "Kunde" : "Kunden"}</span>
+                <div className="px-4 py-4 flex items-center">
+                  <span className="text-base font-bold text-slate-900">{row.kunden} {row.kunden === 1 ? "Kunde" : "Kdn."}</span>
                 </div>
-                <div className="px-6 py-4 border-l border-slate-100 flex items-center">
+                <div className="px-4 py-4 border-l border-slate-100 flex items-center">
                   <span className="text-base font-semibold text-slate-700">{row.starter.toLocaleString("de-DE")} €</span>
                 </div>
-                <div className="px-6 py-4 border-l border-slate-100 bg-primary-50/50 flex items-center">
+                <div className="px-4 py-4 border-l border-slate-100 bg-primary-50/50 flex items-center">
                   <span className="text-base font-bold text-primary-700">{row.professional.toLocaleString("de-DE")} €</span>
+                </div>
+                <div className="px-4 py-4 border-l border-slate-100 flex items-center">
+                  <span className="text-base font-semibold text-slate-800">{row.scale.toLocaleString("de-DE")} €</span>
                 </div>
               </div>
             ))}

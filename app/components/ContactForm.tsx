@@ -52,13 +52,12 @@ export default function ContactForm() {
             </h2>
             <p className="text-slate-500 leading-relaxed mb-8">
               Tragen Sie sich ein und erhalten Sie Zugang zur kostenlosen Demoversion.
-              Kein Risiko, keine Kreditkarte — wir richten Ihre Objekte persönlich ein.
+              Kein Risiko, keine Kreditkarte. Persönliches Onboarding inklusive.
             </p>
 
             <div className="space-y-4 mb-8">
               {[
                 "Voller Zugang zur Demo — ohne Kreditkarte",
-                "Wir richten Ihre Objekte kostenlos ein",
                 "Persönliches Onboarding-Gespräch inklusive",
                 "Keine automatische Verlängerung",
                 "Antwort innerhalb von 24 Stunden",

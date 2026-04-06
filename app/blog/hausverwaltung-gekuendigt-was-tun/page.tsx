@@ -144,7 +144,7 @@ export default function Page() {
               Ein Rechenbeispiel: Sie haben 30 Wohneinheiten. Eine neue Hausverwaltung kostet Sie 30 × 35 € = <strong>1.050 € pro Monat</strong>, also 12.600 € im Jahr. Dazu kommen Zusatzleistungen, Gebühren für Mieterwechsel (oft 1–2 Monatsmieten), Sonderversammlungen und weitere versteckte Kosten.
             </p>
             <p>
-              Mit ImmoPilot: 30 WE × 5 € = <strong>150 € pro Monat</strong>. Das sind 1.800 € im Jahr — eine Ersparnis von fast 11.000 € jährlich. Und Sie haben deutlich mehr Kontrolle.
+              Mit ImmoPilot (Professional): 100 € Basis + 30 WE × 5 € = <strong>250 € pro Monat</strong>. Das sind 3.000 € im Jahr — eine Ersparnis von fast 9.600 € jährlich. Und Sie haben deutlich mehr Kontrolle.
             </p>
 
             <h2 className="text-2xl font-extrabold text-slate-900 mt-10 mb-4">Checkliste: Die ersten 30 Tage nach der Kündigung</h2>

@@ -8,9 +8,9 @@ const examples = [
 ];
 
 const badges = [
-  { icon: Building2, label: "Makler: bis 300 €" },
+  { icon: Building2, label: "Makler: bis 450 €" },
   { icon: Users, label: "Creator: 20 %/Mon." },
-  { icon: Wrench, label: "Handwerker: 150 €" },
+  { icon: Wrench, label: "Handwerker: bis 225 €" },
 ];
 
 export default function PartnerTeaser() {
@@ -31,7 +31,7 @@ export default function PartnerTeaser() {
                 <span className="text-primary-400">der ImmoPilot braucht?</span>
               </h2>
               <p className="text-slate-400 text-sm leading-relaxed mb-5">
-                Makler, Handwerker und Creator verdienen mit jeder Empfehlung — einmalig bis zu 300 € oder monatlich wiederkehrend. Kostenlos, ohne Mindestmengen.
+                Makler, Handwerker und Creator verdienen mit jeder Empfehlung — einmalig bis zu 450 € oder monatlich wiederkehrend. Kostenlos, ohne Mindestmengen.
               </p>
               <div className="flex flex-wrap gap-2 mb-6">
                 {badges.map((item) => (
