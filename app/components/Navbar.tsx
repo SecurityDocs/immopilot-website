@@ -7,10 +7,10 @@ import { Menu, X } from "lucide-react";
 const navLinks = [
   { label: "Funktionen", href: "/#features" },
   { label: "Preise", href: "/#pricing" },
-  { label: "Vorlagen", href: "/vorlagen" },
-  { label: "Blog", href: "/blog" },
   { label: "Partner werden", href: "/partner" },
   { label: "Über uns", href: "/ueber-uns" },
+  { label: "Vorlagen", href: "/vorlagen" },
+  { label: "Blog", href: "/blog" },
 ];
 
 export default function Navbar() {
