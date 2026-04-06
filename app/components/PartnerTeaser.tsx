@@ -4,12 +4,12 @@ import { Euro, ArrowRight, Star, Building2, Users, Wrench } from "lucide-react";
 const examples = [
   { label: "3 Professional-Abschlüsse", earn: "900 €", period: "einmalig" },
   { label: "10 Professional-Abschlüsse", earn: "3.000 €", period: "einmalig" },
-  { label: "10 Creator × 250 €/Mon.", earn: "500 €/Mon.", period: "dauerhaft" },
+  { label: "10 Creator × 250 €/Mon.", earn: "250 €/Mon.", period: "dauerhaft · 10 %" },
 ];
 
 const badges = [
   { icon: Building2, label: "Makler: bis 450 €" },
-  { icon: Users, label: "Creator: 20 %/Mon." },
+  { icon: Users, label: "Creator: 10 %/Mon." },
   { icon: Wrench, label: "Handwerker: bis 225 €" },
 ];
 
@@ -31,7 +31,7 @@ export default function PartnerTeaser() {
                 <span className="text-primary-400">der ImmoPilot braucht?</span>
               </h2>
               <p className="text-slate-400 text-sm leading-relaxed mb-5">
-                Makler, Handwerker und Creator verdienen mit jeder Empfehlung — einmalig bis zu 450 € oder monatlich wiederkehrend. Kostenlos, ohne Mindestmengen.
+                Makler, Handwerker und Creator verdienen mit jeder Empfehlung — einmalig bis zu 450 € oder 10 % monatlich wiederkehrend. Mindestlaufzeit 3 Monate. Kostenlos & unverbindlich.
               </p>
               <div className="flex flex-wrap gap-2 mb-6">
                 {badges.map((item) => (
