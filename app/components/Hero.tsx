@@ -61,24 +61,12 @@ const CYCLE_MS = 15000;
 
 export default function Hero() {
   const [active, setActive] = useState(0);
-  const [progress, setProgress] = useState(0);
-
+  // Kein RAF-Loop mehr — nur setTimeout einmal pro Zyklus → 0 Re-Renders/s während Animation
   useEffect(() => {
-    setProgress(0);
-    const start = performance.now();
-    let raf: number;
-    const tick = (now: number) => {
-      const elapsed = now - start;
-      const pct = Math.min((elapsed / CYCLE_MS) * 100, 100);
-      setProgress(pct);
-      if (pct < 100) {
-        raf = requestAnimationFrame(tick);
-      } else {
-        setActive((a) => (a + 1) % personas.length);
-      }
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
+    const t = setTimeout(() => {
+      setActive((a) => (a + 1) % personas.length);
+    }, CYCLE_MS);
+    return () => clearTimeout(t);
   }, [active]);
 
   const persona = personas[active];
@@ -99,10 +87,11 @@ export default function Hero() {
             {/* Audience tag + progress bar */}
             <div className="flex items-center justify-center gap-3 mb-7">
               <div className="relative inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm overflow-hidden">
-                {/* Animated progress fill */}
+                {/* CSS-Progress — kein JS-State per Frame, läuft auf Compositor-Thread */}
                 <div
-                  className="absolute left-0 top-0 bottom-0 bg-primary-50 transition-none"
-                  style={{ width: `${progress}%` }}
+                  key={active}
+                  className="absolute left-0 top-0 bottom-0 bg-primary-50"
+                  style={{ animation: `progress-fill ${CYCLE_MS}ms linear forwards` }}
                 />
                 <span className="relative text-xs font-semibold text-primary-700">{persona.tag}</span>
               </div>
