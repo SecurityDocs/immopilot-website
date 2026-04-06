@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import ConditionalShell from "./components/ConditionalShell";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -45,9 +44,7 @@ export default function RootLayout({
         <meta name="author" content="ImmoPilot" />
       </head>
       <body className="min-h-screen bg-white text-slate-900 font-sans antialiased">
-        <Navbar />
-        {children}
-        <Footer />
+        <ConditionalShell>{children}</ConditionalShell>
       </body>
     </html>
   );
