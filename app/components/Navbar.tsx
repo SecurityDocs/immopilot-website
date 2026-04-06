@@ -60,7 +60,7 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
             <a
               href="#contact"
-              className="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors"
+              className="text-sm font-medium text-primary-600 hover:text-primary-700 font-semibold transition-colors"
             >
               Login
             </a>

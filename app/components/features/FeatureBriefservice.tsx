@@ -50,7 +50,7 @@ export default function FeatureBriefservice() {
     <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
       <div className="order-2 lg:order-1">
         <BrowserMockup url="app.immopilot.de/briefservice">
-          <div className="p-4 min-h-[420px]">
+          <div className="p-3 sm:p-4 min-h-[340px] sm:min-h-[420px]">
             <div className="flex items-center gap-2 mb-3">
               <Sparkles size={14} className="text-primary-600" />
               <h5 className="text-xs font-bold text-slate-800">KI-Briefvorschläge</h5>

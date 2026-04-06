@@ -45,7 +45,7 @@ export default function FeatureCashflow() {
     <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
       <div className="order-2 lg:order-1">
         <BrowserMockup url="app.immopilot.de/cashflow">
-          <div className="p-4 min-h-[420px]">
+          <div className="p-3 sm:p-4 min-h-[340px] sm:min-h-[420px]">
             {/* Bank badge */}
             <div className="flex items-center gap-2 mb-3 px-2.5 py-1.5 bg-primary-50 border border-primary-100 rounded-lg">
               <Landmark size={12} className="text-primary-600" />

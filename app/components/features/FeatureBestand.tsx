@@ -74,7 +74,7 @@ export default function FeatureBestand() {
     <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
       <div className="order-2 lg:order-1">
         <BrowserMockup url="app.immopilot.de/bestand">
-          <div className="p-4 min-h-[420px]">
+          <div className="p-3 sm:p-4 min-h-[360px] sm:min-h-[420px]">
             {/* Portfolio Header */}
             <div className="flex items-center justify-between mb-3">
               <div>
@@ -116,7 +116,7 @@ export default function FeatureBestand() {
                     {expanded[i] && (
                       <div className="border-t border-slate-100 bg-slate-50">
                         {/* Spaltenköpfe */}
-                        <div className="grid grid-cols-4 gap-1 px-3 py-1.5 border-b border-slate-100">
+                        <div className="grid grid-cols-4 gap-0.5 px-2 sm:px-3 py-1.5 border-b border-slate-100">
                           <span className="text-[8px] font-bold text-slate-400 uppercase col-span-1">Mieter</span>
                           <span className="text-[8px] font-bold text-slate-400 uppercase">Miete</span>
                           <span className="text-[8px] font-bold text-slate-400 uppercase">Status</span>

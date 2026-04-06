@@ -124,7 +124,7 @@ export default function Features() {
           </div>
 
           {/* Content panel */}
-          <div className="flex-1 bg-slate-50 rounded-2xl border border-slate-100 p-6 lg:p-8 min-h-[520px]">
+          <div className="flex-1 bg-slate-50 rounded-2xl border border-slate-100 p-4 sm:p-6 lg:p-8 min-h-[400px] sm:min-h-[520px] overflow-hidden">
             <ActiveComponent key={activeTab} />
           </div>
         </div>

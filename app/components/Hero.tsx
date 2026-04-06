@@ -143,16 +143,16 @@ export default function Hero() {
           </div>
 
           {/* Stats row */}
-          <div className="w-full mt-12 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl">
+          <div className="w-full mt-10 grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 max-w-3xl">
             {stats.map(({ icon: Icon, value, label, color }) => (
-              <div key={label} className="relative overflow-hidden bg-white border border-slate-100 rounded-2xl px-4 py-5 shadow-md flex flex-col items-center text-center gap-2.5 hover:shadow-lg transition-shadow">
+              <div key={label} className="relative overflow-hidden bg-white border border-slate-100 rounded-xl sm:rounded-2xl px-3 sm:px-4 py-3 sm:py-5 shadow-md flex flex-col items-center text-center gap-1.5 sm:gap-2.5 hover:shadow-lg transition-shadow">
                 {/* Gradient accent top */}
                 <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${color} rounded-t-2xl`} />
-                <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${color} flex items-center justify-center shadow-sm`}>
-                  <Icon size={18} className="text-white" />
+                <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br ${color} flex items-center justify-center shadow-sm`}>
+                  <Icon size={15} className="text-white sm:hidden" /><Icon size={18} className="text-white hidden sm:block" />
                 </div>
-                <div className="text-2xl font-black text-slate-900 leading-none tracking-tight">{value}</div>
-                <div className="text-[11px] text-slate-500 leading-tight font-medium">{label}</div>
+                <div className="text-lg sm:text-2xl font-black text-slate-900 leading-none tracking-tight">{value}</div>
+                <div className="text-[10px] sm:text-[11px] text-slate-500 leading-tight font-medium">{label}</div>
               </div>
             ))}
           </div>

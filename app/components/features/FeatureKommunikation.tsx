@@ -46,7 +46,7 @@ export default function FeatureKommunikation() {
       {/* Left: Mockup */}
       <div className="order-2 lg:order-1">
         <BrowserMockup url="app.immopilot.de/kommunikation">
-          <div className="p-4 min-h-[420px]">
+          <div className="p-3 sm:p-4 min-h-[340px] sm:min-h-[420px]">
             {/* Tab switcher */}
             <div className="flex gap-1 mb-4 bg-slate-100 rounded-lg p-1">
               {[

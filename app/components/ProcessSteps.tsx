@@ -35,7 +35,7 @@ const steps = [
 
 export default function ProcessSteps() {
   return (
-    <section className="py-16 lg:py-20 bg-slate-50" id="process">
+    <section className="py-16 lg:py-20 bg-white" id="process">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-16">
@@ -64,7 +64,7 @@ export default function ProcessSteps() {
             {steps.map((step) => (
               <div
                 key={step.nr}
-                className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-primary-200 hover:shadow-sm transition-all group"
+                className="bg-slate-50 border border-slate-200 rounded-2xl p-5 hover:border-primary-200 hover:shadow-sm transition-all group"
               >
                 <div className="flex items-start justify-between mb-4">
                   <div className="w-10 h-10 rounded-xl bg-primary-50 flex items-center justify-center">

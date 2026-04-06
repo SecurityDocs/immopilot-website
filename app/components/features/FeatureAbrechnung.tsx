@@ -44,7 +44,7 @@ export default function FeatureAbrechnung() {
     <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
       <div className="order-2 lg:order-1">
         <BrowserMockup url="app.immopilot.de/rechnungen">
-          <div className="p-4 min-h-[420px]">
+          <div className="p-3 sm:p-4 min-h-[340px] sm:min-h-[420px]">
             {/* Stepper */}
             <div className="flex items-center gap-1 mb-4">
               {steps.map((s, i) => (

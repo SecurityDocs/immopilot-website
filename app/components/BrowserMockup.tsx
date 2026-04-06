@@ -8,7 +8,7 @@ export default function BrowserMockup({
   children: React.ReactNode;
 }) {
   return (
-    <div className="browser-mockup">
+    <div className="browser-mockup w-full overflow-hidden">
       <div className="browser-mockup-bar">
         <div className="browser-mockup-dot bg-red-400" />
         <div className="browser-mockup-dot bg-yellow-400" />
@@ -17,7 +17,7 @@ export default function BrowserMockup({
           <span className="text-xs text-slate-400 truncate">{url}</span>
         </div>
       </div>
-      <div className="bg-white overflow-x-auto">{children}</div>
+      <div className="bg-white overflow-x-hidden">{children}</div>
     </div>
   );
 }
