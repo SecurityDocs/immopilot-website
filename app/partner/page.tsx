@@ -6,11 +6,11 @@ import type { Metadata } from "next";
 
 // Earnings calculator data
 const earningsTable = [
-  { kunden: 1, starter: 300, professional: 450 },
-  { kunden: 3, starter: 900, professional: 1350 },
-  { kunden: 5, starter: 1500, professional: 2250 },
-  { kunden: 10, starter: 3000, professional: 4500 },
-  { kunden: 20, starter: 6000, professional: 9000 },
+  { kunden: 1, starter: 150, professional: 300 },
+  { kunden: 3, starter: 450, professional: 900 },
+  { kunden: 5, starter: 750, professional: 1500 },
+  { kunden: 10, starter: 1500, professional: 3000 },
+  { kunden: 20, starter: 3000, professional: 6000 },
 ];
 
 const partnerTypes = [
@@ -18,11 +18,11 @@ const partnerTypes = [
     icon: Building2,
     name: "Makler & Immobilienprofis",
     tag: "Einmalige Provision",
-    headline: "Bis zu 450 € pro erfolgreichem Abschluss",
+    headline: "Bis zu 300 € pro erfolgreichem Abschluss",
     desc: "Sie kennen Eigentümer, die gerade kaufen, erben oder ihre Hausverwaltung wechseln wollen? Empfehlen Sie ImmoPilot — wir zahlen bei Vertragsabschluss.",
     features: [
-      "300 € bei Starter-Abschluss",
-      "450 € bei Professional-Abschluss",
+      "150 € bei Starter-Abschluss",
+      "300 € bei Professional-Abschluss",
       "90 Tage Tracking-Fenster",
       "Monatliche Auszahlung per Überweisung",
       "Persönlicher Ansprechpartner",
@@ -46,11 +46,11 @@ const partnerTypes = [
     icon: Wrench,
     name: "Handwerker & Dienstleister",
     tag: "Provision + Gratis-Eintrag",
-    headline: "Bis zu 200 € + kostenloser Verzeichniseintrag",
+    headline: "Bis zu 150 € + kostenloser Verzeichniseintrag",
     desc: "Als Handwerker empfehlen Sie ImmoPilot und werden automatisch in unserem Dienstleister-Verzeichnis eingetragen — für direkte Anfragen von ImmoPilot-Kunden.",
     features: [
-      "100 € bei Starter-Abschluss",
-      "200 € bei Professional-Abschluss",
+      "75 € bei Starter-Abschluss",
+      "150 € bei Professional-Abschluss",
       "Kostenloser Eintrag im Dienstleister-Verzeichnis",
       "Direkte Auftragsanfragen von Eigentümern",
       "Einfache Empfehlung per Link",
@@ -103,7 +103,7 @@ export default function PartnerPage() {
             {/* Right: Quick stats */}
             <div className="grid grid-cols-2 gap-4">
               {[
-                { value: "450 €", label: "Einmalig pro Professional-Abschluss", icon: Euro },
+                { value: "300 €", label: "Einmalig pro Professional-Abschluss", icon: Euro },
                 { value: "20 %", label: "Monatliche Provision für Creator", icon: TrendingUp },
                 { value: "24h", label: "Bis zur Freischaltung Ihres Partnerlinks", icon: Star },
                 { value: "0 €", label: "Kosten — für Partner vollständig kostenlos", icon: Check },
@@ -140,10 +140,10 @@ export default function PartnerPage() {
                 <p className="text-xs font-bold text-slate-500 uppercase tracking-wide">Empfohlene Kunden</p>
               </div>
               <div className="px-6 py-4 border-l border-slate-200">
-                <p className="text-xs font-bold text-slate-500 uppercase tracking-wide">Starter (300 €)</p>
+                <p className="text-xs font-bold text-slate-500 uppercase tracking-wide">Starter (150 €)</p>
               </div>
               <div className="px-6 py-4 border-l border-slate-200 bg-primary-50">
-                <p className="text-xs font-bold text-primary-600 uppercase tracking-wide">Professional (450 €)</p>
+                <p className="text-xs font-bold text-primary-600 uppercase tracking-wide">Professional (300 €)</p>
               </div>
             </div>
             {earningsTable.map((row, i) => (

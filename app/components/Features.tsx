@@ -37,7 +37,7 @@ const tabs = [
   {
     id: "nk",
     icon: Receipt,
-    label: "Nebenkostenabrechnung",
+    label: "Nebenkosten",
     problem: "Abrechnung kostet Tage",
     component: FeatureNK,
   },
@@ -51,7 +51,7 @@ const tabs = [
   {
     id: "dokumente",
     icon: FolderOpen,
-    label: "Dokumentenverwaltung",
+    label: "Dokumente",
     problem: "Verträge nicht auffindbar",
     component: FeatureDokumente,
   },
@@ -107,7 +107,7 @@ export default function Features() {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`flex-shrink-0 lg:flex-shrink text-left flex items-start gap-3 px-4 py-3 rounded-xl border transition-all w-48 lg:w-full ${
+                    className={`flex-shrink-0 lg:flex-shrink text-left flex items-start gap-3 px-3 py-3 rounded-xl border transition-all w-40 lg:w-full ${
                       isActive
                         ? "bg-primary-600 border-primary-600 text-white shadow-sm"
                         : "bg-white border-slate-200 text-slate-700 hover:border-primary-300 hover:bg-primary-50"

@@ -37,8 +37,8 @@ const personas = [
   {
     id: "selbst",
     pill: "Alles selbst verwalten?",
-    headline: <>Selbst verwalten, aber <span className="text-primary-600">keine Zeit mehr</span> dafür?</>,
-    sub: "ImmoPilot übernimmt die Routine — Sie behalten die Kontrolle.",
+    headline: <>Sie wollen selbst verwalten —<br /><span className="text-primary-600">aber keine Zeit mehr? Oder keine gute Alternative?</span></>,
+    sub: "Egal ob Zeitmangel oder fehlende Alternative: ImmoPilot übernimmt die Routine. Sie behalten die Kontrolle.",
     bullets: [
       "Nur noch 2 Stunden Aufwand pro Monat",
       "Keine Mieteranrufe mehr — Selfservice per Tablet",
@@ -284,11 +284,11 @@ export default function Hero() {
         <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-30" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col items-center text-center">
 
-          {/* Left: Content */}
-          <div className="max-w-xl">
+          {/* Content — full width */}
+          <div className="w-full max-w-3xl">
             {/* Persona pills */}
             <div className="flex flex-wrap gap-2 mb-7">
               {personas.map((p, i) => (
@@ -315,30 +315,12 @@ export default function Hero() {
               {persona.headline}
             </h1>
 
-            {/* Mobile mockup */}
-            <div className="mt-8 lg:hidden" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
-              <BrowserMockup url={`app.immopilot.de/${slide.url}`}>
-                <div key={`m-${activeSlide}`} style={{ animation: "slide-up 0.25s ease-out forwards" }} className="min-h-[240px]">
-                  {slide.content}
-                </div>
-              </BrowserMockup>
-              <div className="flex items-center justify-between mt-3 px-1">
-                <div className="flex items-center gap-1.5">
-                  <slide.icon size={12} className="text-primary-600" />
-                  <span className="text-[11px] font-semibold text-slate-500">{slide.label}</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  {slides.map((_, i) => <button key={i} onClick={() => setActiveSlide(i)} className={`h-1 rounded-full transition-all ${i === activeSlide ? "w-5 bg-primary-600" : "w-1.5 bg-slate-200"}`} />)}
-                </div>
-              </div>
-            </div>
-
             {/* Sub text + Bullets */}
             <div key={`sub-${activePersona}`} style={{ animation: "slide-up 0.35s ease-out forwards" }} className="mt-8">
               <p className="mt-6 text-base sm:text-lg text-slate-600 leading-relaxed">
                 {persona.sub}
               </p>
-              <ul className="mt-5 space-y-2.5">
+              <ul className="mt-5 space-y-2.5 text-left inline-block mx-auto">
                 {persona.bullets.map((b, i) => (
                   <li key={i} className="flex items-start gap-2.5 text-sm sm:text-base text-slate-700">
                     <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-primary-600 flex items-center justify-center">
@@ -351,7 +333,7 @@ export default function Hero() {
             </div>
 
             {/* CTAs */}
-            <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3">
+            <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 justify-center">
               <a href="#contact" className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-primary-600 text-white font-semibold text-base hover:bg-primary-700 transition-all shadow-lg shadow-primary-600/20">
                 Kostenlose Demo anfragen <ArrowRight size={16} />
               </a>
@@ -361,7 +343,7 @@ export default function Hero() {
             </div>
 
             {/* Trust badges */}
-            <div className="mt-7 flex flex-wrap items-center gap-2">
+            <div className="mt-7 flex flex-wrap items-center gap-2 justify-center">
               {[
                 { icon: Shield, label: "DSGVO-konform" },
                 { icon: Building2, label: "Deutsche Server" },
@@ -375,20 +357,26 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right: Desktop mockup */}
-          <div className="hidden lg:block" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+          {/* Mockup — unterhalb der CTAs, volle Breite */}
+          <div className="w-full mt-12 lg:mt-16" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
             <BrowserMockup url={`app.immopilot.de/${slide.url}`}>
-              <div key={activeSlide} style={{ animation: "slide-up 0.25s ease-out forwards" }} className="min-h-[300px]">
+              <div key={activeSlide} style={{ animation: "slide-up 0.25s ease-out forwards" }} className="min-h-[280px] lg:min-h-[360px]">
                 {slide.content}
               </div>
             </BrowserMockup>
-            <div className="flex items-center justify-between mt-4 px-1">
+            <div className="flex items-center justify-between mt-4 px-2">
               <div className="flex items-center gap-2">
                 <slide.icon size={13} className="text-primary-600" />
                 <span className="text-xs font-semibold text-slate-500">{slide.label}</span>
               </div>
-              <div className="flex items-center gap-1.5">
-                {slides.map((_, i) => <button key={i} onClick={() => setActiveSlide(i)} className={`h-1 rounded-full transition-all ${i === activeSlide ? "w-6 bg-primary-600" : "w-1.5 bg-slate-200 hover:bg-slate-300"}`} />)}
+              <div className="flex items-center gap-2">
+                {slides.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveSlide(i)}
+                    className={`h-1.5 rounded-full transition-all ${i === activeSlide ? "w-8 bg-primary-600" : "w-2 bg-slate-200 hover:bg-slate-300"}`}
+                  />
+                ))}
               </div>
             </div>
           </div>
