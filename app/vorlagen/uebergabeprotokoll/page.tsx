@@ -1,12 +1,10 @@
-import Link from "next/link";
-import { Download, ArrowLeft, Printer, Copy, AlertTriangle, CheckCircle } from "lucide-react";
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Wohnungsübergabeprotokoll Vorlage 2026 — kostenlos — ImmoPilot",
-  description: "Kostenloses Wohnungsübergabeprotokoll für Einzug und Auszug. Mit Zählerständen, Raumzustand, Schlüsseln und Unterschriftenzeile. Sofort verwendbar.",
-  keywords: "Wohnungsübergabeprotokoll Vorlage kostenlos, Übergabeprotokoll Vermieter, Wohnungsabnahme Protokoll",
-};
+import Link from "next/link";
+import { ArrowLeft, Printer, AlertTriangle, CheckCircle } from "lucide-react";
+
+// metadata muss in separater server-only Datei sein wenn "use client" gesetzt
+// SEO wird über layout.tsx gehandhabt
 
 const raeume = [
   "Eingangsbereich / Flur",
@@ -32,7 +30,7 @@ export default function UebergabeprotokollPage() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-8">
           <div>
-            <span className="text-xs font-bold bg-accent-500/10 text-accent-700 px-2 py-1 rounded-full inline-block mb-3">Übergabe & Protokolle</span>
+            <span className="text-xs font-bold bg-primary-100 text-primary-700 px-2 py-1 rounded-full inline-block mb-3">Übergabe & Protokolle</span>
             <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight">
               Wohnungsübergabeprotokoll
             </h1>
