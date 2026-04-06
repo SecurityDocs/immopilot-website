@@ -30,11 +30,25 @@ function CellIcon({ value }: { value: any }) {
   return <span className="text-sm text-slate-700 font-semibold">{value}</span>;
 }
 
-function ImmoCellIcon({ value }: { value: any }) {
-  if (value === true)      return <Check size={18} className="text-white" strokeWidth={3} />;
-  if (value === false)     return <X size={18} className="text-primary-300" strokeWidth={2} />;
-  if (value === "partial") return <Minus size={18} className="text-primary-200" strokeWidth={2} />;
-  return <span className="text-sm text-white font-bold">{value}</span>;
+// Vollständige ImmoPilot-Zelle: Icon oder Text je nach Wert
+function ImmoCell({ value }: { value: any }) {
+  if (value === true) return (
+    <div className="w-7 h-7 rounded-full bg-primary-600 flex items-center justify-center">
+      <Check size={16} className="text-white" strokeWidth={3} />
+    </div>
+  );
+  if (value === false) return (
+    <div className="w-7 h-7 rounded-full bg-primary-100 flex items-center justify-center">
+      <X size={14} className="text-primary-300" strokeWidth={2} />
+    </div>
+  );
+  if (value === "partial") return (
+    <div className="w-7 h-7 rounded-full bg-amber-100 flex items-center justify-center">
+      <Minus size={14} className="text-amber-400" strokeWidth={2} />
+    </div>
+  );
+  // Textwerte (z.B. "5 €/Mon.", "< 2 Std./Mon.") direkt lesbar anzeigen
+  return <span className="text-sm font-extrabold text-primary-700 leading-tight text-center">{value}</span>;
 }
 
 export default function Vergleich() {
@@ -111,9 +125,7 @@ export default function Vergleich() {
                   <CellIcon value={compVal} />
                 </div>
                 <div className="px-4 py-4 border-l border-primary-100 bg-primary-50 flex items-center justify-center min-w-[90px]">
-                  <div className="w-7 h-7 rounded-full bg-primary-600 flex items-center justify-center">
-                    <ImmoCellIcon value={row.immopilot} />
-                  </div>
+                  <ImmoCell value={row.immopilot} />
                 </div>
               </div>
             );

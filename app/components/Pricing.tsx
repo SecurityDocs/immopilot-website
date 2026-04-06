@@ -34,23 +34,25 @@ export default function Pricing() {
           <p className="text-center text-xs font-bold text-slate-400 uppercase tracking-widest mb-5">Beispielrechnung vs. klassische Hausverwaltung</p>
           <div className="grid sm:grid-cols-3 gap-4">
             {[
-              { we: "10 Einheiten", hv: "350 €/Monat", immo: "100 €/Monat", savings: "3.000 € Ersparnis/Jahr" },
-              { we: "30 Einheiten", hv: "1.050 €/Monat", immo: "250 €/Monat", savings: "9.600 € Ersparnis/Jahr" },
-              { we: "50 Einheiten", hv: "1.750 €/Monat", immo: "350 €/Monat", savings: "16.800 € Ersparnis/Jahr" },
+              { we: "10 Einheiten", hv: "350 €/Mon.", immo: "100 €/Mon.", savings: "3.000 €/Jahr" },
+              { we: "30 Einheiten", hv: "1.050 €/Mon.", immo: "250 €/Mon.", savings: "9.600 €/Jahr" },
+              { we: "50 Einheiten", hv: "1.750 €/Mon.", immo: "350 €/Mon.", savings: "16.800 €/Jahr" },
             ].map(({ we, hv, immo, savings }) => (
               <div key={we} className="bg-white border border-slate-200 rounded-2xl p-5">
-                <p className="text-sm font-bold text-slate-900 mb-3">{we}</p>
-                <div className="space-y-2 text-sm">
+                {/* Einheiten-Zahl groß + fett oben */}
+                <p className="text-2xl font-extrabold text-slate-900 leading-none mb-0.5">{we.split(" ")[0]}</p>
+                <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-4">Einheiten — Beispiel</p>
+                <div className="space-y-2.5">
                   <div className="flex justify-between items-center">
                     <span className="text-slate-400 text-xs">Klassische HV</span>
                     <span className="line-through text-slate-400 text-xs">{hv}</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-slate-700 font-medium text-xs">Mit ImmoPilot</span>
-                    <span className="font-bold text-primary-600 text-sm">{immo}</span>
+                    <span className="text-slate-700 font-semibold text-xs">Mit ImmoPilot</span>
+                    <span className="font-extrabold text-primary-600 text-base">{immo}</span>
                   </div>
-                  <div className="flex justify-between items-center pt-2 border-t border-slate-100">
-                    <span className="text-xs font-semibold text-slate-500">Jahresersparnis</span>
+                  <div className="flex justify-between items-center pt-3 border-t border-slate-100 mt-1">
+                    <span className="text-xs font-bold text-slate-500">Ersparnis</span>
                     <span className="text-sm font-extrabold text-slate-900">{savings}</span>
                   </div>
                 </div>
