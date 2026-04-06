@@ -4,6 +4,7 @@ import TrustBar from "./components/TrustBar";
 import TabletPortal from "./components/TabletPortal";
 import ProcessSteps from "./components/ProcessSteps";
 import PainPoints from "./components/PainPoints";
+import Vergleich from "./components/Vergleich";
 import Pricing from "./components/Pricing";
 import PartnerTeaser from "./components/PartnerTeaser";
 import ContactForm from "./components/ContactForm";
@@ -12,11 +13,12 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <PainPoints />
       <Features />
       <TrustBar />
       <TabletPortal />
       <ProcessSteps />
-      <PainPoints />
+      <Vergleich />
       <Pricing />
       <PartnerTeaser />
       <ContactForm />
