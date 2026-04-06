@@ -27,25 +27,45 @@ const personas = [
     id: "teuer",
     pill: "Hausverwaltung zu teuer?",
     headline: <>Sie zahlen <span className="text-primary-600">35 € pro Wohnung.</span><br />ImmoPilot kostet 5 €.</>,
-    sub: "Unzufrieden, aber keine bessere Alternative? Das ändert sich jetzt. Alle Funktionen einer professionellen Hausverwaltung — 80 % günstiger, vollständig transparent.",
+    sub: "Unzufrieden, aber keine bessere Alternative gefunden? Das ändert sich jetzt.",
+    bullets: [
+      "Von bis zu 35 € auf 5 € pro Wohnung — sofort",
+      "Alle Funktionen inklusive, keine versteckten Extras",
+      "Monatlich kündbar — kein Risiko",
+    ],
   },
   {
     id: "selbst",
     pill: "Alles selbst verwalten?",
     headline: <>Selbst verwalten, aber <span className="text-primary-600">keine Zeit mehr</span> dafür?</>,
-    sub: "Sie kümmern sich um alles selbst — Mieterfragen, Abrechnungen, Reparaturen. ImmoPilot übernimmt die Routine und reduziert Ihren Aufwand auf 2 Stunden im Monat.",
+    sub: "ImmoPilot übernimmt die Routine — Sie behalten die Kontrolle.",
+    bullets: [
+      "Nur noch 2 Stunden Aufwand pro Monat",
+      "Keine Mieteranrufe mehr — Selfservice per Tablet",
+      "Mahnungen, Abrechnungen & Verträge automatisiert",
+    ],
   },
   {
     id: "investor",
     pill: "Portfolio wächst?",
     headline: <>10 Objekte verwalten <span className="text-primary-600">wie 1 — mit KI.</span></>,
-    sub: "ImmoPilot wächst mit Ihrem Portfolio. Alle Objekte, Mieter und Abrechnungen auf einen Blick. Mietausfälle, Nebenkosten und Mietpreispotenziale automatisch überwacht.",
+    sub: "ImmoPilot wächst mit Ihrem Portfolio. Kein zusätzlicher Aufwand.",
+    bullets: [
+      "Alle Objekte & Mieter auf einem Dashboard",
+      "Mietpreispotenziale automatisch erkannt",
+      "Portfolio-Rendite immer im Blick",
+    ],
   },
   {
     id: "erbe",
     pill: "Geerbt oder gekauft?",
     headline: <>Neu als Vermieter? <span className="text-primary-600">Wir führen Sie Schritt für Schritt.</span></>,
-    sub: "Kein Papierchaos, keine endlosen Telefonate. ImmoPilot zeigt was wann zu tun ist, erledigt vieles automatisch und hat Sie in 24h einsatzbereit.",
+    sub: "Kein Papierchaos, keine Telefonate. In 24h einsatzbereit.",
+    bullets: [
+      "Schritt-für-Schritt Einführung inklusive",
+      "Deutsches Mietrecht automatisch eingehalten",
+      "Persönlicher Support bis alles läuft",
+    ],
   },
 ];
 
@@ -309,10 +329,22 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Sub text */}
-            <p key={`sub-${activePersona}`} className="mt-6 text-base sm:text-lg text-slate-600 leading-relaxed" style={{ animation: "slide-up 0.35s ease-out forwards" }}>
-              {persona.sub}
-            </p>
+            {/* Sub text + Bullets */}
+            <div key={`sub-${activePersona}`} style={{ animation: "slide-up 0.35s ease-out forwards" }}>
+              <p className="mt-6 text-base sm:text-lg text-slate-600 leading-relaxed">
+                {persona.sub}
+              </p>
+              <ul className="mt-5 space-y-2.5">
+                {persona.bullets.map((b, i) => (
+                  <li key={i} className="flex items-start gap-2.5 text-sm sm:text-base text-slate-700">
+                    <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-primary-600 flex items-center justify-center">
+                      <Check size={11} className="text-white" />
+                    </span>
+                    {b}
+                  </li>
+                ))}
+              </ul>
+            </div>
 
             {/* CTAs */}
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
