@@ -39,18 +39,6 @@ const stats = [
     ],
     cta: "ImmoPilot ist rund um die Uhr verfügbar — ohne Wartezeiten.",
   },
-  {
-    value: "2.300+",
-    unit: "Hausverwaltungen weniger in vier Jahren",
-    headline: "Der Verwaltermangel verschärft sich",
-    text: "Die Zahl sank von 24.300 auf unter 22.000. Wer keinen Verwalter findet oder gekündigt wird, braucht eine digitale Alternative.",
-    detail: [
-      { label: "Verwalter 2020–2024", value: "24.300 → <22.000" },
-      { label: "Offene Stellen unbesetzt", value: "24,2 %" },
-      { label: "Lehnen kleine Bestände ab", value: "55 %" },
-    ],
-    cta: "ImmoPilot macht Sie unabhängig von Hausverwaltungen.",
-  },
 ];
 
 export default function PainPoints() {
@@ -69,7 +57,7 @@ export default function PainPoints() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid sm:grid-cols-3 gap-4 max-w-5xl mx-auto">
           {stats.map((stat, idx) => (
             <div key={idx} className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6 hover:border-slate-700 transition-all flex flex-col">
               <div className="mb-4">

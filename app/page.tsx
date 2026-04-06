@@ -15,8 +15,8 @@ export default function Home() {
       <Hero />
       <PainPoints />
       <Features />
-      <TrustBar />
       <TabletPortal />
+      <TrustBar />
       <ProcessSteps />
       <Vergleich />
       <Pricing />
