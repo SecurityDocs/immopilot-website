@@ -15,7 +15,7 @@ const badges = [
 
 export default function PartnerTeaser() {
   return (
-    <section className="py-16 lg:py-20 bg-white">
+    <section className="py-16 lg:py-20 bg-slate-50">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-slate-950 rounded-2xl sm:rounded-3xl px-5 py-8 sm:px-10 sm:py-12 lg:px-14 lg:py-14">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">

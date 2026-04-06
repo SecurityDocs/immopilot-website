@@ -211,7 +211,7 @@ export default function Pricing() {
               </ul>
 
               <a
-                href="#contact"
+                href="/#contact"
                 className={`block w-full text-center py-3 rounded-xl font-semibold text-sm transition-all ${
                   plan.highlight
                     ? "bg-primary-600 text-white hover:bg-primary-700 shadow-lg shadow-primary-600/20"
@@ -235,7 +235,7 @@ export default function Pricing() {
               </p>
             </div>
             <div className="flex-shrink-0">
-              <a href="#contact" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-primary-600 text-white font-semibold text-sm hover:bg-primary-500 transition-colors whitespace-nowrap">
+              <a href="/#contact" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-primary-600 text-white font-semibold text-sm hover:bg-primary-500 transition-colors whitespace-nowrap">
                 Angebot anfragen
               </a>
             </div>

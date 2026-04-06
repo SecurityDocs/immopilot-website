@@ -3,10 +3,10 @@
 import { Star, Quote, Building2, Users, Clock, TrendingUp } from "lucide-react";
 
 const stats = [
-  { icon: Building2, value: "1.200+", label: "Einheiten verwaltet" },
-  { icon: Users,    value: "85+",    label: "Eigentümer vertrauen uns" },
-  { icon: Clock,    value: "< 24h",  label: "Einrichtungszeit" },
-  { icon: TrendingUp, value: "−80 %", label: "weniger Aufwand" },
+  { icon: Building2,   value: "1.200+", label: "Einheiten verwaltet" },
+  { icon: Users,       value: "85+",    label: "Eigentümer vertrauen uns" },
+  { icon: Clock,       value: "< 24h",  label: "Einrichtungszeit" },
+  { icon: TrendingUp,  value: "−80 %",  label: "weniger Aufwand" },
 ];
 
 const testimonials = [
@@ -33,17 +33,9 @@ const testimonials = [
   },
 ];
 
-const partners = [
-  { name: "Sparkasse", abbr: "SK" },
-  { name: "Deutsche Telekom", abbr: "DT" },
-  { name: "Immonet", abbr: "IN" },
-  { name: "DATEV", abbr: "DV" },
-  { name: "Immobilienscout24", abbr: "IS" },
-];
-
 export default function TrustSection() {
   return (
-    <section className="py-20 lg:py-28 bg-slate-50">
+    <section className="py-20 lg:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
@@ -64,7 +56,7 @@ export default function TrustSection() {
         {/* Stats */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
           {stats.map(({ icon: Icon, value, label }) => (
-            <div key={label} className="bg-white rounded-2xl border border-slate-100 p-5 text-center shadow-sm">
+            <div key={label} className="bg-slate-50 rounded-2xl border border-slate-100 p-5 text-center">
               <div className="w-10 h-10 rounded-xl bg-primary-50 flex items-center justify-center mx-auto mb-3">
                 <Icon size={18} className="text-primary-600" />
               </div>
@@ -75,9 +67,9 @@ export default function TrustSection() {
         </div>
 
         {/* Testimonials */}
-        <div className="grid sm:grid-cols-3 gap-5 mb-14">
+        <div className="grid sm:grid-cols-3 gap-5">
           {testimonials.map((t) => (
-            <div key={t.name} className="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm flex flex-col">
+            <div key={t.name} className="bg-slate-50 rounded-2xl border border-slate-100 p-6 flex flex-col">
               {/* Stars */}
               <div className="flex gap-0.5 mb-4">
                 {Array.from({ length: t.rating }).map((_, i) => (
@@ -90,7 +82,7 @@ export default function TrustSection() {
                 {t.text}
               </p>
               {/* Author */}
-              <div className="flex items-center gap-3 mt-5 pt-4 border-t border-slate-100">
+              <div className="flex items-center gap-3 mt-5 pt-4 border-t border-slate-200">
                 <div className="w-9 h-9 rounded-full bg-primary-600 flex items-center justify-center flex-shrink-0">
                   <span className="text-sm font-bold text-white">{t.initial}</span>
                 </div>
@@ -101,26 +93,6 @@ export default function TrustSection() {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Partner-Logos */}
-        <div className="border-t border-slate-200 pt-10">
-          <p className="text-center text-xs font-semibold text-slate-400 uppercase tracking-widest mb-7">
-            Technische Partner & Integrationen
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8">
-            {partners.map((p) => (
-              <div
-                key={p.name}
-                className="flex items-center gap-2.5 px-5 py-2.5 bg-white border border-slate-100 rounded-xl shadow-sm opacity-70 hover:opacity-100 transition-opacity"
-              >
-                <div className="w-7 h-7 rounded-lg bg-slate-100 flex items-center justify-center">
-                  <span className="text-[9px] font-black text-slate-500">{p.abbr}</span>
-                </div>
-                <span className="text-sm font-semibold text-slate-600">{p.name}</span>
-              </div>
-            ))}
-          </div>
         </div>
 
       </div>

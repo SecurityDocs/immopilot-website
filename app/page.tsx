@@ -5,23 +5,23 @@ import PainPoints from "./components/PainPoints";
 import Vergleich from "./components/Vergleich";
 import Pricing from "./components/Pricing";
 import TrustSection from "./components/TrustSection";
-import FAQ from "./components/FAQ";
 import PartnerTeaser from "./components/PartnerTeaser";
+import FAQ from "./components/FAQ";
 import ContactForm from "./components/ContactForm";
 
 export default function Home() {
   return (
     <>
-      <Hero />
-      <PainPoints />
-      <Features />
-      <Vergleich />
-      <ProcessSteps />
-      <Pricing />
-      <TrustSection />
-      <FAQ />
-      <PartnerTeaser />
-      <ContactForm />
+      <Hero />          {/* white          */}
+      <PainPoints />    {/* slate-950 dark  */}
+      <Features />      {/* white          */}
+      <Vergleich />     {/* slate-50       */}
+      <ProcessSteps />  {/* white          */}
+      <Pricing />       {/* slate-50       */}
+      <TrustSection />  {/* white          */}
+      <PartnerTeaser /> {/* slate-50       */}
+      <FAQ />           {/* white          */}
+      <ContactForm />   {/* slate-50       */}
     </>
   );
 }
