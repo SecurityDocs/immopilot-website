@@ -108,41 +108,43 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Headline */}
-            <h1
-              key={`h-${active}`}
-              className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.15] tracking-tight text-slate-900"
-              style={{ animation: "slide-up 0.3s ease-out forwards" }}
-            >
-              {persona.headline}
-            </h1>
+            {/* Feste Mindesthöhe verhindert Layout-Shift beim Textwechsel */}
+            <div className="min-h-[260px] sm:min-h-[300px] lg:min-h-[320px]">
+              {/* Headline */}
+              <h1
+                key={`h-${active}`}
+                className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.15] tracking-tight text-slate-900"
+                style={{ animation: "hero-fade-in 0.4s ease-out forwards" }}
+              >
+                {persona.headline}
+              </h1>
 
-            {/* Sub + Bullets */}
-            <div key={`b-${active}`} style={{ animation: "slide-up 0.35s ease-out 0.05s both" }}>
-              <p className="mt-5 text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl mx-auto">
-                {persona.sub}
-              </p>
-              <ul className="mt-5 space-y-2.5 text-left inline-block">
-                {persona.bullets.map((b, i) => (
-                  <li key={i} className="flex items-start gap-2.5 text-sm sm:text-base text-slate-700">
-                    <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-primary-600 flex items-center justify-center">
-                      <Check size={11} className="text-white" />
-                    </span>
-                    {b}
-                  </li>
-                ))}
-              </ul>
+              {/* Sub + Bullets */}
+              <div key={`b-${active}`} style={{ animation: "hero-fade-in 0.4s ease-out 0.08s both" }}>
+                <p className="mt-5 text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl mx-auto">
+                  {persona.sub}
+                </p>
+                <ul className="mt-5 space-y-2.5 text-left inline-block">
+                  {persona.bullets.map((b, i) => (
+                    <li key={i} className="flex items-start gap-2.5 text-sm sm:text-base text-slate-700">
+                      <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-primary-600 flex items-center justify-center">
+                        <Check size={11} className="text-white" />
+                      </span>
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             {/* CTAs */}
             <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 justify-center">
               <a
-                href="#contact"
+                href="/#contact"
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-primary-600 text-white font-bold text-base hover:bg-primary-700 transition-all shadow-lg shadow-primary-600/25"
               >
                 14 Tage kostenlos testen <ArrowRight size={16} />
               </a>
-
             </div>
 
           </div>

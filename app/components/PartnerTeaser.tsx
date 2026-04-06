@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Euro, ArrowRight, Star, Building2, Users, Wrench } from "lucide-react";
+import { Euro, ArrowRight, Star, Building2, Users, Wrench, Gift } from "lucide-react";
 
 const examples = [
   { label: "3 Professional-Abschlüsse", earn: "900 €", period: "einmalig" },
@@ -9,14 +9,39 @@ const examples = [
 
 const badges = [
   { icon: Building2, label: "Makler: bis 450 €" },
-  { icon: Users, label: "Creator: 10 %/Mon." },
-  { icon: Wrench, label: "Handwerker: bis 225 €" },
+  { icon: Users,     label: "Creator: 10 %/Mon." },
+  { icon: Wrench,    label: "Handwerker: bis 225 €" },
 ];
 
 export default function PartnerTeaser() {
   return (
     <section className="py-16 lg:py-20 bg-slate-50">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+
+        {/* Nutzer-Empfehlung — kompakte Karte obendrauf */}
+        <div className="bg-primary-600 rounded-2xl px-5 py-5 sm:px-8 sm:py-6 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
+          <div className="flex items-center gap-3 flex-1 min-w-0">
+            <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center flex-shrink-0">
+              <Gift size={18} className="text-white" />
+            </div>
+            <div>
+              <div className="text-white font-extrabold text-sm sm:text-base leading-snug">
+                Sie nutzen ImmoPilot? Freunde werben lohnt sich.
+              </div>
+              <div className="text-primary-200 text-xs sm:text-sm mt-0.5 leading-snug">
+                Empfehlen Sie einen Eigentümer — Sie erhalten <span className="text-white font-bold">2 Monate kostenlos</span>, Ihr Freund startet mit <span className="text-white font-bold">14 Tage gratis</span>.
+              </div>
+            </div>
+          </div>
+          <Link
+            href="/#contact"
+            className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-primary-700 font-bold text-sm hover:bg-primary-50 transition-colors whitespace-nowrap"
+          >
+            Jetzt empfehlen <ArrowRight size={14} />
+          </Link>
+        </div>
+
+        {/* Haupt-Partner-Teaser */}
         <div className="bg-slate-950 rounded-2xl sm:rounded-3xl px-5 py-8 sm:px-10 sm:py-12 lg:px-14 lg:py-14">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
@@ -70,6 +95,7 @@ export default function PartnerTeaser() {
 
           </div>
         </div>
+
       </div>
     </section>
   );

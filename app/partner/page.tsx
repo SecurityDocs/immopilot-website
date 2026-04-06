@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Building2, Users, Wrench, Check, ArrowRight, Euro, TrendingUp, Star, ChevronRight } from "lucide-react";
+import { Building2, Users, Wrench, Check, ArrowRight, Euro, TrendingUp, Star, ChevronRight, Gift } from "lucide-react";
 import type { Metadata } from "next";
 
 // Earnings calculator data
@@ -114,6 +114,35 @@ export default function PartnerPage() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Nutzer-Empfehlung Banner */}
+      <div className="bg-primary-600 py-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-10">
+            <div className="flex items-start gap-4 flex-1 min-w-0">
+              <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center flex-shrink-0">
+                <Gift size={22} className="text-white" />
+              </div>
+              <div>
+                <div className="text-white font-extrabold text-base sm:text-lg leading-snug mb-1">
+                  Bereits ImmoPilot-Nutzer? Freunde werben — kostenlose Monate sichern.
+                </div>
+                <div className="text-primary-200 text-sm leading-relaxed">
+                  Empfehlen Sie einen Eigentümer, der ImmoPilot abonniert:{" "}
+                  <span className="text-white font-bold">Sie erhalten 2 Monate kostenlos</span>, Ihr Freund startet mit{" "}
+                  <span className="text-white font-bold">14 Tagen gratis</span>. Kein Aufwand — einfach Link teilen.
+                </div>
+              </div>
+            </div>
+            <a
+              href="#anmelden"
+              className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-primary-700 font-bold text-sm hover:bg-primary-50 transition-colors whitespace-nowrap"
+            >
+              Jetzt empfehlen <ArrowRight size={15} />
+            </a>
           </div>
         </div>
       </div>

@@ -17,7 +17,7 @@ export default function BrowserMockup({
           <span className="text-xs text-slate-400 truncate">{url}</span>
         </div>
       </div>
-      <div className="bg-white overflow-x-hidden">{children}</div>
+      <div className="bg-white overflow-hidden">{children}</div>
     </div>
   );
 }
