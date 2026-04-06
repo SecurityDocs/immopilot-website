@@ -3,8 +3,6 @@
 import { useState, useEffect } from "react";
 import {
   ArrowRight,
-  Building2,
-  Shield,
   Sparkles,
   CreditCard,
   Users,
@@ -25,7 +23,7 @@ import BrowserMockup from "./BrowserMockup";
 const personas = [
   {
     id: "teuer",
-    pill: "Hausverwaltung zu teuer?",
+    pill: "Ihre Hausverwaltung ist zu teuer?",
     headline: <>Sie zahlen <span className="text-primary-600">35 € pro Wohnung.</span><br />ImmoPilot kostet 5 €.</>,
     sub: "Unzufrieden, aber keine bessere Alternative gefunden? Das ändert sich jetzt.",
     bullets: [
@@ -36,7 +34,7 @@ const personas = [
   },
   {
     id: "selbst",
-    pill: "Alles selbst verwalten?",
+    pill: "Sie verwalten alles selbst?",
     headline: <>Sie wollen selbst verwalten —<br /><span className="text-primary-600">aber keine Zeit mehr? Oder keine gute Alternative?</span></>,
     sub: "Egal ob Zeitmangel oder fehlende Alternative: ImmoPilot übernimmt die Routine. Sie behalten die Kontrolle.",
     bullets: [
@@ -47,7 +45,7 @@ const personas = [
   },
   {
     id: "investor",
-    pill: "Portfolio wächst?",
+    pill: "Ihr Portfolio wächst?",
     headline: <>10 Objekte verwalten <span className="text-primary-600">wie 1 — mit KI.</span></>,
     sub: "ImmoPilot wächst mit Ihrem Portfolio. Kein zusätzlicher Aufwand.",
     bullets: [
@@ -58,7 +56,7 @@ const personas = [
   },
   {
     id: "erbe",
-    pill: "Geerbt oder gekauft?",
+    pill: "Sie haben geerbt oder neu gekauft?",
     headline: <>Neu als Vermieter? <span className="text-primary-600">Wir führen Sie Schritt für Schritt.</span></>,
     sub: "Kein Papierchaos, keine Telefonate. In 24h einsatzbereit.",
     bullets: [
@@ -260,7 +258,7 @@ export default function Hero() {
   // Auto-cycle personas (Fragen) alle 4 Sekunden
   useEffect(() => {
     if (manualPersona) return;
-    const t = setInterval(() => setActivePersona((p) => (p + 1) % personas.length), 4000);
+    const t = setInterval(() => setActivePersona((p) => (p + 1) % personas.length), 7000);
     return () => clearInterval(t);
   }, [manualPersona]);
 
@@ -342,19 +340,7 @@ export default function Hero() {
               </a>
             </div>
 
-            {/* Trust badges */}
-            <div className="mt-7 flex flex-wrap items-center gap-2 justify-center">
-              {[
-                { icon: Shield, label: "DSGVO-konform" },
-                { icon: Building2, label: "Deutsche Server" },
-                { icon: Sparkles, label: "KI-gestützt" },
-              ].map((b) => (
-                <div key={b.label} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 shadow-sm">
-                  <b.icon size={13} className="text-primary-600" />
-                  <span className="text-xs font-semibold text-slate-600">{b.label}</span>
-                </div>
-              ))}
-            </div>
+
           </div>
 
           {/* Mockup — unterhalb der CTAs, volle Breite */}
