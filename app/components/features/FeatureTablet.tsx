@@ -11,27 +11,22 @@ export default function FeatureTablet() {
       {/* Left: Tablet Mockup */}
       <div className="order-2 lg:order-1 flex justify-center">
         <div className="relative">
-          {/* −80% Badge oben links über dem Tablet */}
-          <div className="absolute -top-5 left-0 z-10 flex items-center gap-2 bg-white border border-slate-200 rounded-xl px-3 py-2 shadow-sm">
-            <PhoneOff size={14} className="text-primary-600 flex-shrink-0" />
-            <div>
-              <div className="text-xs font-extrabold text-slate-900">−80 %</div>
-              <div className="text-[9px] text-slate-500 leading-tight">weniger Mieteranrufe</div>
+          {/* Badges — alle in einer Zeile über dem Tablet */}
+          <div className="flex flex-wrap items-center gap-2 mb-4">
+            <div className="flex items-center gap-1.5 bg-white border border-slate-200 rounded-xl px-3 py-1.5 shadow-sm">
+              <PhoneOff size={12} className="text-primary-600 flex-shrink-0" />
+              <span className="text-[10px] font-extrabold text-slate-800">−80 % Mieteranrufe</span>
             </div>
-          </div>
-
-          {/* 2026 Badge oben rechts */}
-          <div className="absolute -top-4 -right-2 z-10 flex flex-col gap-1.5">
-            <span className="text-[10px] font-bold px-3 py-1.5 rounded-full bg-amber-400 text-white shadow-sm flex items-center gap-1">
-              <Star size={10} /> Nur 2026 verfügbar
+            <span className="text-[10px] font-bold px-3 py-1.5 rounded-xl bg-amber-400 text-white shadow-sm flex items-center gap-1">
+              <Star size={10} /> Nur 2026
             </span>
-            <span className="text-[10px] font-bold px-3 py-1.5 rounded-full bg-primary-600 text-white shadow-sm flex items-center gap-1">
+            <span className="text-[10px] font-bold px-3 py-1.5 rounded-xl bg-primary-600 text-white shadow-sm flex items-center gap-1">
               <Zap size={10} /> Ab Professional kostenlos
             </span>
           </div>
 
           {/* Tablet frame */}
-          <div className="bg-slate-800 rounded-[2rem] p-3 shadow-2xl w-full max-w-[280px] mt-4">
+          <div className="bg-slate-800 rounded-[2rem] p-3 shadow-2xl w-full max-w-[280px]">
             <div className="bg-slate-950 rounded-[1.6rem] overflow-hidden" style={{ minHeight: "380px" }}>
               <div className="h-full flex flex-col">
                 {/* Header */}
