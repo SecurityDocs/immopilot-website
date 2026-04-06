@@ -17,8 +17,8 @@ export default function Home() {
       <Features />
       <TabletPortal />
       <TrustBar />
-      <ProcessSteps />
       <Vergleich />
+      <ProcessSteps />
       <Pricing />
       <PartnerTeaser />
       <ContactForm />
