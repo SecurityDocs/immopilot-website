@@ -59,13 +59,13 @@ export default function Navbar() {
           {/* CTA Desktop */}
           <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
             <a
-              href="#contact"
+              href="/#contact"
               className="text-sm font-medium text-primary-600 hover:text-primary-700 font-semibold transition-colors"
             >
               Login
             </a>
             <a
-              href="#contact"
+              href="/#contact"
               className="inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-primary-600 text-white text-sm font-semibold hover:bg-primary-700 transition-colors shadow-lg shadow-primary-600/20 whitespace-nowrap"
             >
               Demo anfragen
@@ -75,7 +75,7 @@ export default function Navbar() {
           {/* Mobile: CTA + Hamburger */}
           <div className="flex lg:hidden items-center gap-2">
             <a
-              href="#contact"
+              href="/#contact"
               className="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-primary-600 text-white text-sm font-semibold hover:bg-primary-700 transition-colors"
             >
               Demo
@@ -109,14 +109,14 @@ export default function Navbar() {
             ))}
             <div className="px-5 pt-3">
               <a
-                href="#contact"
+                href="/#contact"
                 onClick={() => setMobileOpen(false)}
                 className="block w-full text-center px-5 py-3 rounded-xl bg-primary-600 text-white text-sm font-semibold hover:bg-primary-700 transition-colors"
               >
                 Kostenlose Demo anfragen
               </a>
               <a
-                href="#contact"
+                href="/#contact"
                 onClick={() => setMobileOpen(false)}
                 className="block w-full text-center px-5 py-3 mt-2 rounded-xl border border-slate-200 text-slate-700 text-sm font-medium hover:bg-slate-50 transition-colors"
               >

@@ -4,8 +4,9 @@ import ProcessSteps from "./components/ProcessSteps";
 import PainPoints from "./components/PainPoints";
 import Vergleich from "./components/Vergleich";
 import Pricing from "./components/Pricing";
-import PartnerTeaser from "./components/PartnerTeaser";
+import TrustSection from "./components/TrustSection";
 import FAQ from "./components/FAQ";
+import PartnerTeaser from "./components/PartnerTeaser";
 import ContactForm from "./components/ContactForm";
 
 export default function Home() {
@@ -17,8 +18,9 @@ export default function Home() {
       <Vergleich />
       <ProcessSteps />
       <Pricing />
-      <PartnerTeaser />
+      <TrustSection />
       <FAQ />
+      <PartnerTeaser />
       <ContactForm />
     </>
   );
